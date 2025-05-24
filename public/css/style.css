@@ -31,8 +31,8 @@ nav a:hover {
 
 .category-bar {
   display: flex;
-  gap: 15px;
-  padding: 20px 40px;
+  gap: 24px;          /* from 20px */
+  padding: 28px 56px; /* from 24px 48px */
   background-color: #fff;
   border-bottom: 1px solid #ddd;
   overflow-x: auto;
@@ -41,8 +41,8 @@ nav a:hover {
 .category {
   background: none;
   border: 2px solid #333;
-  padding: 8px 18px;
-  font-size: 1rem;
+  padding: 12px 26px;  /* from 10px 22px */
+  font-size: 1.4rem;   /* from 1.2rem */
   font-weight: 600;
   color: #333;
   border-radius: 25px;
@@ -63,17 +63,17 @@ nav a:hover {
 }
 
 .menu-items {
-  padding: 20px 40px;
-  min-height: 200px;
+  padding: 36px 72px; /* from 30px 60px */
+  min-height: 300px;  /* increased */
   background-color: #fafafa;
 }
 
 .menu-item {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-  padding: 15px 20px;
+  gap: 1.5rem; /* from 1.2rem */
+  margin-bottom: 2.4rem; /* from 2rem */
+  padding: 24px 36px; /* from 20px 30px */
   border-bottom: 1px solid #ddd;
   background-color: #fff;
   border-radius: 6px;
@@ -81,8 +81,8 @@ nav a:hover {
 }
 
 .menu-item-img {
-  width: 100px;
-  height: 80px;
+  width: 180px;   /* from 150px */
+  height: 144px;  /* from 120px */
   object-fit: cover;
   border-radius: 8px;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
@@ -92,38 +92,39 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex: 1; /* Takes up remaining space */
+  flex: 1;
 }
 
 .menu-item-info h3 {
-  margin: 0 0 6px 0;
+  margin: 0 0 10px 0; /* from 8px */
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.8rem; /* from 1.5rem */
 }
 
 .menu-item-info p {
   margin: 0;
   color: #666;
-  font-size: 0.9rem;
+  font-size: 1.3rem; /* from 1.1rem */
 }
 
 .menu-item-price {
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.6rem; /* from 1.4rem */
   color: #333;
-  margin-top: 6px;
+  margin-top: 10px; /* from 8px */
   white-space: nowrap;
 }
 
 .select-btn {
-  margin-top: 10px;
-  padding: 6px 12px;
-  background-color: #28a745; /* green */
+  margin-top: 17px; /* from 14px */
+  padding: 12px 22px; /* from 10px 18px */
+  background-color: #28a745;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 1.4rem; /* from 1.2rem */
   transition: background-color 0.3s ease;
 }
 
@@ -133,8 +134,8 @@ nav a:hover {
 
 .menu-details-container {
   max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
+  margin: 60px auto; /* from 50px */
+  padding: 36px; /* from 30px */
   border: 1px solid #ddd;
   border-radius: 8px;
   font-family: Arial, sans-serif;
@@ -145,27 +146,27 @@ nav a:hover {
 
 .menu-title {
   color: #333;
-  font-size: 28px;
-  margin-bottom: 20px;
+  font-size: 36px; /* from 32px */
+  margin-bottom: 30px; /* from 25px */
 }
 
 .menu-image {
   max-width: 100%;
   border-radius: 6px;
-  margin: 20px 0;
+  margin: 30px 0; /* from 25px */
 }
 
 .menu-description {
-  font-size: 16px;
+  font-size: 20px; /* from 18px */
   color: #555;
-  margin-bottom: 15px;
+  margin-bottom: 22px; /* from 18px */
 }
 
 .menu-price {
-  font-size: 18px;
+  font-size: 24px; /* from 20px */
   font-weight: bold;
   color: #28a745;
-  margin-bottom: 20px;
+  margin-bottom: 30px; /* from 25px */
 }
 
 .back-button {
@@ -252,4 +253,35 @@ nav a:hover {
 /* Firefox */
 .quantity-input {
     -moz-appearance: textfield !important;
+}
+
+.menu-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.menu-popup.hidden {
+  display: none;
+}
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+}
+.close-btn {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 24px;
 }

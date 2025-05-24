@@ -362,24 +362,6 @@
     </div>
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <?php require 'partials/footer.php'; ?>
 
 <script src="/TKCafe/public/js/menu.js"></script>
