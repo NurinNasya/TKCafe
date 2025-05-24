@@ -177,7 +177,7 @@
   </div>
 
    <div class="menu-item" data-category="masakan-ala">
-    <img src="/TKCafe/public/images/NASI LEMAK SAMBAL UDANG.jpg" alt="Nasi Lemak Sambal Udang" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI GORENG AYAM.png" alt="Nasi Goreng Ayam" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Nasi Goreng Ayam </h3>
@@ -191,7 +191,7 @@
   </div>
 
   <div class="menu-item" data-category="masakan-ala">
-    <img src="/TKCafe/public/images/NASI MINYAK AYAM MERAH.jpg" alt="Nasi Minyak Ayam Merah" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI GORENG UDANG.png" alt="Nasi Goreng Udang" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Nasi Goreng Udang </h3>
@@ -205,7 +205,7 @@
   </div>
 
   <div class="menu-item" data-category="masakan-ala">
-    <img src="/TKCafe/public/images/NASI AYAM.png" alt="Nasi Ayam" class="menu-item-img" />
+    <img src="/TKCafe/public/images/MEE GORENG MAMAK.png" alt="Mee Goreng Mamak" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Mee Goreng Mamak</h3>
@@ -219,7 +219,7 @@
   </div>
 
   <div class="menu-item" data-category="masakan-ala">
-    <img src="/TKCafe/public/images/NASI MINYAK AYAM MERAH.jpg" alt="Nasi Minyak Ayam Merah" class="menu-item-img" />
+    <img src="/TKCafe/public/images/KUEY TIAW GORENG.png" alt="Kuey Tiaw Goreng" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Kuey Tiaw Goreng </h3>
@@ -233,7 +233,7 @@
   </div>
 
   <div class="menu-item" data-category="masakan-ala">
-    <img src="/TKCafe/public/images/NASI AYAM.png" alt="Nasi Ayam" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI PUTIH + TOMYAM AYAM + SAMBAL BELACAN.png" alt="Nasi Putih + Tomyam Ayam + Sambal Belacan" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Nasi Putih + Tomyam Ayam + Sambal Belacan</h3>
@@ -263,7 +263,7 @@
   </div>
 
   <div class="menu-item" data-category="masakan-side">
-    <img src="/TKCafe/public/images/NASI MINYAK AYAM MERAH.jpg" alt="Nasi Minyak Ayam Merah" class="menu-item-img" />
+    <img src="/TKCafe/public/images/TELUR MATA.png" alt="Telur Mata" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Telur Mata</h3>
@@ -277,7 +277,7 @@
   </div>
 
   <div class="menu-item" data-category="masakan-side">
-    <img src="/TKCafe/public/images/NASI AYAM.png" alt="Nasi Ayam" class="menu-item-img" />
+    <img src="/TKCafe/public/images/FRIED CHICKEN.jpg" alt="Fried Chicken" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Fried Chicken</h3>
@@ -294,7 +294,7 @@
     <img src="/TKCafe/public/images/NASI AYAM.png" alt="Nasi Ayam" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
-        <h3>Sosej Otak- Otak(6 PCS)/h3>
+        <h3>Sosej Otak- Otak(6 PCS)<h3>
         <p></p>
         <div class="menu-item-price">RM5.00</div>
       </div>
@@ -307,7 +307,7 @@
 
 
      <div class="menu-item" data-category="lokcing">
-    <img src="/TKCafe/public/images/NASI LEMAK SAMBAL UDANG.jpg" alt="Nasi Lemak Sambal Udang" class="menu-item-img" />
+    <img src="/TKCafe/public/images/SOSEJ PULUT (1 PCS).png" alt="Sosej Pulut(1 PCS)" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Sosej Pulut(1 PCS)</h3>
@@ -321,7 +321,7 @@
   </div>
 
   <div class="menu-item" data-category="lokcing">
-    <img src="/TKCafe/public/images/NASI MINYAK AYAM MERAH.jpg" alt="Nasi Minyak Ayam Merah" class="menu-item-img" />
+    <img src="/TKCafe/public/images/KEK AYAM (1 PCS).png" alt="Kek Ayam" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Kek Ayam (1 PCS)</h3>
@@ -335,7 +335,7 @@
   </div>
 
   <div class="menu-item" data-category="beverages">
-    <img src="/TKCafe/public/images/NASI AYAM.png" alt="Nasi Ayam" class="menu-item-img" />
+    <img src="/TKCafe/public/images/ICE LEMON TEA.png" alt="Ice Lemon Tea" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Ice Lemon Tea</h3>
@@ -349,7 +349,7 @@
   </div>
 
   <div class="menu-item" data-category="beverages">
-    <img src="/TKCafe/public/images/NASI AYAM.png" alt="Nasi Ayam" class="menu-item-img" />
+    <img src="/TKCafe/public/images/TEA PING.png" alt="Tea Ping" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Tea Ping </h3>

@@ -242,4 +242,14 @@ nav a:hover {
   gap: 16px;
   margin-top: 30px;
 }
+/* Chrome, Safari, Edge */
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+}
 
+/* Firefox */
+.quantity-input {
+    -moz-appearance: textfield !important;
+}

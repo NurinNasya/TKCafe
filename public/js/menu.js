@@ -37,24 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Quantity controls
-  document.querySelectorAll('.quantity-btn.plus').forEach(button => {
-    button.addEventListener('click', function () {
-      const input = this.parentElement.querySelector('.quantity-input');
-      input.value = parseInt(input.value) + 1;
-    });
-  });
-
-  document.querySelectorAll('.quantity-btn.minus').forEach(button => {
-    button.addEventListener('click', function () {
-      const input = this.parentElement.querySelector('.quantity-input');
-      const currentValue = parseInt(input.value);
-      if (currentValue > 1) {
-        input.value = currentValue - 1;
-      }
-    });
-  });
-
   //add qty
     document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
@@ -77,6 +59,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('.add-to-cart-btn')?.addEventListener('click', () => {
       const itemId = event.target.getAttribute('data-id');
       const quantity = document.querySelector('.quantity-input').value;
-      alert(`Item ID: ${itemId}\nQuantity: ${quantity}\n(You can now process this in PHP or send it via AJAX!)`);
+      alert(`Item ID: ${itemId}\nQuantity: ${quantity}\n`);
     });
   });

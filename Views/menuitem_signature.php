@@ -31,3 +31,5 @@
       <a href="/TKCafe/Views/menu.php" class="back-button">⬅ Back to Menu</a>
     </div>
 </div>
+
+<script src="/TKCafe/public/js/menu.js"></script>
