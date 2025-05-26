@@ -5,8 +5,12 @@
 <?php require 'partials/header.php'; ?>
 <?php require 'partials/categorybar.php'; ?>
 
+
 <!-- Menu items container -->
 <div class="menu-items">
+
+
+<!-- STANDARD MENU -->
 
   <div class="menu-item" data-category="standard">
     <img src="/TKCafe/public/images/NASI DAGANG TERENGGANU.png" alt="Nasi Dagang Terengganu" class="menu-item-img" />
@@ -50,13 +54,113 @@
     </div>
   </div>
 
-  <div class="menu-item" data-category="signature">
-    <img src="/TKCafe/public/images/NASI LEMAK SAMBAL UDANG.jpg" alt="Nasi Lemak Sambal Udang" class="menu-item-img" />
+  <div class="menu-item" data-category="standard">
+    <img src="/TKCafe/public/images/NASI MINYAK GULAI AYAM.jpg" alt="Nasi " class="menu-item-img" />
+    <div class="menu-item-info">
+      <div>
+        <h3>Nasi Minyak Ayam Merah</h3>
+        <p>Nasi Minyak + Ayam Masak Merah + Acar</p>
+        <div class="menu-item-price">RM9.00</div>
+      </div>
+      <div>
+         <button class="select-btn" data-id="3">Select</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-item" data-category="standard">
+    <img src="/TKCafe/public/images/NASI GORENG KAMPUNG.jpg" alt="Nasi Goreng Kampung" class="menu-item-img" />
+    <div class="menu-item-info">
+      <div>
+        <h3>Nasi Goreng Kampung</h3>
+        <p>Nasi Goreng Kampung</p>
+        <div class="menu-item-price">RM8.00</div>
+      </div>
+      <div>
+         <button class="select-btn" data-id="3">Select</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-item" data-category="standard">
+    <img src="/TKCafe/public/images/NASI LEMAK SAMBAL UDANG.jpg" alt="Nasi Lemak Sambal Udang " class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Nasi Lemak Sambal Udang</h3>
-        <p>Nasi Lemak + Sambal Udang</p>
-        <div class="menu-item-price">RM15.00</div>
+        <p>Nasi Lemak + Sambal Udang </p>
+        <div class="menu-item-price">RM10.00</div>
+      </div>
+      <div>
+         <button class="select-btn" data-id="3">Select</button>
+      </div>
+    </div>
+  </div>
+
+<div class="menu-item" data-category="standard">
+    <img src="/TKCafe/public/images/BIHUN GORENG SINGAPURA.png" alt="Bihun Goreng Singapura " class="menu-item-img" />
+    <div class="menu-item-info">
+      <div>
+        <h3>Bihun Goreng Singapura </h3>
+        <p>Bihun Goreng Singapura</p>
+        <div class="menu-item-price">RM8.00</div>
+      </div>
+      <div>
+         <button class="select-btn" data-id="3">Select</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-item" data-category="standard">
+    <img src="/TKCafe/public/images/NASI AYAM.png" alt="Nasi Ayam " class="menu-item-img" />
+    <div class="menu-item-info">
+      <div>
+        <h3>Nasi Ayam</h3>
+        <p>Nasi + Ayam + Sup + Sambal</p>
+        <div class="menu-item-price">RM8.50</div>
+      </div>
+      <div>
+         <button class="select-btn" data-id="3">Select</button>
+      </div>
+    </div>
+  </div>
+
+<div class="menu-item" data-category="standard">
+    <img src="/TKCafe/public/images/NASI TOMATO KUZI AYAM (1).jpg" alt="Nasi Tomato Kuzi Ayam" class="menu-item-img" />
+    <div class="menu-item-info">
+      <div>
+        <h3>Nasi Tomato Kuzi Ayam</h3>
+        <p>Nasi Tomato + Kuzi Ayam </p>
+        <div class="menu-item-price">RM10.50</div>
+      </div>
+      <div>
+         <button class="select-btn" data-id="3">Select</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-item" data-category="standard">
+    <img src="/TKCafe/public/images/NASI BERIANI AYAM GULAI BERIANI.png" alt="Nasi Beriani Ayam Gulai Beriani" class="menu-item-img" />
+    <div class="menu-item-info">
+      <div>
+        <h3>Nasi Beriani Ayam Gulai Beriani  </h3>
+        <p>Nasi Beriani Ayam Gulai Beriani</p>
+        <div class="menu-item-price">RM11.50</div>
+      </div>
+      <div>
+         <button class="select-btn" data-id="3">Select</button>
+      </div>
+    </div>
+  </div>
+
+<!-- SIGNATURE MENU -->
+
+  <div class="menu-item" data-category="signature">
+    <img src="/TKCafe/public/images/NASI LEMAK SAMBAL UDANG.jpg" alt="Nasi Dagang Terengganu" class="menu-item-img" />
+    <div class="menu-item-info">
+      <div>
+        <h3>Nasi Dagang Terengganu  </h3>
+        <p>Nasi Dagang Terengganu + Gulai Ikan + Acar</p>
+        <div class="menu-item-price">RM11.00</div>
       </div>
       <div>
         <button class="select-btn" data-id="4">Select</button>
@@ -65,12 +169,12 @@
   </div>
 
   <div class="menu-item" data-category="signature">
-    <img src="/TKCafe/public/images/NASI MINYAK AYAM MERAH.jpg" alt="Nasi Minyak Ayam Merah" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI LEMAK RENDANG AYAM.png" alt=">Nasi Lemak Rendang Ayam" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
-        <h3>Nasi Minyak Ayam Merah</h3>
-        <p>Nasi Minyak + Ayam Masak Merah + Acar</p>
-        <div class="menu-item-price">RM10.00</div>
+        <h3>Nasi Lemak Rendang Ayam</h3>
+        <p>Nasi Lemak + Rendang Ayam</p>
+        <div class="menu-item-price">RM12.50</div>
       </div>
       <div>
         <button class="select-btn" data-id="5">Select</button>
@@ -79,18 +183,95 @@
   </div>
 
   <div class="menu-item" data-category="signature">
-    <img src="/TKCafe/public/images/NASI AYAM.png" alt="Nasi Ayam" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI MINYAK GULAI AYAM.jpg" alt=">Nasi Minyak Gulai Ayam" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
-        <h3>Nasi Ayam</h3>
-        <p>Nasi + Ayam + Sup + Sambal</p>
-        <div class="menu-item-price">RM10.00</div>
+        <h3>Nasi Minyak Gulai Ayam</h3>
+        <p>Nasi Minyak + Gulai Ayam + Acar</p>
+        <div class="menu-item-price">RM11.00</div>
       </div>
       <div>
         <button class="select-btn" data-id="6">Select</button>
       </div>
     </div>
   </div>
+
+
+  <div class="menu-item" data-category="signature">
+    <img src="/TKCafe/public/images/NASI MINYAK AYAM MERAH.jpg" alt=">Nasi Minyak Ayam Merah" class="menu-item-img" />
+    <div class="menu-item-info">
+      <div>
+        <h3>Nasi Minyak Ayam Merah </h3>
+        <p>Nasi Minyak Ayam Merah + Ayam Masak Merah + Acar</p>
+        <div class="menu-item-price">RM10.00</div>
+      </div>
+      <div>
+        <button class="select-btn" data-id="5">Select</button>
+      </div>
+    </div>
+  </div>
+
+   <div class="menu-item" data-category="signature">
+    <img src="/TKCafe/public/images/NASI LEMAK SAMBAL UDANG.jpg" alt="Nasi Lemak Sambal Udang " class="menu-item-img" />
+    <div class="menu-item-info">
+      <div>
+        <h3>Nasi Lemak Sambal Udang</h3>
+        <p>Nasi Lemak + Sambal Udang </p>
+        <div class="menu-item-price">RM10.00</div>
+      </div>
+      <div>
+         <button class="select-btn" data-id="3">Select</button>
+      </div>
+    </div>
+  </div>
+ 
+
+  
+  <div class="menu-item" data-category="signature">
+    <img src="/TKCafe/public/images/NASI AYAM.png" alt="Nasi Ayam " class="menu-item-img" />
+    <div class="menu-item-info">
+      <div>
+        <h3>Nasi Ayam</h3>
+        <p>Nasi + Ayam + Sup + Sambal</p>
+        <div class="menu-item-price">RM8.50</div>
+      </div>
+      <div>
+         <button class="select-btn" data-id="3">Select</button>
+      </div>
+    </div>
+  </div>
+
+<div class="menu-item" data-category="signature">
+    <img src="/TKCafe/public/images/NASI TOMATO KUZI AYAM (1).jpg" alt="Nasi Tomato Kuzi Ayam" class="menu-item-img" />
+    <div class="menu-item-info">
+      <div>
+        <h3>Nasi Tomato Kuzi Ayam</h3>
+        <p>Nasi Tomato + Kuzi Ayam </p>
+        <div class="menu-item-price">RM10.50</div>
+      </div>
+      <div>
+         <button class="select-btn" data-id="3">Select</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-item" data-category="signature">
+    <img src="/TKCafe/public/images/NASI BERIANI AYAM GULAI BERIANI.png" alt="Nasi Beriani Ayam Gulai Beriani" class="menu-item-img" />
+    <div class="menu-item-info">
+      <div>
+        <h3>Nasi Beriani Ayam Gulai Beriani  </h3>
+        <p>Nasi Beriani Ayam Gulai Beriani</p>
+        <div class="menu-item-price">RM11.50</div>
+      </div>
+      <div>
+         <button class="select-btn" data-id="3">Select</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- SET STANDARD -->
+
 
     <div class="menu-item" data-category="set-standard">
     <img src="/TKCafe/public/images/NASI LEMAK SAMBAL UDANG.jpg" alt="NASI DAGANG TERENGGANU + SOFT DRINKS" class="menu-item-img" />
@@ -361,6 +542,7 @@
       </div>
     </div>
   </div>
+
 
 <?php require 'partials/footer.php'; ?>
 
