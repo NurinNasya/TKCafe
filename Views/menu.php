@@ -875,11 +875,11 @@
 
    <!-- CARBONATE DRINK-->
 
- <div class="menu-item" data-category="soft-drinkss">
-    <img src="/TKCafe/public/images/ICE LEMON TEA.png" alt="Cola Cola" class="menu-item-img" />
+<div class="menu-item" data-category="soft-drinks">
+    <img src="/TKCafe/public/images/COCA COLA.png" alt="Cola Cola" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
-        <h3>Cola Cola</h3>
+        <h3>Coca Cola</h3>
         <p></p>
         <div class="menu-item-price">RM3.00</div>
       </div>
@@ -902,7 +902,6 @@
       </div>
     </div>
   </div>
-
 
    <div class="menu-item" data-category="soft-drinks">
     <img src="/TKCafe/public/images/ICE LEMON TEA.png" alt="F&N Orange" class="menu-item-img" />
