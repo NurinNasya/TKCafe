@@ -2,7 +2,7 @@
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$dbname = 'cafe'; // Change this to your DB name
+$dbname = 'tkcafe'; // Change this to your DB name
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 
