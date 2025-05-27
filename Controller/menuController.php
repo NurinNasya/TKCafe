@@ -8,6 +8,28 @@ error_reporting(E_ALL);
 
 $menu = new Menu();
 
+// --- AJAX request handling start ---
+if (isset($_GET['id']) && isset($_SERVER['HTTP_ACCEPT']) && strpos($_SERVER['HTTP_ACCEPT'], 'application/json') !== false) {
+    $id = intval($_GET['id']);
+    $item = $menu->getItemById($id);
+
+    if ($item) {
+        header('Content-Type: application/json');
+        echo json_encode([
+            'name' => $item['name'],
+            'price' => $item['price'],
+            'description' => $item['description'],
+            'image' => $item['image'], // adjust key name as needed
+        ]);
+    } else {
+        http_response_code(404);
+        echo json_encode(['error' => 'Item not found']);
+    }
+    exit;  // Important: stop the script here for AJAX requests
+}
+// --- AJAX request handling end ---
+
+
 if (!isset($_GET['id'])) {
     echo "No menu item selected.";
     exit;

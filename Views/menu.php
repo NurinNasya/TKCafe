@@ -362,8 +362,14 @@
     </div>
   </div>
 
+  <div id="popup" style="display:none; position:fixed; top:20%; left:50%; transform:translateX(-50%);
+  background:#fff; padding:20px; border:1px solid #ccc; z-index:1000; max-width:700px;">
+</div>
+
+
 <?php require 'partials/footer.php'; ?>
 
 <script src="/TKCafe/public/js/menu.js"></script>
+<script src="/TKCafe/public/js/cart.js"></script>
 
 
