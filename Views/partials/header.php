@@ -10,7 +10,7 @@
 <header>
      <div class="header-inner">
     <div class="logo">TK Cafe</div>
-     <a href="/TKCafe/cart.php" class="cart-icon">
+     <a href="/TKCafe/Views/cart.php" class="cart-icon">
       <i class="fas fa-shopping-basket"></i>
     </a>
     <nav>
