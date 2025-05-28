@@ -199,3 +199,11 @@ function renderCart(items) {
   container.innerHTML = html;
   document.getElementById('cart-total').textContent = `Total: RM ${total.toFixed(2)}`;
 }
+
+// Add to cart.js
+document.querySelectorAll('.remove-item-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const itemId = this.dataset.id;
+    // Add AJAX call to remove item
+  });
+});
