@@ -32,4 +32,3 @@
     </div>
 </div>
 
-<script src="/TKCafe/public/js/menu.js"></script>

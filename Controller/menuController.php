@@ -47,7 +47,7 @@ if (!$item) {
 $category = $item['category'] ?? 'standard';
 
 if ($category === 'signature') {
-    include '../Views/menuitem_signature.php';  // If you have a different view for signature items
+    include '../Views/alacarte_signature.php';  // If you have a different view for signature items
 } else {
-    include '../Views/menuitem_standard.php';
+    include '../Views/alacarte_standard.php';
 }

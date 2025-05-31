@@ -65,7 +65,7 @@
     <img src="/TKCafe/public/images/NASI DAGANG TERENGGANU.png" alt="Nasi Dagang Terengganu" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
-        <h3>Nasi Dagang Terengannu</h3>
+        <h3>Nasi Dagang Terengganu</h3>
         <p>Nasi Dagang + Gulai Ikan + Acar</p>
         <div class="menu-item-price">RM8.00</div>
       </div>
@@ -94,7 +94,7 @@
     <div class="menu-item-info">
       <div>
         <h3>Nasi Minyak Gulai Ayam</h3>
-        <p>Nasi Minyak + Gulai Ayam</p>
+        <p>Nasi Minyak + Gulai Ayam + Acar</p>
         <div class="menu-item-price">RM9.00</div>
       </div>
       <div>
@@ -112,7 +112,7 @@
         <div class="menu-item-price">RM9.00</div>
       </div>
       <div>
-         <button class="select-btn" data-id="3">Select</button>
+         <button class="select-btn" data-id="4">Select</button>
       </div>
     </div>
   </div>
@@ -126,7 +126,7 @@
         <div class="menu-item-price">RM8.00</div>
       </div>
       <div>
-         <button class="select-btn" data-id="3">Select</button>
+         <button class="select-btn" data-id="5">Select</button>
       </div>
     </div>
   </div>
@@ -140,7 +140,7 @@
         <div class="menu-item-price">RM10.00</div>
       </div>
       <div>
-         <button class="select-btn" data-id="3">Select</button>
+         <button class="select-btn" data-id="6">Select</button>
       </div>
     </div>
   </div>
@@ -154,7 +154,7 @@
         <div class="menu-item-price">RM8.00</div>
       </div>
       <div>
-         <button class="select-btn" data-id="3">Select</button>
+         <button class="select-btn" data-id="7">Select</button>
       </div>
     </div>
   </div>
@@ -168,7 +168,7 @@
         <div class="menu-item-price">RM8.50</div>
       </div>
       <div>
-         <button class="select-btn" data-id="3">Select</button>
+         <button class="select-btn" data-id="8">Select</button>
       </div>
     </div>
   </div>
@@ -182,7 +182,7 @@
         <div class="menu-item-price">RM10.50</div>
       </div>
       <div>
-         <button class="select-btn" data-id="3">Select</button>
+         <button class="select-btn" data-id="9">Select</button>
       </div>
     </div>
   </div>
@@ -196,7 +196,7 @@
         <div class="menu-item-price">RM11.50</div>
       </div>
       <div>
-         <button class="select-btn" data-id="3">Select</button>
+         <button class="select-btn" data-id="10">Select</button>
       </div>
     </div>
   </div>
@@ -204,15 +204,15 @@
 <!-- SIGNATURE MENU -->
 
   <div class="menu-item" data-category="signature">
-    <img src="/TKCafe/public/images/NASI LEMAK SAMBAL UDANG.jpg" alt="Nasi Dagang Terengganu" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI DAGANG TERENGGANU.png" alt="Nasi Dagang Terengganu" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Nasi Dagang Terengganu  </h3>
-        <p>Nasi Dagang Terengganu + Gulai Ikan + Acar</p>
+        <p>Nasi Dagang + Gulai Ikan + Acar</p>
         <div class="menu-item-price">RM11.00</div>
       </div>
       <div>
-        <button class="select-btn" data-id="4">Select</button>
+        <button class="select-btn" data-id="11">Select</button>
       </div>
     </div>
   </div>
@@ -226,7 +226,7 @@
         <div class="menu-item-price">RM12.50</div>
       </div>
       <div>
-        <button class="select-btn" data-id="5">Select</button>
+        <button class="select-btn" data-id="12">Select</button>
       </div>
     </div>
   </div>
@@ -240,7 +240,7 @@
         <div class="menu-item-price">RM11.00</div>
       </div>
       <div>
-        <button class="select-btn" data-id="6">Select</button>
+        <button class="select-btn" data-id="13">Select</button>
       </div>
     </div>
   </div>
@@ -255,7 +255,7 @@
         <div class="menu-item-price">RM10.00</div>
       </div>
       <div>
-        <button class="select-btn" data-id="5">Select</button>
+        <button class="select-btn" data-id="14">Select</button>
       </div>
     </div>
   </div>
@@ -269,7 +269,7 @@
         <div class="menu-item-price">RM10.00</div>
       </div>
       <div>
-         <button class="select-btn" data-id="3">Select</button>
+         <button class="select-btn" data-id="15">Select</button>
       </div>
     </div>
   </div>
@@ -285,7 +285,7 @@
         <div class="menu-item-price">RM8.50</div>
       </div>
       <div>
-         <button class="select-btn" data-id="3">Select</button>
+         <button class="select-btn" data-id="16">Select</button>
       </div>
     </div>
   </div>
@@ -299,7 +299,7 @@
         <div class="menu-item-price">RM10.50</div>
       </div>
       <div>
-         <button class="select-btn" data-id="3">Select</button>
+         <button class="select-btn" data-id="17">Select</button>
       </div>
     </div>
   </div>
@@ -313,7 +313,7 @@
         <div class="menu-item-price">RM11.50</div>
       </div>
       <div>
-         <button class="select-btn" data-id="3">Select</button>
+         <button class="select-btn" data-id="18">Select</button>
       </div>
     </div>
   </div>
@@ -323,7 +323,7 @@
 
 
     <div class="menu-item" data-category="set-standard">
-    <img src="/TKCafe/public/images/NASI LEMAK SAMBAL UDANG.jpg" alt="NASI DAGANG TERENGGANU + SOFT DRINKS" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI DAGANG TERENGGANU.jpg" alt="NASI DAGANG TERENGGANU + SOFT DRINKS" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Nasi Dagang Terengganu+ Soft Drink</h3>
