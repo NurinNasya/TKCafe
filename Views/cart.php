@@ -12,16 +12,22 @@ $total = 0;
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+
+
   <title>Your Cart - TK Cafe</title>
   <link rel="stylesheet" href="/TKCafe/public/css/style.css" />
   <link rel="stylesheet" href="/TKCafe/public/css/cart.css" />
 </head>
 <body>
 
+
+
 <div class="cart-container">
-  <h2>Your Cart</h2>
-  
+
+<a href="javascript:history.back()" style="font-size: 40px; text-decoration: none; color: black;">&lt;</a>
+ <h2 style="text-align: center; font-size: 40px; ">CART</h2>
+   
+ 
   <?php if (empty($items)): ?>
     <div class="empty-cart">
       <img src="/TKCafe/public/images/empty-cart.png" alt="Empty cart">
@@ -70,12 +76,12 @@ $total = 0;
         <span>RM <?= number_format($total * 0.10, 2) ?></span>
       </div>
       <div class="summary-row total">
-        <span>Grand Total</span>
+        <span>Grand Total =</span>
         <span>RM <?= number_format($total * 1.10, 2) ?></span>
       </div>
       
-      <button class="checkout-btn">Proceed to Checkout</button>
-      <a href="/TKCafe/Views/menu.php" class="continue-shopping-btn">Continue Shopping</a>
+      <button class="checkout-btn">PLACE ORDER</button>
+     
     </div>
   <?php endif; ?>
 </div>
