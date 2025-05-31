@@ -32,5 +32,3 @@
     </div>
 </div>
 
-<!--<script src="/TKCafe/public/js/menu.js"></script>
-<script src="/TKCafe/public/js/cart.js"></script>-->

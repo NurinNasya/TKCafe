@@ -1,7 +1,7 @@
 <?php
 class Menu {
     private $menuItems = [
- // Standard items
+ // Standard items (ala carte)
         1 => [
             'name' => 'Nasi Dagang Terengganu',
             'description' => 'Nasi Dagang + Gulai Ikan + Acar',
@@ -23,28 +23,244 @@ class Menu {
             'image' => '/TKCafe/public/images/NASI MINYAK GULAI AYAM.jpg',
             'category' => 'standard'
         ],
-
-        // Signature items (your dummy data)
+        
         4 => [
-            'name' => 'Nasi Lemak Sambal Udang',
-            'description' => 'Nasi Lemak + Sambal Udang',
-            'price' => 'RM15.00',
-            'image' => '/TKCafe/public/images/NASI LEMAK SAMBAL UDANG.jpg',
-            'category' => 'signature'
-        ],
-        5 => [
             'name' => 'Nasi Minyak Ayam Merah',
             'description' => 'Nasi Minyak + Ayam Masak Merah + Acar',
+            'price' => 'RM9.00',
+            'image' => '/TKCafe/public/images/NASI MINYAK AYAM MERAH.jpg',
+            'category' => 'standard'
+        ],
+        5 => [
+            'name' => 'Nasi Goreng Kampung',
+            'description' => 'Nasi Goreng Kampung',
+            'price' => 'RM8.00',
+            'image' => '/TKCafe/public/images/NASI GORENG KAMPUNG.jpg',
+            'category' => 'standard'
+        ],
+        6 => [
+            'name' => 'Nasi Lemak Sambal Udang',
+            'description' => 'Nasi Lemak + Sambal Udang',
             'price' => 'RM10.00',
+            'image' => '/TKCafe/public/images/NASI LEMAK SAMBAL UDANG.jpg',
+            'category' => 'standard'
+        ],
+        7 => [
+            'name' => 'Bihun Goreng Singapura',
+            'description' => 'Bihun Goreng Singapura',
+            'price' => 'RM8.00',
+            'image' => '/TKCafe/public/images/BIHUN GORENG SINGAPURA.png',
+            'category' => 'standard'
+        ],
+        8 => [
+            'name' => 'Nasi Ayam',
+            'description' => 'Nasi + Ayam + Sup + Sambal',
+            'price' => 'RM8.50',
+            'image' => '/TKCafe/public/images/NASI AYAM.png',
+            'category' => 'standard'
+        ],
+        9 => [
+            'name' => 'Nasi Tomato Kuzi Ayam',
+            'description' => 'Nasi Tomato + Kuzi Ayam',
+            'price' => 'RM10.50',
+            'image' => '/TKCafe/public/images/NASI TOMATO KUZI AYAM.jpg',
+            'category' => 'standard'
+        ],
+        10 => [
+            'name' => 'Nasi Beriani Ayam Gulai Beriani',
+            'description' => 'Nasi Beriani + Ayam Gulai Beriani',
+            'price' => 'RM11.00',
+            'image' => '/TKCafe/public/images/NASI BERIANI AYAM GUALI BERIANI.png',
+            'category' => 'standard'
+        ],
+
+        // Signature items (ala carte)
+        11 => [
+            'name' => 'Nasi Dagang Terengganu',
+            'description' => 'Nasi Dagang + Gulai Ikan + Acar',
+            'price' => 'RM8.00',
+            'image' => '/TKCafe/public/images/NASI DAGANG TERENGGANU.png',
+            'category' => 'signature'
+        ],
+        12 => [
+            'name' => 'Nasi Lemak Rendang Ayam',
+            'description' => 'Nasi Lemak + Rendang Ayam',
+            'price' => 'RM10.00',
+            'image' => '/TKCafe/public/images/NASI LEMAK RENDANG AYAM.png',
+            'category' => 'signature'
+        ],
+        13 => [
+            'name' => 'Nasi Minyak Gulai Ayam',
+            'description' => 'Nasi Minyak + Gulai Ayam',
+            'price' => 'RM9.00',
+            'image' => '/TKCafe/public/images/NASI MINYAK GULAI AYAM.jpg',
+            'category' => 'signature'
+        ],
+        14 => [
+            'name' => 'Nasi Minyak Ayam Merah',
+            'description' => 'Nasi Minyak + Ayam Masak Merah + Acar',
+            'price' => 'RM9.00',
             'image' => '/TKCafe/public/images/NASI MINYAK AYAM MERAH.jpg',
             'category' => 'signature'
         ],
-        6 => [
+        15 => [
+            'name' => 'Nasi Lemak Sambal Udang',
+            'description' => 'Nasi Lemak + Sambal Udang',
+            'price' => 'RM10.00',
+            'image' => '/TKCafe/public/images/NASI LEMAK SAMBAL UDANG.jpg',
+            'category' => 'signature'
+        ],
+        16 => [
             'name' => 'Nasi Ayam',
             'description' => 'Nasi + Ayam + Sup + Sambal',
-            'price' => 'RM10.00',
+            'price' => 'RM8.50',
             'image' => '/TKCafe/public/images/NASI AYAM.png',
             'category' => 'signature'
+        ],
+        17 => [
+            'name' => 'Nasi Tomato Kuzi Ayam',
+            'description' => 'Nasi Tomato + Kuzi Ayam',
+            'price' => 'RM10.50',
+            'image' => '/TKCafe/public/images/NASI TOMATO KUZI AYAM.jpg',
+            'category' => 'signature'
+        ],
+        18 => [
+            'name' => 'Nasi Beriani Ayam Gulai Beriani',
+            'description' => 'Nasi Beriani + Ayam Gulai Beriani',
+            'price' => 'RM11.00',
+            'image' => '/TKCafe/public/images/NASI BERIANI AYAM GUALI BERIANI.png',
+            'category' => 'signature'
+        ],
+
+         // Standard items (combo)
+        19 => [
+            'name' => 'Nasi Dagang Terengganu',
+            'description' => 'Nasi Dagang + Gulai Ikan + Acar',
+            'price' => 'RM8.00',
+            'image' => '/TKCafe/public/images/NASI DAGANG TERENGGANU.png',
+            'category' => 'set-standard'
+        ],
+        20 => [
+            'name' => 'Nasi Lemak Rendang Ayam',
+            'description' => 'Nasi Lemak + Rendang Ayam',
+            'price' => 'RM10.00',
+            'image' => '/TKCafe/public/images/NASI LEMAK RENDANG AYAM.png',
+            'category' => 'set-standard'
+        ],
+        21 => [
+            'name' => 'Nasi Minyak Gulai Ayam',
+            'description' => 'Nasi Minyak + Gulai Ayam',
+            'price' => 'RM9.00',
+            'image' => '/TKCafe/public/images/NASI MINYAK GULAI AYAM.jpg',
+            'category' => 'set-standard'
+        ],
+        
+        22 => [
+            'name' => 'Nasi Minyak Ayam Merah',
+            'description' => 'Nasi Minyak + Ayam Masak Merah + Acar',
+            'price' => 'RM9.00',
+            'image' => '/TKCafe/public/images/NASI MINYAK AYAM MERAH.jpg',
+            'category' => 'set-standard'
+        ],
+        23 => [
+            'name' => 'Nasi Goreng Kampung',
+            'description' => 'Nasi Goreng Kampung',
+            'price' => 'RM8.00',
+            'image' => '/TKCafe/public/images/NASI GORENG KAMPUNG.jpg',
+            'category' => 'set-standard'
+        ],
+        24 => [
+            'name' => 'Nasi Lemak Sambal Udang',
+            'description' => 'Nasi Lemak + Sambal Udang',
+            'price' => 'RM10.00',
+            'image' => '/TKCafe/public/images/NASI LEMAK SAMBAL UDANG.jpg',
+            'category' => 'set-standard'
+        ],
+        25 => [
+            'name' => 'Bihun Goreng Singapura',
+            'description' => 'Bihun Goreng Singapura',
+            'price' => 'RM8.00',
+            'image' => '/TKCafe/public/images/BIHUN GORENG SINGAPURA.png',
+            'category' => 'set-standard'
+        ],
+        26 => [
+            'name' => 'Nasi Ayam',
+            'description' => 'Nasi + Ayam + Sup + Sambal',
+            'price' => 'RM8.50',
+            'image' => '/TKCafe/public/images/NASI AYAM.png',
+            'category' => 'set-standard'
+        ],
+        27 => [
+            'name' => 'Nasi Tomato Kuzi Ayam',
+            'description' => 'Nasi Tomato + Kuzi Ayam',
+            'price' => 'RM10.50',
+            'image' => '/TKCafe/public/images/NASI TOMATO KUZI AYAM.jpg',
+            'category' => 'set-standard'
+        ],
+        28 => [
+            'name' => 'Nasi Beriani Ayam Gulai Beriani',
+            'description' => 'Nasi Beriani + Ayam Gulai Beriani',
+            'price' => 'RM11.00',
+            'image' => '/TKCafe/public/images/NASI BERIANI AYAM GUALI BERIANI.png',
+            'category' => 'set-standard'
+        ],
+
+            // Signature items (combo)
+        29 => [
+            'name' => 'Nasi Dagang Terengganu',
+            'description' => 'Nasi Dagang + Gulai Ikan + Acar',
+            'price' => 'RM8.00',
+            'image' => '/TKCafe/public/images/NASI DAGANG TERENGGANU.png',
+            'category' => 'set-signature'
+        ],
+        30 => [
+            'name' => 'Nasi Lemak Rendang Ayam',
+            'description' => 'Nasi Lemak + Rendang Ayam',
+            'price' => 'RM10.00',
+            'image' => '/TKCafe/public/images/NASI LEMAK RENDANG AYAM.png',
+            'category' => 'set-signature'
+        ],
+        31 => [
+            'name' => 'Nasi Minyak Gulai Ayam',
+            'description' => 'Nasi Minyak + Gulai Ayam',
+            'price' => 'RM9.00',
+            'image' => '/TKCafe/public/images/NASI MINYAK GULAI AYAM.jpg',
+            'category' => 'set-signature'
+        ],
+        32 => [
+            'name' => 'Nasi Minyak Ayam Merah',
+            'description' => 'Nasi Minyak + Ayam Masak Merah + Acar',
+            'price' => 'RM9.00',
+            'image' => '/TKCafe/public/images/NASI MINYAK AYAM MERAH.jpg',
+            'category' => 'set-signature'
+        ],
+        33 => [
+            'name' => 'Nasi Lemak Sambal Udang',
+            'description' => 'Nasi Lemak + Sambal Udang',
+            'price' => 'RM10.00',
+            'image' => '/TKCafe/public/images/NASI LEMAK SAMBAL UDANG.jpg',
+            'category' => 'set-signature'
+        ],
+        34 => [
+            'name' => 'Nasi Ayam',
+            'description' => 'Nasi + Ayam + Sup + Sambal',
+            'price' => 'RM8.50',
+            'image' => '/TKCafe/public/images/NASI AYAM.png',
+            'category' => 'set-signature'
+        ],
+        35 => [
+            'name' => 'Nasi Tomato Kuzi Ayam',
+            'description' => 'Nasi Tomato + Kuzi Ayam',
+            'price' => 'RM10.50',
+            'image' => '/TKCafe/public/images/NASI TOMATO KUZI AYAM.jpg',
+            'category' => 'set-signature'
+        ],
+        36 => [
+            'name' => 'Nasi Beriani Ayam Gulai Beriani',
+            'description' => 'Nasi Beriani + Ayam Gulai Beriani',
+            'price' => 'RM11.00',
+            'image' => '/TKCafe/public/images/NASI BERIANI AYAM GUALI BERIANI.png',
+            'category' => 'set-signature'
         ],
     ];
 
