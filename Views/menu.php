@@ -54,12 +54,7 @@
     </div>
   </div>
 
-
-
-
-
-
-<!-- STANDARD MENU -->
+<!-- STANDARD MENU (ALA CARTE) -->
 
   <div class="menu-item" data-category="standard">
     <img src="/TKCafe/public/images/NASI DAGANG TERENGGANU.png" alt="Nasi Dagang Terengganu" class="menu-item-img" />
@@ -104,7 +99,7 @@
   </div>
 
   <div class="menu-item" data-category="standard">
-    <img src="/TKCafe/public/images/NASI MINYAK GULAI AYAM.jpg" alt="Nasi " class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI MINYAK AYAM MERAH.jpg" alt="Nasi Minyak Ayam Merah " class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Nasi Minyak Ayam Merah</h3>
@@ -193,7 +188,7 @@
       <div>
         <h3>Nasi Beriani Ayam Gulai Beriani  </h3>
         <p>Nasi Beriani Ayam Gulai Beriani</p>
-        <div class="menu-item-price">RM11.50</div>
+        <div class="menu-item-price">RM11.00</div>
       </div>
       <div>
          <button class="select-btn" data-id="10">Select</button>
@@ -201,7 +196,7 @@
     </div>
   </div>
 
-<!-- SIGNATURE MENU -->
+<!-- SIGNATURE (ALA CART) MENU -->
 
   <div class="menu-item" data-category="signature">
     <img src="/TKCafe/public/images/NASI DAGANG TERENGGANU.png" alt="Nasi Dagang Terengganu" class="menu-item-img" />
@@ -266,7 +261,7 @@
       <div>
         <h3>Nasi Lemak Sambal Udang</h3>
         <p>Nasi Lemak + Sambal Udang </p>
-        <div class="menu-item-price">RM10.00</div>
+        <div class="menu-item-price">RM15.00</div>
       </div>
       <div>
          <button class="select-btn" data-id="15">Select</button>
@@ -282,7 +277,7 @@
       <div>
         <h3>Nasi Ayam</h3>
         <p>Nasi + Ayam + Sup + Sambal</p>
-        <div class="menu-item-price">RM8.50</div>
+        <div class="menu-item-price">RM10.00</div>
       </div>
       <div>
          <button class="select-btn" data-id="16">Select</button>
@@ -296,7 +291,7 @@
       <div>
         <h3>Nasi Tomato Kuzi Ayam</h3>
         <p>Nasi Tomato + Kuzi Ayam </p>
-        <div class="menu-item-price">RM10.50</div>
+        <div class="menu-item-price">RM13.50</div>
       </div>
       <div>
          <button class="select-btn" data-id="17">Select</button>
@@ -310,7 +305,7 @@
       <div>
         <h3>Nasi Beriani Ayam Gulai Beriani  </h3>
         <p>Nasi Beriani Ayam Gulai Beriani</p>
-        <div class="menu-item-price">RM11.50</div>
+        <div class="menu-item-price">RM13.50</div>
       </div>
       <div>
          <button class="select-btn" data-id="18">Select</button>
@@ -323,11 +318,11 @@
 
 
     <div class="menu-item" data-category="set-standard">
-    <img src="/TKCafe/public/images/NASI DAGANG TERENGGANU.jpg" alt="NASI DAGANG TERENGGANU + SOFT DRINKS" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI DAGANG TERENGGANU.png" alt=">Nasi Dagang Terengganu + Soft Drink" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
-        <h3>Nasi Dagang Terengganu+ Soft Drink</h3>
-        <p>Nasi Dagang + Gulai Ikan + Acar</p>
+        <h3>Nasi Dagang Terengganu + Soft Drink</h3>
+        <p>Nasi Dagang + Gulai Ikan + Acar  + Soft Drink</p>
         <div class="menu-item-price">RM11.00</div>
       </div>
       <div>
@@ -337,11 +332,11 @@
   </div>
 
   <div class="menu-item" data-category="set-standard">
-    <img src="/TKCafe/public/images/NASI LEMAK RENDANG AYAM.png" alt="Nasi Lemak Rendang Ayam" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI LEMAK RENDANG AYAM.png" alt="Nasi Lemak Rendang + Soft Drink" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Nasi Lemak Rendang Ayam + Soft Drink</h3>
-        <p>Nasi Lemak + Rendang Ayam</p>
+        <p>Nasi Lemak + Rendang Ayam + Soft Drink</p>
         <div class="menu-item-price">RM13.00</div>
       </div>
       <div>
@@ -353,11 +348,11 @@
 
 
   <div class="menu-item" data-category="set-standard">
-    <img src="/TKCafe/public/images/NASI MINYAK GULAI AYAM.jpg" alt="Nasi Minyak Gulai Ayam" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI MINYAK GULAI AYAM.jpg" alt="Nasi Minyak Gulai Ayam+ Soft Drink" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Nasi Minyak Gulai Ayam + Soft Drink</h3>
-        <p>Nasi Minyak + Gulai Ayam</p>
+        <p>Nasi Minyak + Gulai Ayam + Soft Drink</p>
         <div class="menu-item-price">RM12.00</div>
       </div>
       <div>
@@ -368,11 +363,11 @@
 
 
  <div class="menu-item" data-category="set-standard">
-    <img src="/TKCafe/public/images/NASI MINYAK AYAM MERAH.jpg" alt=">Nasi Minyak Ayam Merah" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI MINYAK AYAM MERAH.jpg" alt=">Nasi Minyak Ayam Merah + Soft Drink" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Nasi Minyak Ayam Merah + Soft Drink</h3>
-        <p>Nasi Minyak Ayam Merah + Ayam Masak Merah + Acar</p>
+        <p>Nasi Minyak Ayam Merah + Ayam Masak Merah + Acar + Soft Drink</p>
         <div class="menu-item-price">RM12.00</div>
       </div>
       <div>
@@ -382,12 +377,12 @@
   </div>
 
 <div class="menu-item" data-category="set-standard">
-    <img src="/TKCafe/public/images/NASI GORENG KAMPUNG.jpg" alt="Nasi Goreng Kampung" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI GORENG KAMPUNG.jpg" alt="Nasi Goreng Kampung + Soft Drink" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Nasi Goreng Kampung  + Soft Drink</h3>
-        <p>Nasi Goreng Kampung</p>
-        <div class="menu-item-price">RM12.00</div>
+        <p>Nasi Goreng Kampung + Soft Drink</p>
+        <div class="menu-item-price">RM11.00</div>
       </div>
       <div>
          <button class="select-btn" data-id="3">Select</button>
@@ -396,14 +391,12 @@
   </div>
 
 
-
-
  <div class="menu-item" data-category="set-standard">
-    <img src="/TKCafe/public/images/NASI LEMAK SAMBAL UDANG.jpg" alt="Nasi Lemak Sambal Udang" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI LEMAK SAMBAL UDANG.jpg" alt="Nasi Lemak Sambal Udang + Soft Drink" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Nasi Lemak Sambal Udang + Soft Drink</h3>
-        <p>Nasi Lemak + Sambal Udang</p>
+        <p>Nasi Lemak + Sambal Udang  + Soft Drink</p>
         <div class="menu-item-price">RM13.00</div>
       </div>
       <div>
@@ -413,12 +406,12 @@
   </div>
 
 
-<div class="menu-item" data-category="set-signature">
-    <img src="/TKCafe/public/images/BIHUN GORENG SINGAPURA.png" alt="Bihun Goreng Singapura " class="menu-item-img" />
+<div class="menu-item" data-category="set-standard">
+    <img src="/TKCafe/public/images/BIHUN GORENG SINGAPURA.png" alt="Bihun Goreng Singapura + Soft Drink" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Bihun Goreng Singapura  + Soft Drink </h3>
-        <p>Bihun Goreng Singapura</p>
+        <p>Bihun Goreng Singapura  + Soft Drink</p>
         <div class="menu-item-price">RM11.00</div>
       </div>
       <div>
@@ -429,11 +422,11 @@
 
 
 <div class="menu-item" data-category="set-standard">
-    <img src="/TKCafe/public/images/NASI AYAM.png" alt="Nasi Ayam" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI AYAM.png" alt="Nasi Ayam + Soft Drink" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Nasi Ayam + Soft Drink</h3>
-        <p>Nasi + Ayam + Sup + Sambal</p>
+        <p>Nasi + Ayam + Sup + Sambal + Soft Drink</p>
         <div class="menu-item-price">RM11.50</div>
       </div>
       <div>
@@ -444,11 +437,11 @@
 
 
 <div class="menu-item" data-category="set-standard">
-    <img src="/TKCafe/public/images/NASI TOMATO KUZI AYAM (1).jpg" alt="Nasi Tomato Kuzi Ayam" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI TOMATO KUZI AYAM (1).jpg" alt="Nasi Tomato Kuzi Ayam + Soft Drink" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Nasi Tomato Kuzi Ayam  + Soft Drink</h3>
-        <p>Nasi Tomato + Kuzi Ayam </p>
+        <p>Nasi Tomato + Kuzi Ayam  + Soft Drink</p>
         <div class="menu-item-price">RM13.50</div>
       </div>
       <div>
@@ -458,11 +451,11 @@
   </div>
 
   <div class="menu-item" data-category="set-standard">
-    <img src="/TKCafe/public/images/NASI BERIANI AYAM GULAI BERIANI.png" alt="Nasi Beriani Ayam Gulai Beriani" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI BERIANI AYAM GULAI BERIANI.png" alt="Nasi Beriani Ayam Gulai Beriani + Soft Drink" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Nasi Beriani Ayam Gulai Beriani  + Soft Drink </h3>
-        <p>Nasi Beriani Ayam Gulai Beriani</p>
+        <p>Nasi Beriani Ayam Gulai Beriani + Soft Drink</p>
         <div class="menu-item-price">RM14.00</div>
       </div>
       <div>
@@ -471,15 +464,16 @@
     </div>
   </div>
 
- <!-- SET SIGNATURE MENU-->
+
+ <!-- SET SIGNATURE COMBO -->
 
 
     <div class="menu-item" data-category="set-signature">
-    <img src="/TKCafe/public/images/NASI LEMAK SAMBAL UDANG.jpg" alt="NASI DAGANG TERENGGANU + SOFT DRINKS" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI DAGANG TERENGGANU.png" alt="Nasi Dagang Terengganu + Soft Drink" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Nasi Dagang Terengganu+ Soft Drink</h3>
-        <p>Nasi Dagang + Gulai Ikan + Acar</p>
+        <p>Nasi Dagang + Gulai Ikan + Acar + Soft Drink</p>
         <div class="menu-item-price">RM14.00</div>
       </div>
       <div>
@@ -489,11 +483,11 @@
   </div>
 
   <div class="menu-item" data-category="set-signature">
-    <img src="/TKCafe/public/images/NASI LEMAK RENDANG AYAM.png" alt="Nasi Lemak Rendang Ayam" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI LEMAK RENDANG AYAM.png" alt="Nasi Lemak Rendang Ayam + Soft Drink" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Nasi Lemak Rendang Ayam + Soft Drink</h3>
-        <p>Nasi Lemak + Rendang Ayam</p>
+        <p>Nasi Lemak + Rendang Ayam + Soft Drink</p>
         <div class="menu-item-price">RM15.50</div>
       </div>
       <div>
@@ -505,11 +499,11 @@
 
 
   <div class="menu-item" data-category="set-signature">
-    <img src="/TKCafe/public/images/NASI MINYAK GULAI AYAM.jpg" alt="Nasi Minyak Gulai Ayam" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI MINYAK GULAI AYAM.jpg" alt="Nasi Minyak Gulai Ayam + Soft Drink" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Nasi Minyak Gulai Ayam + Soft Drink</h3>
-        <p>Nasi Minyak + Gulai Ayam</p>
+        <p>Nasi Minyak + Gulai Ayam + Soft Drink</p>
         <div class="menu-item-price">RM14.00</div>
       </div>
       <div>
@@ -520,11 +514,11 @@
 
 
  <div class="menu-item" data-category="set-signature">
-    <img src="/TKCafe/public/images/NASI MINYAK AYAM MERAH.jpg" alt=">Nasi Minyak Ayam Merah" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI MINYAK AYAM MERAH.jpg" alt=">Nasi Minyak Ayam Merah + Soft Drink" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
-        <h3>Nasi Minyak Ayam Merah + Soft Drink</h3>
-        <p>Nasi Minyak Ayam Merah + Ayam Masak Merah + Acar</p>
+        <h3>Nasi Minyak Ayam Merah + Soft Drink </h3>
+        <p>Nasi Minyak Ayam Merah + Ayam Masak Merah + Acar + Soft Drink</p>
         <div class="menu-item-price">RM13.00</div>
       </div>
       <div>
@@ -537,11 +531,11 @@
 
 
  <div class="menu-item" data-category="set-signature">
-    <img src="/TKCafe/public/images/NASI LEMAK SAMBAL UDANG.jpg" alt="Nasi Lemak Sambal Udang" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI LEMAK SAMBAL UDANG.jpg" alt="Nasi Lemak Sambal Udang + Soft Drink" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Nasi Lemak Sambal Udang + Soft Drink</h3>
-        <p>Nasi Lemak + Sambal Udang</p>
+        <p>Nasi Lemak + Sambal Udang  + Soft Drink</p>
         <div class="menu-item-price">RM18.00</div>
       </div>
       <div>
@@ -553,11 +547,11 @@
 
 
 <div class="menu-item" data-category="set-signature">
-    <img src="/TKCafe/public/images/NASI AYAM.png" alt="Nasi Ayam" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI AYAM.png" alt="Nasi Ayam + Soft Drink" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Nasi Ayam + Soft Drink</h3>
-        <p>Nasi + Ayam + Sup + Sambal</p>
+        <p>Nasi + Ayam + Sup + Sambal + Soft Drink</p>
         <div class="menu-item-price">RM13.00</div>
       </div>
       <div>
@@ -568,11 +562,11 @@
 
 
 <div class="menu-item" data-category="set-signature">
-    <img src="/TKCafe/public/images/NASI TOMATO KUZI AYAM (1).jpg" alt="Nasi Tomato Kuzi Ayam" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI TOMATO KUZI AYAM (1).jpg" alt="Nasi Tomato Kuzi Ayam + Soft Drink" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Nasi Tomato Kuzi Ayam  + Soft Drink</h3>
-        <p>Nasi Tomato + Kuzi Ayam </p>
+        <p>Nasi Tomato + Kuzi Ayam  + Soft Drink </p>
         <div class="menu-item-price">RM16.50</div>
       </div>
       <div>
@@ -582,12 +576,12 @@
   </div>
 
   <div class="menu-item" data-category="set-signature">
-    <img src="/TKCafe/public/images/NASI BERIANI AYAM GULAI BERIANI.png" alt="Nasi Beriani Ayam Gulai Beriani" class="menu-item-img" />
+    <img src="/TKCafe/public/images/NASI BERIANI AYAM GULAI BERIANI.png" alt="Nasi Beriani Ayam Gulai Beriani + Soft Drink" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Nasi Beriani Ayam Gulai Beriani  + Soft Drink </h3>
-        <p>Nasi Beriani Ayam Gulai Beriani</p>
-        <div class="menu-item-price">RM14.00</div>
+        <p>Nasi Beriani Ayam Gulai Beriani + Soft Drink</p>
+        <div class="menu-item-price">RM16.50</div>
       </div>
       <div>
          <button class="select-btn" data-id="3">Select</button>
@@ -675,7 +669,7 @@
  <!-- SIDE DISH-->
 
      <div class="menu-item" data-category="masakan-side">
-    <img src="/TKCafe/public/images/NASI LEMAK SAMBAL UDANG.jpg" alt="Nasi Lemak Sambal Udang" class="menu-item-img" />
+    <img src="/TKCafe/public/images/TELUR DADAR.png" alt=">Telur Dadar" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Telur Dadar</h3>
@@ -721,7 +715,7 @@
  <!-- ALA CART LOKCING-->
 
     <div class="menu-item" data-category="lokcing">
-    <img src="/TKCafe/public/images/NASI AYAM.png" alt="Nasi Ayam" class="menu-item-img" />
+    <img src="/TKCafe/public/images/" alt="Sosej Otak- Otak(6 PCS)" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Sosej Otak- Otak(6 PCS)<h3>
@@ -785,7 +779,7 @@
       <div>
         <h3>Nugget Tempura (6 PCS)</h3>
         <p></p>
-        <div class="menu-item-price">RM3.50</div>
+        <div class="menu-item-price">RM5.00</div>
       </div>
       <div>
         <button class="select-btn">Select</button>
@@ -871,6 +865,8 @@
       </div>
     </div>
   </div>
+
+
    <!-- CARBONATE DRINK-->
 
 <div class="menu-item" data-category="soft-drinks">
@@ -956,16 +952,17 @@
       </div>
     </div>
   </div>
+  
 
 <!-- HOT DRINKS-->
 
 <div class="menu-item" data-category="hot-drinkss">
-    <img src="/TKCafe/public/images/MILO - 3 IN 1.png" alt="Cola Cola" class="menu-item-img" />
+    <img src="/TKCafe/public/images/MILO - 3 IN 1.png" alt="Milo - 3 IN 1 " class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Milo - 3 IN 1 </h3>
         <p></p>
-        <div class="menu-item-price">RM3.00</div>
+        <div class="menu-item-price">RM4.00</div>
       </div>
       <div>
         <button class="select-btn">Select</button>
@@ -1031,7 +1028,7 @@
   </div>
 
   <div class="menu-item" data-category="hot-drinks">
-    <img src="/TKCafe/public/images/MINERAL WATER (500ML).png" alt="F&N Soda" class="menu-item-img" />
+    <img src="/TKCafe/public/images/MINERAL WATER (500ML).png" alt="Mineral Water (500ML)" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Mineral Water (500ML)</h3>
