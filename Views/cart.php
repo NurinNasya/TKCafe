@@ -24,8 +24,10 @@ $total = 0;
 
 <div class="cart-container">
 
-<a href="javascript:history.back()" style="font-size: 40px; text-decoration: none; color: black;">&lt;</a>
- <h2 style="text-align: center; font-size: 40px; ">CART</h2>
+<div class="cart-header">
+  <a href="javascript:history.back()" class="back-button">&lt;</a>
+  <h2 class="cart-title">CART</h2>
+</div>
    
  
   <?php if (empty($items)): ?>

@@ -1,7 +1,7 @@
 /* Base styles */
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f1e7da;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #fcf8f0, #fdf7f2);
   padding: 20px;
   margin: 0;
 }
@@ -14,6 +14,31 @@ body {
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+}
+/* Header section with back button and title */
+.cart-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.back-button {
+  position: absolute;
+  left: 0;
+  font-size: 28px;
+  text-decoration: none;
+  color: #452c1a;
+  font-weight: bold;
+  padding-left: 8px;
+}
+
+.cart-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #5e3b1f;
+  margin: 0;
 }
 
 /* Back arrow */
@@ -48,8 +73,8 @@ body {
 
 /* Item image */
 .cart-item-image {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -62,7 +87,7 @@ body {
 
 .cart-item-details h3 {
   margin: 0 0 6px;
-  font-size: 20px;
+  font-size: 27px;
   color: #333;
 }
 
@@ -70,7 +95,7 @@ body {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  font-size: 16px;
+  font-size: 20px;
   color: #666;
 }
 
@@ -87,21 +112,21 @@ body {
 .cart-summary {
   margin-top: 24px;
   border-top: 1px solid #ddd;
-  padding-top: 16px;
+  padding-top: 22px;
 }
 
 .summary-row {
   display: flex;
   justify-content: space-between;
-  font-size: 18px;
+  font-size: 20px;
   padding: 8px 0;
   color: #444;
 }
 
 .summary-row.total {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: bold;
-  color: #2e7d32;
+  color: #000;
   border-top: 2px solid #ccc;
   margin-top: 10px;
   padding-top: 12px;
@@ -112,7 +137,7 @@ body {
   width: 100%;
   margin-top: 20px;
   padding: 14px;
-  font-size: 18px;
+  font-size: 20px;
   background: #4CAF50;
   color: white;
   border: none;
