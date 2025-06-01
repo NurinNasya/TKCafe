@@ -331,7 +331,7 @@
         <div class="menu-item-price">RM11.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="19">Select</button>
       </div>
     </div>
   </div>
@@ -345,7 +345,7 @@
         <div class="menu-item-price">RM13.00</div>
       </div>
       <div>
-         <button class="select-btn" data-id="2">Select</button>
+         <button class="select-btn" data-id="20">Select</button>
       </div>
     </div>
   </div>

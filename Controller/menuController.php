@@ -43,11 +43,21 @@ if (!$item) {
     exit;
 }
 
+// Build path to view
+$viewPath = "../Views/menu_popup.php";
+
+// Include the appropriate view if it exists
+if (file_exists($viewPath)) {
+    include $viewPath;
+} else {
+    echo "View not found for section: {$section} and category: {$category}";
+}
+
 // Optionally, you can check category to load different views
-$category = $item['category'] ?? 'standard';
+/*$category = $item['category'] ?? 'standard';
 
 if ($category === 'signature') {
     include '../Views/alacarte_signature.php';  // If you have a different view for signature items
 } else {
     include '../Views/alacarte_standard.php';
-}
+}*/

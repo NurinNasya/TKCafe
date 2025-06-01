@@ -16,19 +16,17 @@
     <strong>Price:</strong> <?= htmlspecialchars($item['price']) ?>
   </p>
 
-     <!-- New Wrapper for Centered Controls -->
-    <div class="menu-controls">
-      <div class="quantity-controls">
-        <button class="quantity-btn minus">−</button>
-        <input type="number" class="quantity-input" value="1" min="1" />
-        <button class="quantity-btn plus">+</button>
-      </div>
-
-      <button class="add-to-cart-btn" data-id="<?= htmlspecialchars($_GET['id']) ?>">
-        Add to Cart
-      </button>
-
-      <a href="/TKCafe/Views/menu.php" class="back-button">⬅ Back to Menu</a>
+  <div class="menu-controls">
+    <div class="quantity-controls">
+      <button class="quantity-btn minus">−</button>
+      <input type="number" class="quantity-input" value="1" min="1" />
+      <button class="quantity-btn plus">+</button>
     </div>
-</div>
 
+    <button class="add-to-cart-btn" data-id="<?= htmlspecialchars($_GET['id']) ?>">
+      Add to Cart
+    </button>
+
+    <a href="/TKCafe/Views/menu.php" class="back-button">⬅ Back to Menu</a>
+  </div>
+</div>
