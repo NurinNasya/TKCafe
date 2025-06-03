@@ -32,7 +32,6 @@ $total = 0;
  
   <?php if (empty($items)): ?>
     <div class="empty-cart">
-      <img src="/TKCafe/public/images/empty-cart.png" alt="Empty cart">
       <p>Your cart is empty</p>
       <a href="/TKCafe/Views/menu.php" class="btn">Browse Menu</a>
     </div>
@@ -52,9 +51,11 @@ $total = 0;
             <h3><?= htmlspecialchars($menuItem['name']) ?></h3>
             <div class="cart-item-meta">
               <span class="cart-item-price">RM <?= number_format($item['price'], 2) ?></span>
-              <div class="cart-item-quantity">
-                <span><?= $item['quantity'] ?> ×</span>
-              </div>
+             <div class="cart-item-quantity">
+              <button class="quantity-btn minus" data-id="<?= $item['id'] ?>">-</button>
+              <span class="quantity-value"><?= $item['quantity'] ?></span>
+              <button class="quantity-btn plus" data-id="<?= $item['id'] ?>">+</button>
+            </div>
               <span class="cart-item-subtotal">RM <?= number_format($subtotal, 2) ?></span>
             </div>
           </div>

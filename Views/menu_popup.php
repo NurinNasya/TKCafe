@@ -27,6 +27,6 @@
       Add to Cart
     </button>
 
-    <a href="/TKCafe/Views/menu.php" class="back-button">⬅ Back to Menu</a>
+    <!--<a href="/TKCafe/Views/menu.php" class="back-button">⬅ Back to Menu</a>-->
   </div>
 </div>

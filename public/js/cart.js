@@ -207,3 +207,88 @@ document.querySelectorAll('.remove-item-btn').forEach(btn => {
     // Add AJAX call to remove item
   });
 });
+
+// Add this to your cart.js file
+document.addEventListener('DOMContentLoaded', function() {
+  // Handle quantity changes
+  document.querySelectorAll('.quantity-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const itemId = this.dataset.id;
+      const isMinus = this.classList.contains('minus');
+      const quantityElement = this.parentElement.querySelector('.quantity-value');
+      let quantity = parseInt(quantityElement.textContent);
+
+      if (isMinus) {
+        if (quantity === 1) {
+          // Show delete confirmation
+          if (confirm('Do you want to delete this item?')) {
+            removeItem(itemId);
+          }
+        } else {
+          updateQuantity(itemId, quantity - 1);
+        }
+      } else {
+        updateQuantity(itemId, quantity + 1);
+      }
+    });
+  });
+
+  // Handle remove item button
+  document.querySelectorAll('.remove-item-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const itemId = this.dataset.id;
+      if (confirm('Are you sure you want to remove this item?')) {
+        removeItem(itemId);
+      }
+    });
+  });
+});
+
+function updateQuantity(itemId, newQuantity) {
+  console.log('Attempting to update item:', itemId, 'to quantity:', newQuantity); // Debug log
+  
+  fetch('/TKCafe/Controller/cartController.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `action=update&id=${itemId}&quantity=${newQuantity}`
+  })
+  .then(response => {
+    console.log('Raw response:', response); // Debug log
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Response data:', data); // Debug log
+    if (data.success) {
+      location.reload();
+    } else {
+      alert('Failed to update quantity: ' + (data.error || 'Unknown error'));
+    }
+  })
+  .catch(err => {
+    console.error('Full error:', err); // Debug log
+    alert('Error updating quantity. Check console for details.');
+  });
+}
+
+function removeItem(itemId) {
+  fetch('/TKCafe/Controller/cartController.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `action=remove&id=${itemId}`
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      location.reload(); // Refresh to show updated cart
+    } else {
+      alert('Failed to remove item');
+    }
+  })
+  .catch(err => {
+    console.error('Error:', err);
+    alert('Error removing item');
+  });
+}

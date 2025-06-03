@@ -253,7 +253,7 @@ background: linear-gradient(to right, #e59500,#704c1e);
 
 .add-to-cart-btn {
   padding: 12px 30px;
-  background: linear-gradient(to right, #28a745, #218838);
+  background: linear-gradient(to right,rgb(154, 115, 83),rgb(110, 80, 58));
   color: white;
   border: none;
   border-radius: 8px;
@@ -343,4 +343,31 @@ background: linear-gradient(to right, #e59500,#704c1e);
 
 .quantity-input {
   -moz-appearance: textfield;
+}
+
+/* Add to your existing CSS */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+#popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  display: none;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.body-no-scroll {
+  overflow: hidden;
 }

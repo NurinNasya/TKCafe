@@ -22,7 +22,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         echo json_encode(['success' => $success]);
         exit;
     }
-    // other actions ...
+if ($action === 'update') {
+    try {
+        $id = intval($_POST['id']);
+        $quantity = intval($_POST['quantity']);
+        
+        if ($id <= 0 || $quantity <= 0) {
+            throw new Exception('Invalid ID or quantity');
+        }
+        
+        $success = $cartModel->updateQuantity($id, $quantity, $session_id);
+        echo json_encode([
+            'success' => $success,
+            'error' => $success ? null : 'Update failed in model'
+        ]);
+    } catch (Exception $e) {
+        error_log('Update quantity error: ' . $e->getMessage());
+        echo json_encode([
+            'success' => false,
+            'error' => $e->getMessage()
+        ]);
+    }
+    exit;
+}
+
+if ($action === 'remove') {
+    $id = intval($_POST['id']);
+    $success = $cartModel->removeItem($id, $session_id);
+    echo json_encode(['success' => $success]);
+    exit;
+}
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'list') {

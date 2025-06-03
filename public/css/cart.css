@@ -169,7 +169,7 @@ body {
 
 .empty-cart .btn {
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color:rgb(149, 132, 75);
   color: #fff;
   border-radius: 6px;
   text-decoration: none;
@@ -205,4 +205,32 @@ body {
   .checkout-btn {
     font-size: 16px;
   }
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.quantity-btn {
+    width: 25px;
+    height: 25px;
+    border: 1px solid #ccc;
+    background: #f8f8f8;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity-btn:hover {
+    background: #e8e8e8;
+}
+
+.quantity-value {
+    min-width: 20px;
+    text-align: center;
 }

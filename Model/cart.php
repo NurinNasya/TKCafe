@@ -26,6 +26,27 @@ class Cart {
         $stmt->close();
         return $items;
     }
+    
+    public function updateQuantity($id, $quantity, $session_id) {
+        $stmt = $this->conn->prepare("UPDATE order_item SET quantity = ? WHERE id = ? AND session_id = ?");
+        if (!$stmt) return false;
+        $stmt->bind_param("iis", $quantity, $id, $session_id);
+        $result = $stmt->execute();
+        
+        // Check affected rows
+        $affected = $stmt->affected_rows;
+        $stmt->close();
+        
+        return $affected > 0;
+    }
 
-    // add updateItem, deleteItem later if needed
+    public function removeItem($id, $session_id) {
+        $stmt = $this->conn->prepare("DELETE FROM order_item WHERE id = ? AND session_id = ?");
+        if (!$stmt) return false;
+        $stmt->bind_param("is", $id, $session_id);
+        $result = $stmt->execute();
+        $affected = $stmt->affected_rows;
+        $stmt->close();
+        return $affected > 0;
+    }
 }

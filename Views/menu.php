@@ -1038,6 +1038,8 @@
     </div>
   </div>
 
+  <!-- Add this right before the popup div -->
+<div id="overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999;"></div>
 
   <div id="popup" style="display:none; position:fixed; top:20%; left:50%; transform:translateX(-50%);
   background:#fff; padding:20px; border:1px solid #ccc; z-index:1000; max-width:700px;">
