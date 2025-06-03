@@ -347,7 +347,7 @@ class Menu {
             'price' => 'RM3.50',
             'image' => '/TKCafe/public/images/KEK AYAM (1 PCS).png',
             'category' => 'lokcing'
-      ],
+        ],
         48 => [
             'name' => 'Sosej Cheese (1 PCS)',
             'description' => '',
@@ -355,14 +355,14 @@ class Menu {
             'image' => '/TKCafe/public/images/SOSEJ CHEESE (1 PCS).png',
             'category' => 'lokcing'
 
-            
+         ],   
         49 => [
             'name' => 'Nugget Tempura (6 PCS)',
             'description' => '',
             'price' => 'RM5.00',
             'image' => '/TKCafe/public/images/NUGGET TEMPURA (6 PCS).jpg',
             'category' => 'lokcing'
-
+         ],
 
            //ALA CART WESTERN
 
@@ -372,6 +372,7 @@ class Menu {
             'price' => 'RM6.00',
             'image' => '/TKCafe/public/images/CHEESY WEDGES.png',
             'category' => 'western'
+        ],
 
 
         51 => [
@@ -380,13 +381,15 @@ class Menu {
             'price' => 'RM3.00',
             'image' => '/TKCafe/public/images/COLESLAW (REGULAR).png',
             'category' => 'western'
+        ],
 
         52 => [
             'name' => 'French Fries',
             'description' => '',
             'price' => 'RM5.00',
             'image' => '/TKCafe/public/images/FRENCH FRIES.png',
-            'category' => 'western'   
+            'category' => 'western' 
+        ],  
 
 
           //BEVERANGE
@@ -397,6 +400,7 @@ class Menu {
             'price' => 'RM3.00',
             'image' => '/TKCafe/public/images/ICE LEMON TEA.png',
             'category' => 'air-balang'   
+        ],
 
         54 => [
             'name' => 'Tea Ping',
@@ -404,7 +408,7 @@ class Menu {
             'price' => 'RM3.00',
             'image' => '/TKCafe/public/images/TEA PING.png',
             'category' => 'air-balang'       
-
+        ],
 
            //CARBONATE DRINK
 
@@ -413,7 +417,8 @@ class Menu {
             'description' => '',
             'price' => 'RM3.00',
             'image' => '/TKCafe/public/images/COCA COLA.png',
-            'category' => 'soft-drinks'    
+            'category' => 'soft-drinks'  
+         ],  
 
         56 => [
             'name' => 'Sprite',
@@ -421,6 +426,7 @@ class Menu {
             'price' => 'RM3.00',
             'image' => '/TKCafe/public/images/',
             'category' => 'soft-drinks'
+        ],
 
         57 => [
             'name' => 'F&N Orange',
@@ -428,6 +434,7 @@ class Menu {
             'price' => 'RM3.00',
             'image' => '/TKCafe/public/images/',
             'category' => 'soft-drinks' 
+        ],
 
         58 => [
             'name' => 'F&N Zapple',
@@ -435,6 +442,7 @@ class Menu {
             'price' => 'RM3.00',
             'image' => '/TKCafe/public/images/',
             'category' => 'soft-drinks' 
+        ],
         
         59 => [
             'name' => 'F&N Strawberry',
@@ -442,6 +450,7 @@ class Menu {
             'price' => 'RM3.00',
             'image' => '/TKCafe/public/images/',
             'category' => 'soft-drinks'
+        ],
 
         60 => [
             'name' => 'F&N Soda',
@@ -449,6 +458,7 @@ class Menu {
             'price' => 'RM3.00',
             'image' => '/TKCafe/public/images/F&N SODA.png',
             'category' => 'soft-drinks'
+         ],
 
 
           // HOT DRINKS
@@ -459,6 +469,7 @@ class Menu {
             'price' => 'RM4.00',
             'image' => '/TKCafe/public/images/MILO - 3 IN 1.png',
             'category' => 'hot-drinks'
+        ],
 
         62 => [
             'name' => 'Tea ',
@@ -466,6 +477,7 @@ class Menu {
             'price' => 'RM3.00',
             'image' => '/TKCafe/public/images/TEA.png',
             'category' => 'hot-drinks'
+        ],
 
         63 => [
             'name' => ' Tea O ',
@@ -473,6 +485,7 @@ class Menu {
             'price' => 'RM2.00',
             'image' => '/TKCafe/public/images/TEA O.png',
             'category' => 'hot-drinks'
+        ],
 
 
         64 => [
@@ -481,6 +494,7 @@ class Menu {
             'price' => 'RM3.00',
             'image' => '/TKCafe/public/images/COFFEE.png',
             'category' => 'hot-drinks'
+        ],
 
         65 => [
             'name' => 'Coffee O',
@@ -488,6 +502,7 @@ class Menu {
             'price' => 'RM2.50',
             'image' => '/TKCafe/public/images/COFFEE O.png',
             'category' => 'hot-drinks'
+        ],
 
         66 => [
             'name' => 'Mineral Water (500ML)',
@@ -495,6 +510,7 @@ class Menu {
             'price' => 'RM1.50',
             'image' => '/TKCafe/public/images/MINERAL WATER (500ML).png',
             'category' => 'hot-drinks'
+        ],
 
 
         // BEST SELLER
@@ -505,6 +521,7 @@ class Menu {
             'price' => 'RM8.00',
             'image' => '/TKCafe/public/images/LAKSA PENANG.jpg',
             'category' => 'best-seller'
+        ],
 
         68 => [
             'name' => 'Laksa Asia',
@@ -512,6 +529,7 @@ class Menu {
             'price' => 'RM12.00',
             'image' => '/TKCafe/public/images/',
             'category' => 'best-seller'
+        ],
         
         69 => [
             'name' => 'Keropok Tumis',
