@@ -21,10 +21,11 @@
         <div class="menu-item-price">RM8.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="67">Select</button>
       </div>
     </div>
   </div>
+
 
    <div class="menu-item" data-category="best-seller">
     <img src="/TKCafe/public/images/" alt="Laksa Asia" class="menu-item-img" />
@@ -35,10 +36,11 @@
         <div class="menu-item-price">RM12.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="68">Select</button>
       </div>
     </div>
   </div>
+  
 
   <div class="menu-item" data-category="best-seller">
     <img src="/TKCafe/public/images/" alt="Keropok Tumis" class="menu-item-img" />
@@ -49,10 +51,11 @@
         <div class="menu-item-price">RM5.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="69">Select</button>
       </div>
     </div>
   </div>
+  
 
 <!-- STANDARD MENU (ALA CARTE) -->
 
@@ -187,7 +190,7 @@
     <div class="menu-item-info">
       <div>
         <h3>Nasi Beriani Ayam Gulai Beriani  </h3>
-        <p>Nasi Beriani Ayam Gulai Beriani</p>
+        <p>Nasi Beriani + Ayam Gulai Beriani</p>
         <div class="menu-item-price">RM11.00</div>
       </div>
       <div>
@@ -246,7 +249,7 @@
     <div class="menu-item-info">
       <div>
         <h3>Nasi Minyak Ayam Merah </h3>
-        <p>Nasi Minyak Ayam Merah + Ayam Masak Merah + Acar</p>
+        <p>Nasi Minyak + Ayam Masak Merah + Acar</p>
         <div class="menu-item-price">RM10.00</div>
       </div>
       <div>
@@ -270,7 +273,6 @@
   </div>
  
 
-  
   <div class="menu-item" data-category="signature">
     <img src="/TKCafe/public/images/NASI AYAM.png" alt="Nasi Ayam " class="menu-item-img" />
     <div class="menu-item-info">
@@ -304,7 +306,7 @@
     <div class="menu-item-info">
       <div>
         <h3>Nasi Beriani Ayam Gulai Beriani  </h3>
-        <p>Nasi Beriani Ayam Gulai Beriani</p>
+        <p>Nasi Beriani + Ayam Gulai Beriani</p>
         <div class="menu-item-price">RM13.50</div>
       </div>
       <div>
@@ -356,7 +358,7 @@
         <div class="menu-item-price">RM12.00</div>
       </div>
       <div>
-         <button class="select-btn" data-id="3">Select</button>
+         <button class="select-btn" data-id="21">Select</button>
       </div>
     </div>
   </div>
@@ -367,11 +369,11 @@
     <div class="menu-item-info">
       <div>
         <h3>Nasi Minyak Ayam Merah + Soft Drink</h3>
-        <p>Nasi Minyak Ayam Merah + Ayam Masak Merah + Acar + Soft Drink</p>
+        <p>Nasi Minyak + Ayam Masak Merah + Acar + Soft Drink</p>
         <div class="menu-item-price">RM12.00</div>
       </div>
       <div>
-        <button class="select-btn" data-id="5">Select</button>
+        <button class="select-btn" data-id="22">Select</button>
       </div>
     </div>
   </div>
@@ -385,7 +387,7 @@
         <div class="menu-item-price">RM11.00</div>
       </div>
       <div>
-         <button class="select-btn" data-id="3">Select</button>
+         <button class="select-btn" data-id="23">Select</button>
       </div>
     </div>
   </div>
@@ -400,7 +402,7 @@
         <div class="menu-item-price">RM13.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="24">Select</button>
       </div>
     </div>
   </div>
@@ -415,7 +417,7 @@
         <div class="menu-item-price">RM11.00</div>
       </div>
       <div>
-         <button class="select-btn" data-id="3">Select</button>
+         <button class="select-btn" data-id="25">Select</button>
       </div>
     </div>
   </div>
@@ -430,7 +432,7 @@
         <div class="menu-item-price">RM11.50</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="26">Select</button>
       </div>
     </div>
   </div>
@@ -445,7 +447,7 @@
         <div class="menu-item-price">RM13.50</div>
       </div>
       <div>
-         <button class="select-btn" data-id="3">Select</button>
+         <button class="select-btn" data-id="27">Select</button>
       </div>
     </div>
   </div>
@@ -459,7 +461,7 @@
         <div class="menu-item-price">RM14.00</div>
       </div>
       <div>
-         <button class="select-btn" data-id="3">Select</button>
+         <button class="select-btn" data-id="28">Select</button>
       </div>
     </div>
   </div>
@@ -477,7 +479,7 @@
         <div class="menu-item-price">RM14.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="29">Select</button>
       </div>
     </div>
   </div>
@@ -491,11 +493,10 @@
         <div class="menu-item-price">RM15.50</div>
       </div>
       <div>
-         <button class="select-btn" data-id="2">Select</button>
+         <button class="select-btn" data-id="30">Select</button>
       </div>
     </div>
   </div>
-
 
 
   <div class="menu-item" data-category="set-signature">
@@ -507,7 +508,7 @@
         <div class="menu-item-price">RM14.00</div>
       </div>
       <div>
-         <button class="select-btn" data-id="3">Select</button>
+         <button class="select-btn" data-id="31">Select</button>
       </div>
     </div>
   </div>
@@ -518,16 +519,14 @@
     <div class="menu-item-info">
       <div>
         <h3>Nasi Minyak Ayam Merah + Soft Drink </h3>
-        <p>Nasi Minyak Ayam Merah + Ayam Masak Merah + Acar + Soft Drink</p>
+        <p>Nasi Minyak + Ayam Masak Merah + Acar + Soft Drink</p>
         <div class="menu-item-price">RM13.00</div>
       </div>
       <div>
-        <button class="select-btn" data-id="5">Select</button>
+        <button class="select-btn" data-id="32">Select</button>
       </div>
     </div>
   </div>
-
-
 
 
  <div class="menu-item" data-category="set-signature">
@@ -539,7 +538,7 @@
         <div class="menu-item-price">RM18.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="33">Select</button>
       </div>
     </div>
   </div>
@@ -555,7 +554,7 @@
         <div class="menu-item-price">RM13.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="34">Select</button>
       </div>
     </div>
   </div>
@@ -570,7 +569,7 @@
         <div class="menu-item-price">RM16.50</div>
       </div>
       <div>
-         <button class="select-btn" data-id="3">Select</button>
+         <button class="select-btn" data-id="35">Select</button>
       </div>
     </div>
   </div>
@@ -584,12 +583,10 @@
         <div class="menu-item-price">RM16.50</div>
       </div>
       <div>
-         <button class="select-btn" data-id="3">Select</button>
+         <button class="select-btn" data-id="36">Select</button>
       </div>
     </div>
   </div>
-
-
 
 
  <!-- MASAKAN PANAS-->
@@ -604,7 +601,7 @@
         <div class="menu-item-price">RM8.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn"data-id="37">Select</button>
       </div>
     </div>
   </div>
@@ -618,7 +615,7 @@
         <div class="menu-item-price">RM10.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="38">Select</button>
       </div>
     </div>
   </div>
@@ -632,7 +629,7 @@
         <div class="menu-item-price">RM8.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="39">Select</button>
       </div>
     </div>
   </div>
@@ -646,7 +643,7 @@
         <div class="menu-item-price">RM8.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="40">Select</button>
       </div>
     </div>
   </div>
@@ -660,7 +657,7 @@
         <div class="menu-item-price">RM12.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button> 
+        <button class="select-btn" data-id="41">Select</button> 
       </div>
     </div>
   </div>
@@ -677,7 +674,7 @@
         <div class="menu-item-price">RM2.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="42">Select</button>
       </div>
     </div>
   </div>
@@ -691,7 +688,7 @@
         <div class="menu-item-price">RM1.50</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="43">Select</button>
       </div>
     </div>
   </div>
@@ -705,7 +702,7 @@
         <div class="menu-item-price">RM5.50</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="44">Select</button>
       </div>
     </div>
   </div>
@@ -723,7 +720,7 @@
         <div class="menu-item-price">RM5.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="45">Select</button>
       </div>
     </div>
   </div>
@@ -739,7 +736,7 @@
         <div class="menu-item-price">RM3.50</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="46">Select</button>
       </div>
     </div>
   </div>
@@ -753,7 +750,7 @@
         <div class="menu-item-price">RM3.50</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="47">Select</button>
       </div>
     </div>
   </div>
@@ -768,7 +765,7 @@
         <div class="menu-item-price">RM3.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="48">Select</button>
       </div>
     </div>
   </div>
@@ -782,7 +779,7 @@
         <div class="menu-item-price">RM5.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="49">Select</button>
       </div>
     </div>
   </div>
@@ -800,7 +797,7 @@
         <div class="menu-item-price">RM6.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="50">Select</button>
       </div>
     </div>
   </div>
@@ -815,7 +812,7 @@
         <div class="menu-item-price">RM3.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="51">Select</button>
       </div>
     </div>
   </div>
@@ -829,7 +826,7 @@
         <div class="menu-item-price">RM5.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="52">Select</button>
       </div>
     </div>
   </div>
@@ -847,7 +844,7 @@
         <div class="menu-item-price">RM3.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="53">Select</button>
       </div>
     </div>
   </div>
@@ -861,7 +858,7 @@
         <div class="menu-item-price">RM3.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="54">Select</button>
       </div>
     </div>
   </div>
@@ -878,7 +875,7 @@
         <div class="menu-item-price">RM3.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="55">Select</button>
       </div>
     </div>
   </div>
@@ -892,7 +889,7 @@
         <div class="menu-item-price">RM3.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn"data-id="56">Select</button>
       </div>
     </div>
   </div>
@@ -906,7 +903,7 @@
         <div class="menu-item-price">RM3.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="57">Select</button>
       </div>
     </div>
   </div>
@@ -920,7 +917,7 @@
         <div class="menu-item-price">RM3.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="58">Select</button>
       </div>
     </div>
   </div>
@@ -934,7 +931,7 @@
         <div class="menu-item-price">RM3.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="59">Select</button>
       </div>
     </div>
   </div>
@@ -948,7 +945,7 @@
         <div class="menu-item-price">RM3.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="60">Select</button>
       </div>
     </div>
   </div>
@@ -956,7 +953,7 @@
 
 <!-- HOT DRINKS-->
 
-<div class="menu-item" data-category="hot-drinkss">
+<div class="menu-item" data-category="hot-drinks">
     <img src="/TKCafe/public/images/MILO - 3 IN 1.png" alt="Milo - 3 IN 1 " class="menu-item-img" />
     <div class="menu-item-info">
       <div>
@@ -965,7 +962,7 @@
         <div class="menu-item-price">RM4.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="61">Select</button>
       </div>
     </div>
   </div>
@@ -979,7 +976,7 @@
         <div class="menu-item-price">RM3.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="62">Select</button>
       </div>
     </div>
   </div>
@@ -994,7 +991,7 @@
         <div class="menu-item-price">RM2.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="63">Select</button>
       </div>
     </div>
   </div>
@@ -1008,7 +1005,7 @@
         <div class="menu-item-price">RM3.00</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="64">Select</button>
       </div>
     </div>
   </div>
@@ -1022,7 +1019,7 @@
         <div class="menu-item-price">RM2.50</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="65">Select</button>
       </div>
     </div>
   </div>
@@ -1036,7 +1033,7 @@
         <div class="menu-item-price">RM1.50</div>
       </div>
       <div>
-        <button class="select-btn">Select</button>
+        <button class="select-btn" data-id="66">Select</button>
       </div>
     </div>
   </div>
