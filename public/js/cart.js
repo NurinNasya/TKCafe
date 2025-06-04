@@ -292,3 +292,20 @@ function removeItem(itemId) {
     alert('Error removing item');
   });
 }
+
+// Handle dine-in/takeaway selection
+document.querySelectorAll('.order-type-btn').forEach(button => {
+  button.addEventListener('click', function() {
+    // Remove active class from all buttons
+    document.querySelectorAll('.order-type-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    
+    // Add active class to clicked button
+    this.classList.add('active');
+    
+    // You can store the selection in a hidden field or variable
+    const orderType = this.dataset.type;
+    // You might want to use this later when submitting the order
+  });
+});

@@ -25,7 +25,8 @@ $total = 0;
 <div class="cart-container">
 
 <div class="cart-header">
-  <a href="javascript:history.back()" class="back-button">&lt;</a>
+  <!--<a href="javascript:history.back()" class="back-button">&lt;</a>-->
+  <a href="/TKCafe/Views/menu.php" class="back-button">&lt;</a>
   <h2 class="cart-title">CART</h2>
 </div>
    
@@ -37,6 +38,11 @@ $total = 0;
     </div>
   <?php else: ?>
     <div class="cart-items">
+       <!-- Add this new section for dine-in/takeaway options -->
+    <div class="order-type-selector">
+      <button class="order-type-btn active" data-type="dine_in">Dine In</button>
+      <button class="order-type-btn" data-type="take_away">Take Away</button>
+    </div>
       <?php foreach ($items as $item): 
         $menuItem = $menuModel->getItemById($item['menu_id']);
         $subtotal = $item['price'] * $item['quantity'];
