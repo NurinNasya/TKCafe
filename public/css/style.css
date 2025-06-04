@@ -30,7 +30,41 @@ header .logo {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+
 }
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  background-color: #c8976c;
+}
+
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-title img {
+  height: 50px;
+  filter: drop-shadow(0 0 2px #000); /* subtle shadow */
+  margin-right: 18px;
+  background-color: white; /* background to improve visibility */
+  border-radius: 8px; /* rounded corners */
+  padding: 10px; /* spacing inside */
+}
+
+.logo-title h1 {
+  margin: 0;
+  font-size: 2.7rem;
+  color: #000;
+ font-family: 'Baloo 2', cursive;
+  
+}
+ 
+
 
 .cart-icon {
   margin-left: auto;
