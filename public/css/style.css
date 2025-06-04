@@ -164,7 +164,7 @@ background: linear-gradient(to right, #e59500,#704c1e);
 }
 
 .select-btn:hover {
-  background: linear-gradient(to right, #218838, #1e7e34);
+  background: linear-gradient(to right,rgb(195, 153, 117),rgb(153, 109, 73));
   transform: scale(1.05);
 
 }
@@ -370,4 +370,47 @@ background: linear-gradient(to right, #e59500,#704c1e);
 
 .body-no-scroll {
   overflow: hidden;
+}
+
+/* Cart Badge - Red Dot Notification */
+.cart-icon {
+  position: relative; /* Required for badge positioning */
+}
+
+.cart-badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: #ff0000;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 999px; /* Pill shape, works for all counts */
+  display: none; /* Hidden by default */
+  min-width: 18px;
+  height: 18px;
+  line-height: 14px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1000;
+    display: none;
+}
+
+.toast.show {
+    display: block;
+    opacity: 1;
 }

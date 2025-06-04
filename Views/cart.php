@@ -95,6 +95,16 @@ $total = 0;
   <?php endif; ?>
 </div>
 
+ <div class="delete-modal" id="deleteModal">
+      <div class="modal-content">
+        <p>Do you want to delete this item?</p>
+        <div class="modal-buttons">
+          <button class="modal-btn confirm-btn">Yes</button>
+          <button class="modal-btn cancel-btn">No</button>
+        </div>
+      </div>
+    </div>
+
 <script src="/TKCafe/public/js/cart.js"></script>
 </body>
 </html>

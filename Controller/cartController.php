@@ -54,8 +54,25 @@ if ($action === 'remove') {
 }
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'list') {
+// Handle GET requests
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
+    $action = $_GET['action'];
+
+    if ($action === 'list') {
+        $items = $cartModel->getItems($session_id);
+        echo json_encode($items);
+        exit;
+    }
+
+    if ($action === 'count') {
+        $items = $cartModel->getItems($session_id);
+        echo json_encode(['count' => count($items)]);
+        exit;
+    }
+}
+
+/*if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'list') {
     $items = $cartModel->getItems($session_id);
     echo json_encode($items);
     exit;
-}
+}*/
