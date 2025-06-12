@@ -410,7 +410,7 @@ class Menu {
             'category' => 'air-balang'       
         ],
 
-           //CARBONATE DRINK
+           //SOFT DRINK
 
         55 => [
             'name' => 'Coca Cola',
@@ -424,7 +424,7 @@ class Menu {
             'name' => 'Sprite',
             'description' => '',
             'price' => 'RM3.00',
-            'image' => '/TKCafe/public/images/',
+            'image' => '/TKCafe/public/images/Sprite.png',
             'category' => 'soft-drinks'
         ],
 
@@ -432,7 +432,7 @@ class Menu {
             'name' => 'F&N Orange',
             'description' => '',
             'price' => 'RM3.00',
-            'image' => '/TKCafe/public/images/',
+            'image' => '/TKCafe/public/images/F&N ORANGE.jpeg',
             'category' => 'soft-drinks' 
         ],
 
@@ -440,7 +440,7 @@ class Menu {
             'name' => 'F&N Zapple',
             'description' => '',
             'price' => 'RM3.00',
-            'image' => '/TKCafe/public/images/',
+            'image' => '/TKCafe/public/images/F&N ZAPPLE.jpg',
             'category' => 'soft-drinks' 
         ],
         
@@ -448,7 +448,7 @@ class Menu {
             'name' => 'F&N Strawberry',
             'description' => '',
             'price' => 'RM3.00',
-            'image' => '/TKCafe/public/images/',
+            'image' => '/TKCafe/public/images/F&N STRAWBERRY.jpeg',
             'category' => 'soft-drinks'
         ],
 
@@ -527,7 +527,7 @@ class Menu {
             'name' => 'Laksa Asia',
             'description' => '',
             'price' => 'RM12.00',
-            'image' => '/TKCafe/public/images/',
+            'image' => '/TKCafe/public/images/LAKSA ASIA.jpeg',
             'category' => 'best-seller'
         ],
         
@@ -535,7 +535,7 @@ class Menu {
             'name' => 'Keropok Tumis',
             'description' => '',
             'price' => 'RM5.00',
-            'image' => '/TKCafe/public/images/',
+            'image' => '/TKCafe/public/images/KEROPOK TUMIS.jpeg',
             'category' => 'best-seller'
 
 

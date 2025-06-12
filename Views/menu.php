@@ -28,7 +28,7 @@
 
 
    <div class="menu-item" data-category="best-seller">
-    <img src="/TKCafe/public/images/" alt="Laksa Asia" class="menu-item-img" />
+    <img src="/TKCafe/public/images/LAKSA ASIA.jpeg" alt="Laksa Asia" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Laksa Asia</h3>
@@ -43,7 +43,7 @@
   
 
   <div class="menu-item" data-category="best-seller">
-    <img src="/TKCafe/public/images/" alt="Keropok Tumis" class="menu-item-img" />
+    <img src="/TKCafe/public/images/KEROPOK TUMIS.jpeg" alt="Keropok Tumis" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Keropok Tumis</h3>
@@ -881,7 +881,7 @@
   </div>
 
   <div class="menu-item" data-category="soft-drinks">
-    <img src="/TKCafe/public/images/" alt="Sprite" class="menu-item-img" />
+    <img src="/TKCafe/public/images/Sprite.png" alt="Sprite" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Sprite</h3>
@@ -895,7 +895,7 @@
   </div>
 
    <div class="menu-item" data-category="soft-drinks">
-    <img src="/TKCafe/public/images/" alt="F&N Orange" class="menu-item-img" />
+    <img src="/TKCafe/public/images/F&N ORANGE.jpeg" alt="F&N Orange" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3> F&N Orange</h3>
@@ -909,7 +909,7 @@
   </div>
 
   <div class="menu-item" data-category="soft-drinks">
-    <img src="/TKCafe/public/images/" alt="F&N Zapple" class="menu-item-img" />
+    <img src="/TKCafe/public/images/F&N ZAPPLE.jpg" alt="F&N Zapple" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>F&N Zapple</h3>
@@ -923,7 +923,7 @@
   </div>
 
   <div class="menu-item" data-category="soft-drinks">
-    <img src="/TKCafe/public/images/" alt="F&N Strawberry" class="menu-item-img" />
+    <img src="/TKCafe/public/images/F&N STRAWBERRY.jpeg" alt="F&N Strawberry" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>F&N Strawberry</h3>
