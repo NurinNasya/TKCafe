@@ -59,6 +59,7 @@
 
 <!-- STANDARD MENU (ALA CARTE) -->
 
+
   <div class="menu-item" data-category="standard">
     <img src="/TKCafe/public/images/NASI DAGANG TERENGGANU.png" alt="Nasi Dagang Terengganu" class="menu-item-img" />
     <div class="menu-item-info">
@@ -136,6 +137,7 @@
         <h3>Nasi Lemak Sambal Udang</h3>
         <p>Nasi Lemak + Sambal Udang </p>
         <div class="menu-item-price">RM10.00</div>
+   
       </div>
       <div>
          <button class="select-btn" data-id="6">Select</button>
@@ -275,11 +277,12 @@
 
   <div class="menu-item" data-category="signature">
     <img src="/TKCafe/public/images/NASI AYAM.png" alt="Nasi Ayam " class="menu-item-img" />
+   
     <div class="menu-item-info">
       <div>
-        <h3>Nasi Ayam</h3>
-        <p>Nasi + Ayam + Sup + Sambal</p>
-        <div class="menu-item-price">RM10.00</div>
+        <h3>Nasi Minyak Gulai Ayam</h3>
+        <p>Nasi Minyak + Gulai Ayam + Acar</p>
+        <div class="menu-item-price">RM11.00</div>
       </div>
       <div>
          <button class="select-btn" data-id="16">Select</button>
@@ -980,6 +983,7 @@
       </div>
     </div>
   </div>
+
 
 
    <div class="menu-item" data-category="hot-drinks">
