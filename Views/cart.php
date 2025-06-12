@@ -29,8 +29,6 @@ $total = 0;
   <a href="/TKCafe/Views/menu.php" class="back-button">&lt;</a>
   <h2 class="cart-title">CART</h2>
 </div>
-   
- 
   <?php if (empty($items)): ?>
     <div class="empty-cart">
       <p>Your cart is empty</p>
@@ -43,36 +41,48 @@ $total = 0;
       <button class="order-type-btn active" data-type="dine_in">Dine In</button>
       <button class="order-type-btn" data-type="take_away">Take Away</button>
     </div>
-      <?php foreach ($items as $item): 
-        $menuItem = $menuModel->getItemById($item['menu_id']);
-        $subtotal = $item['price'] * $item['quantity'];
-        $total += $subtotal;
-      ?>
-        <div class="cart-item" data-id="<?= $item['id'] ?>">
-          <img src="<?= htmlspecialchars($menuItem['image']) ?>" 
-               alt="<?= htmlspecialchars($menuItem['name']) ?>" 
-               class="cart-item-image">
+          <?php foreach ($items as $item): 
+          $menuItem = $menuModel->getItemById($item['menu_id']);
+          $subtotal = $item['price'] * $item['quantity'];
+          $total += $subtotal;
           
-          <div class="cart-item-details">
-            <h3><?= htmlspecialchars($menuItem['name']) ?></h3>
-            <div class="cart-item-meta">
-              <span class="cart-item-price">RM <?= number_format($item['price'], 2) ?></span>
-             <div class="cart-item-quantity">
-              <button class="quantity-btn minus" data-id="<?= $item['id'] ?>">-</button>
-              <span class="quantity-value"><?= $item['quantity'] ?></span>
-              <button class="quantity-btn plus" data-id="<?= $item['id'] ?>">+</button>
+          // Parse customizations
+          $customizations = !empty($item['customizations']) 
+            ? json_decode($item['customizations'], true) 
+            : null;
+        ?>
+          <div class="cart-item" data-id="<?= $item['id'] ?>">
+            <img src="<?= htmlspecialchars($menuItem['image']) ?>" 
+                 alt="<?= htmlspecialchars($menuItem['name']) ?>" 
+                 class="cart-item-image">
+            
+            <div class="cart-item-details">
+              <h3><?= htmlspecialchars($menuItem['name']) ?></h3>
+              
+              <?php if ($customizations && isset($customizations['drink'])): ?>
+                <div class="customization-display">
+                  <p>Drink: <?= htmlspecialchars(ucfirst(str_replace('-', ' ', $customizations['drink']))) ?></p>
+                </div>
+              <?php endif; ?>
+              
+              <div class="cart-item-meta">
+                <span class="cart-item-price">RM <?= number_format($item['price'], 2) ?></span>
+                <div class="cart-item-quantity">
+                  <button class="quantity-btn minus" data-id="<?= $item['id'] ?>">-</button>
+                  <span class="quantity-value"><?= $item['quantity'] ?></span>
+                  <button class="quantity-btn plus" data-id="<?= $item['id'] ?>">+</button>
+                </div>
+                <span class="cart-item-subtotal">RM <?= number_format($subtotal, 2) ?></span>
+              </div>
             </div>
-              <span class="cart-item-subtotal">RM <?= number_format($subtotal, 2) ?></span>
-            </div>
+            
+            <button class="remove-item-btn" data-id="<?= $item['id'] ?>">
+              <svg width="20" height="20" viewBox="0 0 24 24">
+                <path d="M19 13H5v-2h14v2z"/>
+              </svg>
+            </button>
           </div>
-          
-          <button class="remove-item-btn" data-id="<?= $item['id'] ?>">
-            <svg width="20" height="20" viewBox="0 0 24 24">
-              <path d="M19 13H5v-2h14v2z"/>
-            </svg>
-          </button>
-        </div>
-      <?php endforeach; ?>
+        <?php endforeach; ?>
     </div>
     
     <div class="cart-summary">

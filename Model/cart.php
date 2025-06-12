@@ -7,14 +7,23 @@ class Cart {
         $this->conn = $db; // This is a mysqli connection
     }
 
-    public function addItem($menu_id, $quantity, $price, $session_id) {
+    public function addItem($menu_id, $quantity, $price, $session_id, $customizations = null) {
+    $customizationsJson = $customizations ? json_encode($customizations) : null;
+    $stmt = $this->conn->prepare("INSERT INTO order_item (menu_id, quantity, price, session_id, customizations) VALUES (?, ?, ?, ?, ?)");
+    if (!$stmt) return false;
+    $stmt->bind_param("iidss", $menu_id, $quantity, $price, $session_id, $customizationsJson);
+    $result = $stmt->execute();
+    $stmt->close();
+    return $result;
+    }
+    /*public function addItem($menu_id, $quantity, $price, $session_id) {
         $stmt = $this->conn->prepare("INSERT INTO order_item (menu_id, quantity, price, session_id) VALUES (?, ?, ?, ?)");
         if (!$stmt) return false;
         $stmt->bind_param("iids", $menu_id, $quantity, $price, $session_id);
         $result = $stmt->execute();
         $stmt->close();
         return $result;
-    }
+    } ori */
 
     public function getItems($session_id) {
         $stmt = $this->conn->prepare("SELECT * FROM order_item WHERE session_id = ?");
