@@ -447,3 +447,32 @@ background: linear-gradient(to right, #e59500,#704c1e);
     display: block;
     opacity: 1;
 }
+
+.combo-customization {
+  margin: 15px 0;
+  padding: 15px;
+  background: #f8f8f8;
+  border-radius: 8px;
+}
+
+.combo-customization h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.customization-option {
+  margin: 10px 0;
+}
+
+.customization-option label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.customization-option select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}

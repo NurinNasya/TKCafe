@@ -328,3 +328,23 @@ body {
 .cancel-btn:hover {
   background-color: #bdc3c7;
 }
+
+/* Add these styles to your existing cart.css */
+.customization-display {
+    margin: 8px 0 10px 0;
+    font-size: 1.1em;  /* Increased from 0.9em */
+    color: #555;
+    padding-left: 8px;
+    border-left: 3px solid #f0a500;
+}
+
+.customization-display p {
+    margin: 0;
+    font-style: italic;
+    font-weight: 500;  /* Slightly bolder */
+}
+
+/* For better drink name formatting */
+.customization-display p::first-letter {
+    text-transform: uppercase;
+}
