@@ -715,7 +715,7 @@
  <!-- ALA CART LOKCING-->
 
     <div class="menu-item" data-category="lokcing">
-    <img src="/TKCafe/public/images/" alt="Sosej Otak- Otak(6 PCS)" class="menu-item-img" />
+    <img src="/TKCafe/public/images/SOSEJ OTAK OTAK.jpg" alt="Sosej Otak- Otak(6 PCS)" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Sosej Otak- Otak(6 PCS)<h3>
@@ -870,7 +870,7 @@
    <!-- CARBONATE DRINK-->
 
 <div class="menu-item" data-category="soft-drinks">
-    <img src="/TKCafe/public/images/COCA COLA.png" alt="Cola Cola" class="menu-item-img" />
+    <img src="/TKCafe/public/images/COCA COLA.png" alt="Coca Cola" class="menu-item-img" />
     <div class="menu-item-info">
       <div>
         <h3>Coca Cola</h3>

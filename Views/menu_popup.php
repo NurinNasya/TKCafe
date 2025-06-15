@@ -53,23 +53,46 @@
   <?php if ($isCombo): ?>
     <!-- COMBO CUSTOMIZATION SECTION -->
     <div class="combo-customization">
-      <h3>Customize Your Combo</h3>
-      
-      <div class="customization-option">
-        <label>Drink Selection:</label> <!--sini haziqah -->>
-        <select class="drink-select">
-          <option value="pepsi">Pepsi</option>
-          <option value="coke">Coca-Cola</option>
-          <option value="sprite">Sprite</option>
-          <option value="orange">Orange Juice</option>
-          <option value="tea">Iced Tea</option>
-        </select>
+      <!-- Drink Selection Section -->
+      <div class="custom-section">
+        <h3>Choose drink</h3>
+        
+        <div class="option">
+          <input type="radio" id="coke" name="drink" value="Coca Cola" required>
+          <label for="coke">Coca Cola</label>
+        </div>
+        
+        <div class="option">
+          <input type="radio" id="sprite" name="drink" value="Sprite">
+          <label for="sprite">Sprite</label>
+        </div>
+        
+        <div class="option">
+          <input type="radio" id="fn_orange" name="drink" value="F&N Orange">
+          <label for="fn_orange">F&N Orange</label>
+        </div>
+        
+        <div class="option">
+          <input type="radio" id="fn_zapple" name="drink" value="F&N Zapple">
+          <label for="fn_zapple">F&N Zapple</label>
+        </div>
+        
+        <div class="option">
+          <input type="radio" id="fn_strawberry" name="drink" value="F&N Strawberry">
+          <label for="fn_strawberry">F&N Strawberry</label>
+        </div>
+       
+        <div class="option">
+          <input type="radio" id="fn_soda" name="drink" value="F&N Soda">
+          <label for="fn_soda">F&N Soda</label>
+        </div>
       </div>
+    </div>
   <?php endif; ?>
 
-  <p class="menu-price">
-    <strong>Price:</strong> <?= htmlspecialchars($item['price']) ?>
-  </p>
+<p class="menu-price">
+  <strong>Price:</strong> <?= 'RM' . number_format((float)str_replace('RM', '', $item['price']), 2) ?>
+</p>
 
   <div class="menu-controls">
     <div class="quantity-controls">
@@ -83,3 +106,10 @@
     </button>
   </div>
 </div>
+
+<!-- Toast Notification -->
+<div id="toast" class="toast">
+  <div class="toast-message"></div>
+</div>
+
+<script src="/TKCafe/public/js/cart.js"></script>

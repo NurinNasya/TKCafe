@@ -91,36 +91,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     $action = $_POST['action'];
 
     if ($action === 'add') {
-        try {
-            $menu_id = intval($_POST['menu_id']);
-            $quantity = intval($_POST['quantity']);
-            $price = floatval(str_replace(['RM', ' '], '', $_POST['price']));
-            
-            // Get customizations if they exist
-            $customizations = isset($_POST['customizations']) 
-                ? json_decode($_POST['customizations'], true) 
-                : null;
-
-            error_log("Adding item: menu_id=$menu_id, qty=$quantity, price=$price, customizations=".json_encode($customizations));
-            
-            $success = $cartModel->addItem(
-                $menu_id, 
-                $quantity, 
-                $price, 
-                $session_id,
-                $customizations
-            );
-            
-            echo json_encode(['success' => $success]);
-        } catch (Exception $e) {
-            error_log("Add item error: " . $e->getMessage());
-            echo json_encode([
-                'success' => false,
-                'error' => $e->getMessage()
-            ]);
+    try {
+        $menu_id = intval($_POST['menu_id']);
+        $quantity = intval($_POST['quantity']);
+        
+        // Handle price - already parsed in JavaScript
+        $price = floatval($_POST['price']);
+        if ($price <= 0) {
+            throw new Exception('Invalid price value');
         }
-        exit;
+        
+        // Get customizations if they exist
+        $customizations = null;
+        if (isset($_POST['customizations'])) {
+            $customizations = json_decode($_POST['customizations'], true);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                throw new Exception('Invalid customizations format');
+            }
+        }
+
+        $success = $cartModel->addItem(
+            $menu_id, 
+            $quantity, 
+            $price, 
+            $session_id,
+            $customizations
+        );
+        
+        echo json_encode([
+            'success' => $success,
+            'error' => $success ? null : 'Failed to add item to database'
+        ]);
+    } catch (Exception $e) {
+        error_log("Add to cart error: " . $e->getMessage());
+        echo json_encode([
+            'success' => false,
+            'error' => $e->getMessage()
+        ]);
     }
+    exit;
+}
 
     if ($action === 'update') {
         try {

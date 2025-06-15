@@ -260,6 +260,120 @@ background: linear-gradient(to right, #e59500,#704c1e);
   gap: 10px;
 }
 
+/* Larger Radio Buttons */
+.large-radio {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border: 2px solid #5e3b1f; /* Matching your brown theme */
+  border-radius: 50%;
+  margin-right: 16px;
+  position: relative;
+  top: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: white;
+}
+
+.large-radio:hover {
+  border-color: #8B4513; /* Darker brown on hover */
+}
+
+.large-radio:checked {
+  border-color: #5e3b1f;
+}
+
+.large-radio:checked::before {
+  content: '';
+  display: block;
+  width: 15px;
+  height: 15px;
+  background: #5e3b1f; /* Matching your brown theme */
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Option container styling - matches your cart items */
+.option {
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+  padding: 8px 12px;
+  background-color: #fcf8f0; /* Matching your body gradient */
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.option:hover {
+  background-color: #f9f0e0;
+}
+
+.option label {
+  flex-grow: 1;
+  font-size: 18px;
+  color: #333;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.price {
+  color: #5e3b1f;
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+.popular {
+  color: #e67e22;
+  font-weight: bold;
+  font-style: italic;
+  padding-left: 25px;
+  font-size: 16px;
+}
+
+/* Custom section styling */
+.custom-section {
+  margin-bottom: 25px;
+  padding: 15px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.custom-section h3 {
+  color: #5e3b1f;
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.status {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .large-radio {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .option label {
+    font-size: 16px;
+  }
+  
+  .custom-section {
+    padding: 12px;
+  }
+}
+
+
 .quantity-btn {
   width: 36px;
   height: 36px;
@@ -285,24 +399,22 @@ background: linear-gradient(to right, #e59500,#704c1e);
 }
 
 .add-to-cart-btn {
-  padding: 12px 30px;
-  background: linear-gradient(to right,rgb(154, 115, 83),rgb(110, 80, 58));
+  background-color: #8B4513; /* Coffee brown */
   color: white;
+  padding: 10px 20px;
+  font-weight: bold;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
   cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s;
-  width: 200px;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(40, 167, 69, 0.2);
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.add-to-cart-btn:hover {
-  background: linear-gradient(to right, #5e3b1f, #452c1a);
-  transform: translateY(-2px);
 
+.add-to-cart-btn:hover {
+  background-color: #A0522D; /* Lighter brown */
+  transform: scale(1.05);
 }
 
 .cart-button {
@@ -375,7 +487,7 @@ background: linear-gradient(to right, #e59500,#704c1e);
 }
 
 .quantity-input {
-  -moz-appearance: textfield;
+  -moz-appearanc: textfield;
 }
 
 /* Add to your existing CSS */
@@ -475,4 +587,28 @@ background: linear-gradient(to right, #e59500,#704c1e);
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
+}
+
+.drink-option {
+  display: flex;
+  align-items: center;
+  background-color: #fffaf0;
+  padding: 16px 18px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  font-size: 1.2rem; /* increase text size */
+}
+
+.drink-option:hover {
+  background-color: #fff3e0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.drink-option input[type="radio"] {
+  transform: scale(1.4); /* make the radio button bigger */
+  margin-right: 12px;
+  accent-color: #8B4513;
 }

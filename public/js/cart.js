@@ -125,6 +125,67 @@ function updateCartBadge() {
 
 function handleAddToCart(button) {
   const container = button.closest('.menu-details-container');
+  
+  // Get and parse the price text safely
+  const priceText = container.querySelector('.menu-price').textContent;
+  const priceValue = priceText.split('RM')[1]?.trim() || '0'; // Extract numeric part after RM
+  const price = parseFloat(priceValue) || 0;
+  
+  // Check if this is a combo
+  const isCombo = container.querySelector('.combo-customization') !== null;
+  
+  const cartData = {
+    menu_id: button.dataset.id,
+    quantity: parseInt(container.querySelector('.quantity-input').value) || 1,
+    price: price
+  };
+
+  // Handle drink selection for combos
+  if (isCombo) {
+    const selectedDrink = container.querySelector('input[name="drink"]:checked');
+    if (!selectedDrink) {
+      alert('Please select a drink option');
+      return;
+    }
+    cartData.customizations = {
+      drink: selectedDrink.value
+    };
+  }
+
+  // Prepare form data
+  const formData = new URLSearchParams();
+  formData.append('action', 'add');
+  formData.append('menu_id', cartData.menu_id);
+  formData.append('quantity', cartData.quantity);
+  formData.append('price', cartData.price);
+  
+  if (isCombo) {
+    formData.append('customizations', JSON.stringify(cartData.customizations));
+  }
+
+  fetch('/TKCafe/Controller/cartController.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: formData.toString()
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      updateCartBadge();
+      alert('Added to cart!');
+      refreshCartDisplay();
+    } else {
+      alert('Error: ' + (data.error || 'Failed to add item'));
+    }
+  })
+  .catch(err => {
+    console.error('Cart error:', err);
+    alert('Failed to add item. Please check console for details.');
+  });
+}
+
+/*function handleAddToCart(button) {
+  const container = button.closest('.menu-details-container');
   const priceText = container.querySelector('.menu-price').textContent;
 
    // Check if this is a combo (has customization section)
@@ -174,7 +235,7 @@ function handleAddToCart(button) {
     console.error('Cart error:', err);
     alert('Failed to add item');
   });
-}
+}*/
 
 function refreshCartDisplay() {
   fetch('/TKCafe/Controller/cartController.php?action=list')
@@ -266,3 +327,4 @@ function removeItem(itemId) {
     alert('Error removing item');
   });
 }
+

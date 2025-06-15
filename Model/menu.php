@@ -331,7 +331,7 @@ class Menu {
             'name' => 'Sosej Otak- Otak(6 PCS)',
             'description' => '',
             'price' => 'RM5.00',
-            'image' => '/TKCafe/public/images/',
+            'image' => '/TKCafe/public/images/SOSEJ OTAK OTAK.jpg',
             'category' => 'lokcing'
         ],
         46 => [
