@@ -5,21 +5,21 @@ class Menu {
         1 => [
             'name' => 'Nasi Dagang Terengganu',
             'description' => 'Nasi Dagang + Gulai Ikan + Acar',
-            'price' => 'RM8.00',
+            'price' => 8.00,
             'image' => '/TKCafe/public/images/NASI DAGANG TERENGGANU.png',
             'category' => 'standard'
         ],
         2 => [
             'name' => 'Nasi Lemak Rendang Ayam',
             'description' => 'Nasi Lemak + Rendang Ayam',
-            'price' => 'RM10.00',
+            'price' => 10.00,
             'image' => '/TKCafe/public/images/NASI LEMAK RENDANG AYAM.png',
             'category' => 'standard'
         ],
         3 => [
             'name' => 'Nasi Minyak Gulai Ayam',
             'description' => 'Nasi Minyak + Gulai Ayam + Acar',
-            'price' => 'RM9.00',
+            'price' => 9.00,
             'image' => '/TKCafe/public/images/NASI MINYAK GULAI AYAM.jpg',
             'category' => 'standard'
         ],
