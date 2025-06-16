@@ -97,6 +97,38 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+// Add this to cart.js (place it with the other event listeners)
+document.querySelector('.checkout-btn')?.addEventListener('click', function() {
+    const orderType = document.querySelector('.order-type-btn.active')?.dataset.type;
+    const total = parseFloat(
+        document.querySelector('.summary-row.total span:last-child')
+            .textContent.replace('RM ', '')
+    );
+
+    if (!orderType) {
+        alert('Please select Dine-In or Take Away');
+        return;
+    }
+
+    fetch('/TKCafe/Controller/orderController.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `order_type=${orderType}&total=${total}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            window.location.href = data.redirect;
+        } else {
+            alert('Order failed: ' + (data.error || 'Unknown error'));
+        }
+    })
+    .catch(err => {
+        console.error('Checkout error:', err);
+        alert('Failed to process order');
+    });
+});
+
 // ========== CART FUNCTIONS ==========
 function bindQuantityControls() {
   document.querySelectorAll('.quantity-btn').forEach(btn => {
