@@ -88,7 +88,8 @@
             box-shadow: var(--shadow-lg);
         }
         
-        .option-card.selected {
+        .option-card.selected, 
+        .option-card.active {
             transform: translateY(-8px) scale(1.02);
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
@@ -191,15 +192,15 @@
             cursor: pointer;
             transition: var(--transition);
             box-shadow: var(--shadow-sm);
-            opacity: 0.7;
-            pointer-events: none;
+            //opacity: 0.7;
+            //pointer-events: none;
         }
         
-        .continue-btn.active {
+        /*.continue-btn.active {
             opacity: 1;
             pointer-events: all;
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
+        }*/
         
         .continue-btn:hover {
             transform: translateY(-3px);

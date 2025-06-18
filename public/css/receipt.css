@@ -1,0 +1,44 @@
+.receipt-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.receipt-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed #ddd;
+}
+
+.receipt-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.customization {
+    color: #666;
+    font-size: 0.9em;
+    margin-top: 0.3rem;
+    font-style: italic;
+}
+
+.receipt-total {
+    margin-top: 2rem;
+    border-top: 2px solid #333;
+    padding-top: 1rem;
+}
+
+.grand-total {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.receipt-footer {
+    margin-top: 2rem;
+    text-align: center;
+}
