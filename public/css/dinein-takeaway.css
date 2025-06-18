@@ -20,21 +20,23 @@
             background-color: var(--light);
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items:flex-start; /* Changed from "center" to move up */
             min-height: 100vh;
             padding: 20px;
             color: var(--dark);
+            padding-top: 40px; /* Optional: Add space at the top */
         }
         
         .container {
-            width: 100%;
-            max-width: 900px;
+            width: 150%;
+            max-width: 700px;
             perspective: 1000px;
+            margin-top: -70px; /* Moves the container up by 50px */
         }
         
         .selection-wrapper {
             background: white;
-            border-radius: 24px;
+            border-radius: 30px;
             overflow: hidden;
             box-shadow: var(--shadow-md);
             transform-style: preserve-3d;
@@ -43,12 +45,12 @@
         
         .header {
             text-align: center;
-            padding: 40px 30px 30px;
+            padding: 30px 10px 10px;
             background: linear-gradient(135deg, #c8976c, #e4e8eb 100%);
         }
         
         .header h1 {
-            font-size: 2.4rem;
+            font-size: 1.3rem;
             margin-bottom: 10px;
             background: linear-gradient(135deg, var(--dine-in), var(--takeaway));
             -webkit-background-clip: text;
@@ -57,7 +59,7 @@
         }
         
         .header p {
-            font-size: 1.1rem;
+            font-size: 0.75rem;
             color: #636e72;
             max-width: 500px;
             margin: 0 auto;
@@ -77,7 +79,7 @@
             cursor: pointer;
             transition: var(--transition);
             box-shadow: var(--shadow-sm);
-            height: 280px;
+            height: 220px;
             transform-style: preserve-3d;
         }
         
@@ -116,8 +118,8 @@
         }
         
         .option-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+            font-size: 2rem;
+            margin-bottom: 10px;
             opacity: 0.9;
             transition: var(--transition);
         }
@@ -127,9 +129,9 @@
         }
         
         .option-title {
-            font-size: 1.8rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             transition: var(--transition);
         }
         
@@ -138,17 +140,17 @@
         }
         
         .option-desc {
-            font-size: 1rem;
+            font-size: 0.85rem;
             opacity: 0.9;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         
         .checkmark {
             position: absolute;
             top: 20px;
             right: 20px;
-            width: 28px;
-            height: 28px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             background: white;
             display: flex;
@@ -166,7 +168,7 @@
         
         .checkmark i {
             color: var(--dine-in);
-            font-size: 1rem;
+            font-size: 0.85rem;
         }
         
         .takeaway.selected .checkmark i {
@@ -175,7 +177,7 @@
         
         .footer {
             text-align: center;
-            padding: 0 40px 40px;
+            padding: 0 20px 30px;
         }
         
         .continue-btn {
@@ -217,17 +219,53 @@
         }
         
         @media (max-width: 768px) {
-            .options-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                padding: 30px;
-            }
-            
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .option-card {
-                height: 240px;
-            }
-        }
+    .container {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .selection-wrapper {
+        margin-top: 30px;
+        border-radius: 16px;
+    }
+
+    .header h1 {
+        font-size: 1.4rem;
+    }
+
+    .header p {
+        font-size: 0.85rem;
+        padding: 0 10px;
+    }
+
+    .options-grid {
+        grid-template-columns: 1fr; /* Only 1 column */
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .option-card {
+        height: 220px; /* Reduce height */
+    }
+
+    .option-title {
+        font-size: 1.4rem;
+    }
+
+    .option-desc {
+        font-size: 0.9rem;
+    }
+
+    .option-icon {
+        font-size: 2rem;
+    }
+
+    .continue-btn {
+        font-size: 1rem;
+        padding: 14px 30px;
+    }
+
+    .footer {
+        padding: 20px;
+    }
+}

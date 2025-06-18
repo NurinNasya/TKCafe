@@ -612,3 +612,44 @@ background: linear-gradient(to right, #e59500,#704c1e);
   margin-right: 12px;
   accent-color: #8B4513;
 }
+
+/* === Remarks Section Styling === */
+.remarks-section {
+  background-color: #fff7ed;
+  border: 2px dashed #ffb347;
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.remarks-label {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  color: #6b4c35;
+}
+
+.remarks-icon {
+  font-size: 1.2rem;
+  margin-right: 8px;
+}
+
+.remarks-textarea {
+  width: 100%;
+  border: 1.5px solid #ffd699;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 1rem;
+  font-family: 'Segoe UI', sans-serif;
+  resize: vertical;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.remarks-textarea:focus {
+  border-color: #ff8c42;
+  box-shadow: 0 0 6px rgba(255, 140, 66, 0.3);
+  outline: none;
+}

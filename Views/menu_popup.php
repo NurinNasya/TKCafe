@@ -94,6 +94,17 @@
   <strong>Price:</strong> <?= 'RM' . number_format((float)str_replace('RM', '', $item['price']), 2) ?>
 </p>
 
+
+<!-- Stylish Remarks Section -->
+<div class="remarks-section">
+  <label for="remarks" class="remarks-label">
+    <span class="remarks-icon">💬</span> Special Request
+  </label>
+  <textarea id="remarks" name="remarks" class="remarks-textarea" placeholder="E.g. No ice, less sugar, pack separately..."></textarea>
+</div>
+
+
+
   <div class="menu-controls">
     <div class="quantity-controls">
       <button class="quantity-btn minus">−</button>

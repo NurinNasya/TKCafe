@@ -45,7 +45,6 @@
                         Continue to Menu <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
-
             </form>
         </div>
     </div>

@@ -65,6 +65,7 @@ $total = 0;
                 </div>
               <?php endif; ?>
               
+    
               <div class="cart-item-meta">
                 <span class="cart-item-price">RM <?= number_format($item['price'], 2) ?></span>
                 <div class="cart-item-quantity">
