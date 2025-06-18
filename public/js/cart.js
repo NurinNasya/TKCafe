@@ -78,55 +78,27 @@ document.addEventListener('DOMContentLoaded', function() {
       deleteModal.style.display = 'flex';
     });
   });
-
-  // Handle dine-in/takeaway selection
-  document.querySelectorAll('.order-type-btn').forEach(button => {
-    button.addEventListener('click', function() {
-      // Remove active class from all buttons
-      document.querySelectorAll('.order-type-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      
-      // Add active class to clicked button
-      this.classList.add('active');
-      
-      // Store the selection
-      const orderType = this.dataset.type;
-      // Can be used later when submitting the order
-    });
-  });
 });
 
 // Add this to cart.js (place it with the other event listeners)
-document.querySelector('.checkout-btn')?.addEventListener('click', function() {
-    const orderType = document.querySelector('.order-type-btn.active')?.dataset.type;
-    const total = parseFloat(
-        document.querySelector('.summary-row.total span:last-child')
-            .textContent.replace('RM ', '')
-    );
-
-    if (!orderType) {
-        alert('Please select Dine-In or Take Away');
-        return;
-    }
-
-    fetch('/TKCafe/Controller/orderController.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `order_type=${orderType}&total=${total}`
-    })
-    .then(response => response.json())
-    .then(data => {
+document.querySelector('.checkout-btn')?.addEventListener('click', async function() {
+    try {
+        const response = await fetch('/TKCafe/Controller/orderController.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        });
+        
+        const data = await response.json();
+        
         if (data.success) {
             window.location.href = data.redirect;
         } else {
             alert('Order failed: ' + (data.error || 'Unknown error'));
         }
-    })
-    .catch(err => {
+    } catch (err) {
         console.error('Checkout error:', err);
         alert('Failed to process order');
-    });
+    }
 });
 
 // ========== CART FUNCTIONS ==========

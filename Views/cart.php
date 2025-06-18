@@ -36,11 +36,6 @@ $total = 0;
     </div>
   <?php else: ?>
     <div class="cart-items">
-       <!-- Add this new section for dine-in/takeaway options -->
-    <div class="order-type-selector">
-      <button class="order-type-btn active" data-type="dine_in">Dine In</button>
-      <button class="order-type-btn" data-type="take_away">Take Away</button>
-    </div>
           <?php foreach ($items as $item): 
           $menuItem = $menuModel->getItemById($item['menu_id']);
           $subtotal = $item['price'] * $item['quantity'];

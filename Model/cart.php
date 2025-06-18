@@ -8,14 +8,17 @@ class Cart {
     }
 
     public function addItem($menu_id, $quantity, $price, $session_id, $customizations = null) {
+    // Ensure price is numeric
+    if (!is_numeric($price)) {
+        throw new Exception("Invalid price format for menu item");
+    }
+    
     $customizationsJson = $customizations ? json_encode($customizations) : null;
     $stmt = $this->conn->prepare("INSERT INTO order_item (menu_id, quantity, price, session_id, customizations) VALUES (?, ?, ?, ?, ?)");
-    if (!$stmt) return false;
     $stmt->bind_param("iidss", $menu_id, $quantity, $price, $session_id, $customizationsJson);
-    $result = $stmt->execute();
-    $stmt->close();
-    return $result;
-    }
+    return $stmt->execute();
+}
+
     /*public function addItem($menu_id, $quantity, $price, $session_id) {
         $stmt = $this->conn->prepare("INSERT INTO order_item (menu_id, quantity, price, session_id) VALUES (?, ?, ?, ?)");
         if (!$stmt) return false;
@@ -23,7 +26,7 @@ class Cart {
         $result = $stmt->execute();
         $stmt->close();
         return $result;
-    } ori */
+    } */
 
     public function getItems($session_id) {
         $stmt = $this->conn->prepare("SELECT * FROM order_item WHERE session_id = ?");
@@ -58,4 +61,12 @@ class Cart {
         $stmt->close();
         return $affected > 0;
     }
+
+      // Add this method if missing
+    public function clearCart($session_id) {
+        $stmt = $this->conn->prepare("DELETE FROM order_item WHERE session_id = ?");
+        $stmt->bind_param("s", $session_id);
+        return $stmt->execute();
+    }
+
 }
