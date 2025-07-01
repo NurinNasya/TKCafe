@@ -6,7 +6,7 @@
         <a href="dashboard.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'dashboard.php' ? 'active' : '' ?>">
             <span class="nav-icon">📊</span> Dashboard
         </a>
-        <a href="tables.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'tables.php' ? 'active' : '' ?>">
+        <a href="manage_tables.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'manage_tables.php' ? 'active' : '' ?>">
             <span class="nav-icon">🪑</span> Tables
         </a>
         <a href="orders.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'orders.php' ? 'active' : '' ?>">
