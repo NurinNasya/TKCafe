@@ -1,26 +1,20 @@
 <?php
-class AdminModel {
-    private $db;
+require_once 'db.php'; // shared connection function
 
-    public function __construct($db) {
-        $this->db = $db;
+function adminLogin($username, $password) {
+    $conn = getConnection();
+    $stmt = $conn->prepare("SELECT password FROM admins WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows === 1) {
+        $stmt->bind_result($hashedPassword);
+        $stmt->fetch();
+        return password_verify($password, $hashedPassword);
     }
 
-    // Get admin by username
-    /*public function getAdminByUsername($username) {
-        $query = "SELECT * FROM admins WHERE username = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->execute([$username]);
-        return $stmt->fetch();
-    }
-
-    // Verify admin login
-    public function verifyAdmin($username, $password) {
-        $admin = $this->getAdminByUsername($username);
-        if ($admin && password_verify($password, $admin['password'])) {
-            return $admin;
-        }
-        return false;
-    }*/
+    $stmt->close();
+    $conn->close();
+    return false;
 }
-?>

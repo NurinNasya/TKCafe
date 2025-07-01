@@ -1,37 +1,49 @@
 <?php
+require_once '../Model/register.php';
 require_once '../Model/admin.php';
 
-class AdminController {
-    private $model;
+session_start();
 
-    public function __construct($db) {
-        $this->model = new AdminModel($db);
+// REGISTER
+if (isset($_POST['register'])) {
+    $username = trim($_POST['username']);
+    $password = $_POST['password'];
+    $confirm = $_POST['confirm_password'];
+
+    if ($password !== $confirm) {
+        header("Location: /TKCafe/Views/register.php?error=password_mismatch");
+        exit;
     }
 
-    // Show login form
-    /*public function login() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $username = $_POST['username'];
-            $password = $_POST['password'];
-            $admin = $this->model->verifyAdmin($username, $password);
-
-            if ($admin) {
-                $_SESSION['admin_logged_in'] = true;
-                $_SESSION['admin_username'] = $admin['username'];
-                header("Location: /admin/dashboard");
-            } else {
-                $error = "Invalid credentials!";
-                include 'views/admin/login.php';
-            }
-        } else {
-            include 'views/admin/login.php';
-        }
+    if (registerAdmin($username, $password)) {
+        header("Location: /TKCafe/views/login.php");
+        exit;
+    } else {
+        header("Location: /TKCafe/Views/register.php?error=1");
+        exit;
     }
-
-    // Logout admin
-    public function logout() {
-        session_destroy();
-        header("Location: /admin/login");
-    }*/
 }
-?>
+
+// LOGIN
+if (isset($_POST['username'], $_POST['password']) && !isset($_POST['register'])) {
+    $username = trim($_POST['username']);
+    $password = $_POST['password'];
+
+    if (adminLogin($username, $password)) {
+        $_SESSION['admin'] = $username;
+        header("Location: /TKCafe/views/dashboard.php");
+        exit;
+    } else {
+        $error = "Invalid username or password.";
+        include '../views/login.php';
+        exit;
+    }
+}
+
+
+// LOGOUT
+if (isset($_GET['action']) && $_GET['action'] === 'logout') {
+    session_destroy();
+    header("Location: /TKCafe/views/login.php");
+    exit;
+}

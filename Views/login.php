@@ -16,8 +16,8 @@
         <?php if (isset($error)): ?>
             <div class="error-message"><?= $error ?></div>
         <?php endif; ?>
-
-        <form method="POST" action="/admin/login" class="login-form">
+ 
+        <form method="POST" action="/TKCafe/Controller/adminController.php">
             <div class="input-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter admin username" required>
