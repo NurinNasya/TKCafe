@@ -20,7 +20,7 @@
             background-color: var(--light);
             display: flex;
             justify-content: center;
-            align-items:flex-start; /* Changed from "center" to move up */
+            align-items:center; /* Changed from "center" to move up */
             min-height: 100vh;
             padding: 20px;
             color: var(--dark);
