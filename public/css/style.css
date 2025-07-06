@@ -20,7 +20,7 @@ header {
 }
 
 header .logo {
-    font-size: 2.5rem;
+    font-size: 5rem;
     font-weight: bold;
     color: #000;
 }
@@ -48,7 +48,7 @@ header .logo {
 }
 
 .logo-title img {
-  height: 50px;
+  height: 80px;
   filter: drop-shadow(0 0 2px #000); /* subtle shadow */
   margin-right: 18px;
   background-color: white; /* background to improve visibility */
@@ -58,7 +58,7 @@ header .logo {
 
 .logo-title h1 {
   margin: 0;
-  font-size: 2.7rem;
+  font-size: 3.5rem;
   color: #000;
  font-family: 'Satisfy', cursive;
  font-weight: 700; /* bold */
@@ -67,7 +67,7 @@ header .logo {
  
 .cart-icon {
   margin-left: auto;
-  font-size: 1.8rem;
+  font-size: 3.5rem; /*cart button size */
   color: #333;
   text-decoration: none;
   transition: color 0.3s ease;
@@ -105,8 +105,8 @@ nav a:hover {
 .category {
   background:  #f9e5c1; 
   border: none;
-  padding: 12px 26px;
-  font-size: 1.4rem;
+  padding: 18px 36px;
+  font-size: 1.8rem;
   font-weight: 600;
   color: #4a3726;
   border-radius: 25px;
@@ -131,7 +131,7 @@ background: linear-gradient(to right, #e59500,#704c1e);
 .menu-item {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2.2rem;
   margin-bottom: 2.4rem;
   padding: 24px 36px;
   border-bottom: 1px solid #ddd;
@@ -164,19 +164,19 @@ background: linear-gradient(to right, #e59500,#704c1e);
 .menu-item-info h3 {
   margin: 0 0 10px 0;
   font-weight: 700;
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   color: #3b2f2f;
 }
 
 .menu-item-info p {
   margin: 0;
   color: #666;
-  font-size: 1.3rem;
+  font-size: 1.7rem;
 }
 
 .menu-item-price {
   font-weight: 700;
-  font-size: 1.6rem;
+  font-size: 2rem;
   color: #333;
   margin-top: 10px;
   white-space: nowrap;
@@ -184,14 +184,14 @@ background: linear-gradient(to right, #e59500,#704c1e);
 
 .select-btn {
   margin-top: 17px;
-  padding: 12px 22px;
+  padding: 16px 28px;
   background: linear-gradient(to right, #7f4f24, #5e3b1f);
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   transition: all 0.3s ease;
   box-shadow: 0 4px 10px rgba(40, 167, 69, 0.2);
 }
@@ -214,7 +214,7 @@ background: linear-gradient(to right, #e59500,#704c1e);
 }
 
 .menu-title {
-  font-size: 24px;
+  font-size: 35px;
   color: #333;
   margin: 0 0 15px 0;
   text-align: center;
@@ -230,14 +230,16 @@ background: linear-gradient(to right, #e59500,#704c1e);
 }
 
 .menu-description {
+  font-size: 1.4rem;
   color: #555;
   line-height: 1.5;
   margin: 0 0 20px 0;
   padding: 0 10px;
+
 }
 
 .menu-price {
-  font-size: 20px;
+  font-size: 32px;
   font-weight: bold;
   color:rgb(70, 189, 102);
   text-align: center;
@@ -245,6 +247,7 @@ background: linear-gradient(to right, #e59500,#704c1e);
 }
 
 .menu-controls {
+  font-size: 1.8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -265,8 +268,8 @@ background: linear-gradient(to right, #e59500,#704c1e);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   border: 2px solid #5e3b1f; /* Matching your brown theme */
   border-radius: 50%;
   margin-right: 16px;
@@ -315,13 +318,14 @@ background: linear-gradient(to right, #e59500,#704c1e);
 
 .option label {
   flex-grow: 1;
-  font-size: 18px;
+  font-size: 22px;
   color: #333;
   cursor: pointer;
   margin-left: 8px;
 }
 
 .price {
+  font-size: 20px;
   color: #5e3b1f;
   font-weight: 500;
   margin-left: 10px;
@@ -375,9 +379,9 @@ background: linear-gradient(to right, #e59500,#704c1e);
 
 
 .quantity-btn {
-  width: 36px;
-  height: 36px;
-  font-size: 18px;
+  width: 42px;
+  height:42px;
+  font-size: 32px;
   border: none;
   background-color: #f0f0f0;
   cursor: pointer;
@@ -390,9 +394,9 @@ background: linear-gradient(to right, #e59500,#704c1e);
 }
 
 .quantity-input {
-  width: 60px;
+  width: 80px;
   text-align: center;
-  font-size: 16px;
+  font-size: 26px;
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -401,12 +405,12 @@ background: linear-gradient(to right, #e59500,#704c1e);
 .add-to-cart-btn {
   background-color: #8B4513; /* Coffee brown */
   color: white;
-  padding: 10px 20px;
+  padding: 16px 26px;
   font-weight: bold;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.8rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
@@ -418,8 +422,8 @@ background: linear-gradient(to right, #e59500,#704c1e);
 }
 
 .cart-button {
-  font-size: 1.4rem;
-  padding: 12px 30px;
+  font-size: 1.5rem;
+  padding: 14px 28px;
   width: 100%;
   display: flex;
   text-align: center;
@@ -437,8 +441,8 @@ background: linear-gradient(to right, #e59500,#704c1e);
 }
 
 .checkout-btn {
-  font-size: 1.4rem; /* Match cart text size */
-  padding: 10px 24px;
+  font-size: 1.5rem; /* Match cart text size */
+  padding: 14px 28px;
   background: linear-gradient(to right, #28a745, #218838);
   color: white;
   border: none;
@@ -453,8 +457,8 @@ background: linear-gradient(to right, #e59500,#704c1e);
 }
 
 .continue-btn {
-  font-size: 1.4rem; /* Match cart text size */
-  padding: 10px 24px;
+  font-size: 1.5rem; /* Match cart text size */
+  padding: 14px 28px;
   background: linear-gradient(to right, #ffb347, #ffcc33); /* Warm yellow tones */
   color: #3b2f2f;
   border: none;
@@ -528,13 +532,13 @@ background: linear-gradient(to right, #e59500,#704c1e);
   right: -10px;
   background-color: #ff0000;
   color: #fff;
-  font-size: 12px;
+  font-size: 20px;
   font-weight: bold;
   padding: 2px 6px;
   border-radius: 999px; /* Pill shape, works for all counts */
   display: none; /* Hidden by default */
-  min-width: 18px;
-  height: 18px;
+  min-width: 20px;
+  height: 20px;
   line-height: 14px;
   text-align: center;
   white-space: nowrap;
@@ -625,7 +629,7 @@ background: linear-gradient(to right, #e59500,#704c1e);
 
 .remarks-label {
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.8rem;
   margin-bottom: 8px;
   display: flex;
   align-items: center;
@@ -633,7 +637,7 @@ background: linear-gradient(to right, #e59500,#704c1e);
 }
 
 .remarks-icon {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   margin-right: 8px;
 }
 
@@ -641,8 +645,8 @@ background: linear-gradient(to right, #e59500,#704c1e);
   width: 100%;
   border: 1.5px solid #ffd699;
   border-radius: 10px;
-  padding: 10px 14px;
-  font-size: 1rem;
+  padding: 20px 24px;
+  font-size: 1.8rem;
   font-family: 'Segoe UI', sans-serif;
   resize: vertical;
   transition: border 0.3s, box-shadow 0.3s;
@@ -653,3 +657,115 @@ background: linear-gradient(to right, #e59500,#704c1e);
   box-shadow: 0 0 6px rgba(255, 140, 66, 0.3);
   outline: none;
 }
+
+/* ========== RESPONSIVE IMPROVEMENTS FOR MOBILE ========== */
+
+/* Make container paddings responsive */
+@media (max-width: 768px) {
+  .category-bar {
+    padding: 20px;
+    gap: 12px;
+  }
+
+  .menu-items {
+    padding: 20px;
+  }
+
+  .menu-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .menu-item-img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+  }
+
+  .menu-item-info h3 {
+    font-size: 1.4rem;
+  }
+
+  .menu-item-info p {
+    font-size: 1rem;
+  }
+
+  .menu-item-price {
+    font-size: 1.9rem;
+  }
+
+  .select-btn {
+    font-size: 1.1rem;
+    padding: 10px 18px;
+  }
+
+  .menu-details-container {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .menu-title {
+    font-size: 1.6rem;
+  }
+
+  .menu-description {
+    font-size: 0.95rem;
+  }
+
+  .menu-price {
+    font-size: 1.2rem;
+  }
+
+  .add-to-cart-btn {
+    font-size: 1rem;
+    padding: 10px 18px;
+  }
+
+  .cart-button, .checkout-btn, .continue-btn {
+    font-size: 1.1rem;
+    padding: 10px 20px;
+  }
+
+  .logo-title h1 {
+    font-size: 2rem;
+  }
+
+  header .logo {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .category {
+    padding: 8px 18px;
+    font-size: 1rem;
+  }
+
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo-title img {
+    height: 40px;
+    padding: 6px;
+  }
+
+  .option-title {
+    font-size: 1.2rem;
+  }
+
+  .option-desc {
+    font-size: 0.9rem;
+  }
+
+  .drink-option {
+    font-size: 1rem;
+  }
+
+  .remarks-textarea {
+    font-size: 0.9rem;
+  }
+}
+
