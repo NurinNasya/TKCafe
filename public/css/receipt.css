@@ -42,3 +42,22 @@
     margin-top: 2rem;
     text-align: center;
 }
+
+.remarks {
+    font-size: 0.9em;
+    color: #666;
+    font-style: italic;
+    margin-top: 0.3rem;
+}
+
+.item-info {
+    flex: 1;
+    padding-right: 10px;
+}
+
+.item-info h3 {
+    margin: 0;
+    font-size: 1.05em;
+    font-weight: 600;
+    color: #333;
+}

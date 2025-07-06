@@ -59,7 +59,13 @@ $total = 0;
                   <p>Drink: <?= htmlspecialchars(ucfirst(str_replace('-', ' ', $customizations['drink']))) ?></p>
                 </div>
               <?php endif; ?>
-              
+
+              <!--for remarks here-->
+              <?php if (!empty($item['remarks'])): ?>
+                <div class="remarks-display">
+                    <p><strong>Note:</strong> <?= htmlspecialchars($item['remarks']) ?></p>
+                </div>
+            <?php endif; ?>    
     
               <div class="cart-item-meta">
                 <span class="cart-item-price">RM <?= number_format($item['price'], 2) ?></span>

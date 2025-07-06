@@ -561,8 +561,9 @@ th {
 
 .status-new { background: #d4edff; color: #004085; }
 .status-preparing { background: #fff3cd; color: #856404; }
-.status-pending { background: #d4edda; color: #155724; }
-.status-completed { background: #e2e3e5; color: #383d41; }
+.status-pending { background: #e2e3e5; color: #383d41; }   /* grey */
+.status-completed { background: #d4edda; color: #155724; } /* green */
+
 
 .order-details {
     color: #666;
@@ -666,7 +667,7 @@ th {
 
 .status-new { background: #d4edff; color: #004085; }
 .status-processing { background: #fff3cd; color: #856404; }
-.status-completed { background: #e2e3e5; color: #383d41; }
+/* .status-completed { background: #e2e3e5; color: #155724; } */
 
 /* ===== ERROR STATES ===== */
 .error {
@@ -769,6 +770,7 @@ th {
     font-size: 1rem;         /* increase font size */
     padding: 12px 24px;      /* top-bottom, left-right padding */
     min-width: 600px;        /* ensures button has some width */
+}
 /* ===== Modern Overlay ===== */
 #overlay {
   display: none;

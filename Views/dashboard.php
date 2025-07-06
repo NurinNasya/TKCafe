@@ -1,3 +1,19 @@
+<?php
+require_once '../db.php';
+require_once '../Model/dashboardstats.php';
+
+$statsModel = new DashboardStats($conn);
+
+$totalSales = $statsModel->getTotalSales();
+$totalOrders = $statsModel->getTotalOrders();
+$todaysOrders = $statsModel->getTodaysOrders(); // Rename here to match usage below
+
+// 🟢 For sales chart
+$salesData = $statsModel->getSalesLast7Days();
+$chartLabels = array_column($salesData, 'sale_date');
+$chartValues = array_column($salesData, 'total_sales');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,29 +38,62 @@
       </header>
 
       <!-- Stats Cards -->
-      <div class="stats-grid">
+       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-icon primary">📝</div>
-          <h3>Active Orders</h3>
-          <p class="stat-value">24</p>
-          <p class="stat-change">+5 from yesterday</p>
+          <div class="stat-icon primary">💰</div>
+          <h3>Total Sales</h3>
+          <p class="stat-value">RM <?= number_format($totalSales, 2) ?></p>
+          <p class="stat-change">+RM <?= number_format($totalSales - 150, 2) ?> today</p>
         </div>
+
         <div class="stat-card">
-          <div class="stat-icon warning">🪑</div>
-          <h3>Occupied Tables</h3>
-          <p class="stat-value">8/20</p>
-          <p class="stat-change">40% capacity</p>
+          <div class="stat-icon success">🛒</div>
+          <h3>Total Orders</h3>
+          <p class="stat-value"><?= $totalOrders ?></p>
+          <p class="stat-change">+<?= $todaysOrders ?> today</p>
         </div>
+
         <div class="stat-card">
-          <div class="stat-icon danger">⚠️</div>
-          <h3>Pending Tasks</h3>
-          <p class="stat-value">3</p>
-          <p class="stat-change">2 urgent</p>
+          <div class="stat-icon info">📅</div>
+          <h3>Today's Orders</h3>
+          <p class="stat-value"><?= $todaysOrders ?></p>
+          <p class="stat-change">Updated just now</p>
         </div>
       </div>
+      <!-- <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon primary">💰</div>
+          <h3>Total Sales</h3>
+          <p class="stat-value">RM 1,240.50</p>
+          <p class="stat-change">+RM 150 today</p>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon success">🛒</div>
+          <h3>Total Orders</h3>
+          <p class="stat-value">523</p>
+          <p class="stat-change">+12 today</p>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon info">📅</div>
+          <h3>Today's Orders</h3>
+          <p class="stat-value">22</p>
+          <p class="stat-change">Updated just now</p>
+        </div>
+      </div> -->
+
+  <!-- 📈 Sales Chart -->
+      <section class="data-section">
+        <div class="section-header">
+          <h2>Sales - Last 7 Days</h2>
+        </div>
+        <canvas id="salesChart" style="max-height: 400px; margin-bottom: 2rem;"></canvas>
+      </section>
+
 
       <!-- Recent Orders Table -->
-      <section class="data-section">
+      <!-- <section class="data-section">
         <div class="section-header">
           <h2>Recent Orders</h2>
           <button class="btn btn-outline">View All</button>
@@ -86,8 +135,15 @@
             </tbody>
           </table>
         </div>
-      </section>
+      </section> -->
     </main>
   </div>
+   <!-- ✅ Chart.js + Data Passing + Custom JS -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    window.chartLabels = <?= json_encode($chartLabels) ?>;
+    window.chartValues = <?= json_encode($chartValues) ?>;
+  </script>
+  <script src="/TKCafe/public/js/salesChart.js"></script>
 </body>
 </html>

@@ -549,11 +549,22 @@ class Menu {
 
     // Get single item by ID
     public function getItemById($id) {
+    if (isset($this->menuItems[$id])) {
+        $item = $this->menuItems[$id];
+        // Ensure price is always a float
+        $item['price'] = is_string($item['price']) ? 
+            (float) str_replace(['RM', ' '], '', $item['price']) : 
+            (float) $item['price'];
+        return $item;
+    }
+    return null;
+}
+    /*public function getItemById($id) {
         if (isset($this->menuItems[$id])) {
             return $this->menuItems[$id];
         }
         return null;
-    }
+    }*/
 
     // Get items by category (standard or signature)
     public function getItemsByCategory($category) {

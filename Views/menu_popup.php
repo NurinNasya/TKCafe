@@ -39,6 +39,8 @@
 <link rel="stylesheet" href="/TKCafe/public/css/style.css" />
 
 <div class="menu-details-container">
+   <button class="close-popup-btn" onclick="closeMenuPopup()">×</button>
+   
   <h1 class="menu-title"><?= htmlspecialchars($item['name']) ?></h1>
 
   <img src="<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>" class="menu-image" />
@@ -100,16 +102,20 @@
   <label for="remarks" class="remarks-label">
     <span class="remarks-icon">💬</span> Special Request
   </label>
-  <textarea id="remarks" name="remarks" class="remarks-textarea" placeholder="E.g. No ice, less sugar, pack separately..."></textarea>
+  <textarea id="remarks" name="remarks" class="remarks-textarea" placeholder="E.g. No ice, less sugar, less spicy..."></textarea>
 </div>
 
 
 
   <div class="menu-controls">
     <div class="quantity-controls">
-      <button class="quantity-btn minus">−</button>
+      <button class="quantity-btn minus" data-id="<?= htmlspecialchars($_GET['id']) ?>">−</button>
+        <input type="number" class="quantity-input" value="1" min="1" />
+        <button class="quantity-btn plus" data-id="<?= htmlspecialchars($_GET['id']) ?>">+</button>
+
+      <!-- <button class="quantity-btn minus">−</button>
       <input type="number" class="quantity-input" value="1" min="1" />
-      <button class="quantity-btn plus">+</button>
+      <button class="quantity-btn plus">+</button> -->
     </div>
 
     <button class="add-to-cart-btn" data-id="<?= htmlspecialchars($_GET['id']) ?>">

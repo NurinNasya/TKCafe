@@ -1,0 +1,98 @@
+[01-Jul-2025 19:15:09 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php on line 89
+[01-Jul-2025 19:15:09 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli_stmt::bind_param(): Argument #7 cannot be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php:90
+Stack trace:
+#0 C:\xampp\htdocs\TKCafe\Controller\orderController.php(44): Order->updateOrderTotals(57, 8.8, Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\TKCafe\Model\order.php on line 90
+[01-Jul-2025 19:15:09 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php on line 89
+[01-Jul-2025 19:15:09 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli_stmt::bind_param(): Argument #7 cannot be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php:90
+Stack trace:
+#0 C:\xampp\htdocs\TKCafe\Controller\orderController.php(44): Order->updateOrderTotals(57, 8.8, Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\TKCafe\Model\order.php on line 90
+[01-Jul-2025 19:15:13 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php on line 89
+[01-Jul-2025 19:15:13 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli_stmt::bind_param(): Argument #7 cannot be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php:90
+Stack trace:
+#0 C:\xampp\htdocs\TKCafe\Controller\orderController.php(44): Order->updateOrderTotals(57, 8.8, Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\TKCafe\Model\order.php on line 90
+[01-Jul-2025 19:15:13 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php on line 89
+[01-Jul-2025 19:15:13 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli_stmt::bind_param(): Argument #7 cannot be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php:90
+Stack trace:
+#0 C:\xampp\htdocs\TKCafe\Controller\orderController.php(44): Order->updateOrderTotals(57, 8.8, Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\TKCafe\Model\order.php on line 90
+[01-Jul-2025 19:18:37 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php on line 89
+[01-Jul-2025 19:18:37 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli_stmt::bind_param(): Argument #7 cannot be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php:90
+Stack trace:
+#0 C:\xampp\htdocs\TKCafe\Controller\orderController.php(44): Order->updateOrderTotals(57, 8.8, Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\TKCafe\Model\order.php on line 90
+[01-Jul-2025 19:18:37 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php on line 89
+[01-Jul-2025 19:18:37 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli_stmt::bind_param(): Argument #7 cannot be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php:90
+Stack trace:
+#0 C:\xampp\htdocs\TKCafe\Controller\orderController.php(44): Order->updateOrderTotals(57, 8.8, Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\TKCafe\Model\order.php on line 90
+[01-Jul-2025 19:26:11 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php on line 89
+[01-Jul-2025 19:26:11 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli_stmt::bind_param(): Argument #7 cannot be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php:90
+Stack trace:
+#0 C:\xampp\htdocs\TKCafe\Controller\orderController.php(44): Order->updateOrderTotals(57, 8.8, Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\TKCafe\Model\order.php on line 90
+[01-Jul-2025 19:26:11 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php on line 89
+[01-Jul-2025 19:26:11 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli_stmt::bind_param(): Argument #7 cannot be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php:90
+Stack trace:
+#0 C:\xampp\htdocs\TKCafe\Controller\orderController.php(44): Order->updateOrderTotals(57, 8.8, Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\TKCafe\Model\order.php on line 90
+[01-Jul-2025 19:26:23 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php on line 89
+[01-Jul-2025 19:26:23 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli_stmt::bind_param(): Argument #7 cannot be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php:90
+Stack trace:
+#0 C:\xampp\htdocs\TKCafe\Controller\orderController.php(44): Order->updateOrderTotals(57, 8.8, Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\TKCafe\Model\order.php on line 90
+[01-Jul-2025 19:26:23 Europe/Berlin] PHP Notice:  Only variables should be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php on line 89
+[01-Jul-2025 19:26:23 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli_stmt::bind_param(): Argument #7 cannot be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php:90
+Stack trace:
+#0 C:\xampp\htdocs\TKCafe\Controller\orderController.php(44): Order->updateOrderTotals(57, 8.8, Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\TKCafe\Model\order.php on line 90
+[01-Jul-2025 19:36:00 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli_stmt::bind_param(): Argument #2 cannot be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php:85
+Stack trace:
+#0 C:\xampp\htdocs\TKCafe\Controller\orderController.php(44): Order->updateOrderTotals(57, 8.8, Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\TKCafe\Model\order.php on line 85
+[01-Jul-2025 19:36:00 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli_stmt::bind_param(): Argument #2 cannot be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php:85
+Stack trace:
+#0 C:\xampp\htdocs\TKCafe\Controller\orderController.php(44): Order->updateOrderTotals(57, 8.8, Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\TKCafe\Model\order.php on line 85
+[01-Jul-2025 19:36:06 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli_stmt::bind_param(): Argument #2 cannot be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php:85
+Stack trace:
+#0 C:\xampp\htdocs\TKCafe\Controller\orderController.php(44): Order->updateOrderTotals(57, 8.8, Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\TKCafe\Model\order.php on line 85
+[01-Jul-2025 19:36:06 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli_stmt::bind_param(): Argument #2 cannot be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php:85
+Stack trace:
+#0 C:\xampp\htdocs\TKCafe\Controller\orderController.php(44): Order->updateOrderTotals(57, 8.8, Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\TKCafe\Model\order.php on line 85
+[01-Jul-2025 19:36:20 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli_stmt::bind_param(): Argument #2 cannot be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php:85
+Stack trace:
+#0 C:\xampp\htdocs\TKCafe\Controller\orderController.php(44): Order->updateOrderTotals(57, 5.5, Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\TKCafe\Model\order.php on line 85
+[01-Jul-2025 19:36:20 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli_stmt::bind_param(): Argument #2 cannot be passed by reference in C:\xampp\htdocs\TKCafe\Model\order.php:85
+Stack trace:
+#0 C:\xampp\htdocs\TKCafe\Controller\orderController.php(44): Order->updateOrderTotals(57, 5.5, Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\TKCafe\Model\order.php on line 85
+[02-Jul-2025 03:56:32 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function fastcgi_finish_request() in C:\xampp\htdocs\TKCafe\Controller\orderController.php:128
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\TKCafe\Controller\orderController.php on line 128
+[02-Jul-2025 03:56:32 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function fastcgi_finish_request() in C:\xampp\htdocs\TKCafe\Controller\orderController.php:128
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\TKCafe\Controller\orderController.php on line 128

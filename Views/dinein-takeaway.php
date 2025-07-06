@@ -60,6 +60,10 @@ session_start();
 // ✅ Get the table_id
 $table_id = isset($_GET['table_id']) ? intval($_GET['table_id']) : null;
 
+// ✅ Store table_id in session
+if ($table_id) {
+    $_SESSION['table_id'] = $table_id;
+}
 // Optional: Validate the table exists in DB (recommended)
 // Example: fetch table by ID
 // $table = getTableById($table_id);

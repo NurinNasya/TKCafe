@@ -217,7 +217,17 @@ document.querySelectorAll('.select-btn').forEach(button => {
       const response = await fetch(`/TKCafe/Controller/menuController.php?id=${button.dataset.id}`);
       popup.innerHTML = await response.text();
       popup.style.display = 'block';
-      
+
+      // Bind close button inside loaded popup
+    const closeBtn = popup.querySelector('.close-popup-btn');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        popup.style.display = 'none';
+        overlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      });
+    }
+          
       // Close popup when clicking overlay
       overlay.addEventListener('click', function closePopup() {
         popup.style.display = 'none';
@@ -244,6 +254,7 @@ document.querySelector('.back-button')?.addEventListener('click', function(e) {
   document.getElementById('overlay').style.display = 'none';
   document.body.style.overflow = 'auto';
 });
+
 
   // Popup handling
   /*document.querySelectorAll('.select-btn').forEach(button => {

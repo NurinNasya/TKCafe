@@ -33,11 +33,20 @@ class ordertypeController {
         try {
             $existingOrder = $this->orderModel->getCurrentOrderBySession($sessionId);
 
-            if ($existingOrder) {
+             if ($existingOrder) {
                 $this->orderModel->updateOrderType($sessionId, $orderType);
+                $_SESSION['current_order'] = $this->orderModel->getCurrentOrderBySession($sessionId);
             } else {
-                $this->orderModel->createInitialOrder($sessionId, $orderType);
+                //$tableId = $_SESSION['table_id'] ?? null;
+                $orderId = $this->orderModel->createInitialOrder($sessionId, $orderType);
+                $newOrder = $this->orderModel->getCurrentOrderBySession($sessionId);
+                $_SESSION['current_order'] = $newOrder;
             }
+            // if ($existingOrder) {
+            //     $this->orderModel->updateOrderType($sessionId, $orderType);
+            // } else {
+            //     $this->orderModel->createInitialOrder($sessionId, $orderType);
+            // }
 
             $_SESSION['current_order_type'] = $orderType;
             $this->forceRedirect('/TKCafe/Views/menu.php');
