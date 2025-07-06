@@ -1,15 +1,31 @@
 <?php
 
 require_once '../Model/tables.php';
+require_once '../Libraries/phpqrcode/qrlib.php';
 
 if (isset($_POST['add_table'])) {
     $tableName = $_POST['table_name'];
     $seats = $_POST['seats'];
     $status = $_POST['status'];
 
-    $result = addTable($tableName, $seats, $status);
+     $table_id = addTable($tableName, $seats, $status); // now returns ID
 
-    if ($result) {
+    if ($table_id) {
+
+      $tableFileName = strtolower(str_replace(' ', '_', $tableName)); // table_1
+        // ✅ Generate QR Code
+        $qrDir = '../public/QR/';
+        if (!file_exists($qrDir)) {
+            mkdir($qrDir, 0777, true);
+        }
+
+        $fileName = $qrDir . 'table_' . $table_id . '.png';
+        $tableUrl = "http://192.168.1.103/TKCafe/Views/dinein-takeaway.php?table_id=" . $table_id;
+
+
+
+        QRcode::png($tableUrl, $fileName, QR_ECLEVEL_L, 5);
+
         header("Location: ../Views/manage_tables.php?success=1");
         exit;
     } else {

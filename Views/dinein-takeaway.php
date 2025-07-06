@@ -52,11 +52,19 @@
     <script src="/TKCafe/public/js/dinein-takeaway.js"></script>
 </body>
 </html>-->
+
+
 <?php 
 session_start();
-if (isset($_GET['error'])) {
-    $error = htmlspecialchars($_GET['error']);
-}
+
+// ✅ Get the table_id
+$table_id = isset($_GET['table_id']) ? intval($_GET['table_id']) : null;
+
+// Optional: Validate the table exists in DB (recommended)
+// Example: fetch table by ID
+// $table = getTableById($table_id);
+// if (!$table) { show error }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,7 +90,9 @@ if (isset($_GET['error'])) {
                 <p>Select your preferred dining option to continue</p>
             </div>
 
+       <!-- ✅ Include hidden field inside the form -->
            <form id="orderForm" action="/TKCafe/Controller/ordertypeController.php" method="post">
+             <input type="hidden" name="table_id" value="<?= htmlspecialchars($table_id) ?>">
                 <div class="options-grid">
                     <label class="option-card dine-in">
                         <input type="radio" name="order_type" value="dine-in" required>
