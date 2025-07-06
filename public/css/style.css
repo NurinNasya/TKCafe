@@ -653,3 +653,25 @@ background: linear-gradient(to right, #e59500,#704c1e);
   box-shadow: 0 0 6px rgba(255, 140, 66, 0.3);
   outline: none;
 }
+
+.close-popup-btn {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  font-size: 26px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  z-index: 1001;
+  font-weight: bold;
+}
+
+.close-popup-btn:hover {
+  color: #e74c3c;
+}
+
+/* Optional: ensure container has relative positioning */
+.menu-details-container {
+  position: relative;
+}
