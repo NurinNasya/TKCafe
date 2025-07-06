@@ -23,12 +23,18 @@ function addTable($name, $seats, $status) {
     $conn = getConnection();
     $stmt = $conn->prepare("INSERT INTO tables (table_name, seats, status) VALUES (?, ?, ?)");
     $stmt->bind_param("sis", $name, $seats, $status);
-    $success = $stmt->execute();
-    $stmt->close();
-    $conn->close();
-    return $success;
+    
+    if ($stmt->execute()) {
+        $insertId = $stmt->insert_id; // ✅ Get table_id
+        $stmt->close();
+        $conn->close();
+        return $insertId; // ✅ Return table_id to generate QR
+    } else {
+        $stmt->close();
+        $conn->close();
+        return false;
+    }
 }
-
 
 function getTableById($id) {
     $conn = getConnection();
@@ -61,3 +67,4 @@ function deleteTable($id) {
     $conn->close();
     return $success;
 }
+
