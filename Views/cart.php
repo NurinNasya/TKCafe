@@ -4,9 +4,12 @@ require_once '../Model/cart.php';
 require_once '../Model/menu.php';
 require_once '../db.php';
 
-$cartModel = new Cart($conn);
+$conn = getConnection(); // ✅ This is now necessary
+
 $menuModel = new Menu();
-$items = $cartModel->getItems(session_id());
+$session_id = session_id(); 
+$items = getItems($conn, $session_id); 
+// $items = $cartModel->getItems(session_id());
 $total = 0;
 ?>
 <!DOCTYPE html>

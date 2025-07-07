@@ -96,3 +96,17 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\TKCafe\Controller\orderController.php on line 128
+[07-Jul-2025 05:19:08 Europe/Berlin] PHP Fatal error:  Cannot redeclare clearCart() (previously declared in C:\xampp\htdocs\TKCafe\Model\order.php:139) in C:\xampp\htdocs\TKCafe\Model\cart.php on line 75
+[07-Jul-2025 05:23:54 Europe/Berlin] PHP Fatal error:  Cannot redeclare clearCart() (previously declared in C:\xampp\htdocs\TKCafe\Model\order.php:139) in C:\xampp\htdocs\TKCafe\Model\cart.php on line 75
+[07-Jul-2025 05:23:59 Europe/Berlin] PHP Fatal error:  Cannot redeclare clearCart() (previously declared in C:\xampp\htdocs\TKCafe\Model\order.php:139) in C:\xampp\htdocs\TKCafe\Model\cart.php on line 75
+[07-Jul-2025 05:31:33 Europe/Berlin] PHP Fatal error:  Cannot redeclare clearCart() (previously declared in C:\xampp\htdocs\TKCafe\Model\order.php:139) in C:\xampp\htdocs\TKCafe\Model\cart.php on line 75
+[07-Jul-2025 05:31:38 Europe/Berlin] PHP Fatal error:  Cannot redeclare clearCart() (previously declared in C:\xampp\htdocs\TKCafe\Model\order.php:139) in C:\xampp\htdocs\TKCafe\Model\cart.php on line 75
+[07-Jul-2025 05:36:20 Europe/Berlin] PHP Fatal error:  Cannot redeclare clearCart() (previously declared in C:\xampp\htdocs\TKCafe\Model\order.php:139) in C:\xampp\htdocs\TKCafe\Model\cart.php on line 75
+[07-Jul-2025 05:36:26 Europe/Berlin] PHP Fatal error:  Cannot redeclare clearCart() (previously declared in C:\xampp\htdocs\TKCafe\Model\order.php:139) in C:\xampp\htdocs\TKCafe\Model\cart.php on line 75
+[07-Jul-2025 05:37:37 Europe/Berlin] PHP Fatal error:  Cannot redeclare clearCart() (previously declared in C:\xampp\htdocs\TKCafe\Model\order.php:139) in C:\xampp\htdocs\TKCafe\Model\cart.php on line 75
+[07-Jul-2025 05:40:51 Europe/Berlin] PHP Fatal error:  Cannot redeclare clearCart() (previously declared in C:\xampp\htdocs\TKCafe\Model\order.php:139) in C:\xampp\htdocs\TKCafe\Model\cart.php on line 75
+[07-Jul-2025 05:40:53 Europe/Berlin] PHP Fatal error:  Cannot redeclare clearCart() (previously declared in C:\xampp\htdocs\TKCafe\Model\order.php:139) in C:\xampp\htdocs\TKCafe\Model\cart.php on line 75
+[07-Jul-2025 05:41:18 Europe/Berlin] PHP Fatal error:  Cannot redeclare clearCart() (previously declared in C:\xampp\htdocs\TKCafe\Model\order.php:139) in C:\xampp\htdocs\TKCafe\Model\cart.php on line 75
+[07-Jul-2025 05:56:31 Europe/Berlin] PHP Fatal error:  Cannot redeclare clearCart() (previously declared in C:\xampp\htdocs\TKCafe\Model\order.php:140) in C:\xampp\htdocs\TKCafe\Model\cart.php on line 75
+[07-Jul-2025 05:56:34 Europe/Berlin] PHP Fatal error:  Cannot redeclare clearCart() (previously declared in C:\xampp\htdocs\TKCafe\Model\order.php:140) in C:\xampp\htdocs\TKCafe\Model\cart.php on line 75
+[07-Jul-2025 05:57:06 Europe/Berlin] PHP Fatal error:  Cannot redeclare clearCart() (previously declared in C:\xampp\htdocs\TKCafe\Model\order.php:140) in C:\xampp\htdocs\TKCafe\Model\cart.php on line 75

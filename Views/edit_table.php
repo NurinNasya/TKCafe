@@ -1,24 +1,5 @@
 <?php
 // require_once '../Model/tables.php';
-
-// if (!isset($_GET['id'])) {
-//   header("Location: manage_tables.php");
-//   exit;
-// }
-
-// $table = getTableById($_GET['id']);
-// if (!$table) {
-//   echo "Table not found.";
-//   exit;
-// }
-
-// Dummy data for interface preview
-$table = [
-  'id' => 1,
-  'table_name' => 'Table 1',
-  'seats' => 4,
-  'status' => 'available'
-];
 ?>
 
 <!DOCTYPE html>

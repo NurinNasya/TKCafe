@@ -1,20 +1,20 @@
 <?php
-require_once 'db.php'; // shared connection function
+require_once 'db.php'; // Make sure getConnection() is defined there
 
 function adminLogin($username, $password) {
     $conn = getConnection();
-    $stmt = $conn->prepare("SELECT password FROM admins WHERE username = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $stmt->store_result();
 
-    if ($stmt->num_rows === 1) {
-        $stmt->bind_result($hashedPassword);
-        $stmt->fetch();
-        return password_verify($password, $hashedPassword);
+    $username = mysqli_real_escape_string($conn, $username);
+
+    $query = "SELECT password FROM admins WHERE username = '$username'";
+    $result = mysqli_query($conn, $query);
+
+    if ($result && mysqli_num_rows($result) === 1) {
+        $row = mysqli_fetch_assoc($result);
+        mysqli_close($conn);
+        return password_verify($password, $row['password']);
     }
 
-    $stmt->close();
-    $conn->close();
+    mysqli_close($conn);
     return false;
 }

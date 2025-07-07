@@ -1,152 +1,76 @@
 <?php
 
-class Cart {
-    private $conn;
+function addItem($conn, $menu_id, $quantity, $price, $session_id, $customizations = null, $remarks = null) {
+    $customizationsJson = $customizations ? json_encode($customizations) : null;
+    $cleanedRemarks = $remarks ? trim($remarks) : null;
 
-    public function __construct($db) {
-        $this->conn = $db; // This is a mysqli connection
-    }
+    $menu_id = intval($menu_id);
+    $quantity = intval($quantity);
+    $price = floatval($price);
+    $session_id = mysqli_real_escape_string($conn, $session_id);
+    $customizationsJson = $customizationsJson ? "'" . mysqli_real_escape_string($conn, $customizationsJson) . "'" : "NULL";
+    $cleanedRemarks = $cleanedRemarks ? "'" . mysqli_real_escape_string($conn, $cleanedRemarks) . "'" : "NULL";
 
-    public function addItem($menu_id, $quantity, $price, $session_id, $customizations = null, $remarks = null) {
-    try {
-        $stmt = $this->conn->prepare("
-            INSERT INTO order_item 
-            (menu_id, quantity, price, session_id, customizations, remarks) 
-            VALUES (?, ?, ?, ?, ?, ?)
-        ");
-        
-        if (!$stmt) throw new Exception("Prepare failed: ".$this->conn->error);
-        
-        $customizationsJson = $customizations ? json_encode($customizations) : null;
-        $cleanedRemarks = $remarks ? trim($remarks) : null;
-        
-        $stmt->bind_param(
-            "iidsss", 
-            $menu_id, 
-            $quantity, 
-            $price, 
-            $session_id, 
-            $customizationsJson,
-            $cleanedRemarks
-        );
-        
-        if (!$stmt->execute()) {
-            throw new Exception("Execute failed: ".$stmt->error);
-        }
-        
-        return true;
-        
-    } catch (Exception $e) {
-        error_log("Cart Model Error: ".$e->getMessage());
-        throw $e;
-    }
-}
-    /*public function addItem($menu_id, $quantity, $price, $session_id, $customizations = null, $remarks = null) {
-    // Basic validation
-    if (!is_numeric($price)) throw new Exception("Invalid price");
-    
-    $stmt = $this->conn->prepare("
+    $query = "
         INSERT INTO order_item 
         (menu_id, quantity, price, session_id, customizations, remarks) 
-        VALUES (?, ?, ?, ?, ?, ?)
-    ");
-    
-    $stmt->bind_param(
-        "iidsss", 
-        $menu_id, 
-        $quantity, 
-        $price, 
-        $session_id, 
-        $customizations ? json_encode($customizations) : null,
-        $remarks ? trim($remarks) : null
-    );
-    
-    return $stmt->execute();
-}*/
+        VALUES ($menu_id, $quantity, $price, '$session_id', $customizationsJson, $cleanedRemarks)
+    ";
 
-    /*public function addItem($menu_id, $quantity, $price, $session_id, $customizations = null) {
-    // Ensure price is numeric
-    if (!is_numeric($price)) {
-        throw new Exception("Invalid price format for menu item");
-    }
-    
-    $customizationsJson = $customizations ? json_encode($customizations) : null;
-    $stmt = $this->conn->prepare("INSERT INTO order_item (menu_id, quantity, price, session_id, customizations) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("iidss", $menu_id, $quantity, $price, $session_id, $customizationsJson);
-    return $stmt->execute();
-} sec lama*/
+    return mysqli_query($conn, $query);
+}
 
-    /*public function addItem($menu_id, $quantity, $price, $session_id) {
-        $stmt = $this->conn->prepare("INSERT INTO order_item (menu_id, quantity, price, session_id) VALUES (?, ?, ?, ?)");
-        if (!$stmt) return false;
-        $stmt->bind_param("iids", $menu_id, $quantity, $price, $session_id);
-        $result = $stmt->execute();
-        $stmt->close();
-        return $result;
-    } lama*/
-
-    // public function getItems($session_id) {
-    //     $stmt = $this->conn->prepare("SELECT * FROM order_item WHERE session_id = ?");
-    //     if (!$stmt) return [];
-    //     $stmt->bind_param("s", $session_id);
-    //     $stmt->execute();
-    //     $result = $stmt->get_result();
-    //     $items = $result->fetch_all(MYSQLI_ASSOC);
-    //     $stmt->close();
-    //     return $items;
-    // latest}
-
-    public function getItems($session_id) {
-    $stmt = $this->conn->prepare("
+function getItems($conn, $session_id) {
+    $session_id = mysqli_real_escape_string($conn, $session_id);
+    $query = "
         SELECT * FROM order_item 
-        WHERE session_id = ? AND order_id IS NULL
-    ");
-    if (!$stmt) return [];
-    $stmt->bind_param("s", $session_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $items = $result->fetch_all(MYSQLI_ASSOC);
-    $stmt->close();
+        WHERE session_id = '$session_id' AND order_id IS NULL
+    ";
+    $result = mysqli_query($conn, $query);
+
+    $items = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $items[] = $row;
+    }
+
     return $items;
 }
 
-    public function updateQuantity($id, $quantity, $session_id) {
-        $stmt = $this->conn->prepare("UPDATE order_item SET quantity = ? WHERE id = ? AND session_id = ?");
-        if (!$stmt) return false;
-        $stmt->bind_param("iis", $quantity, $id, $session_id);
-        $result = $stmt->execute();
-        
-        // Check affected rows
-        $affected = $stmt->affected_rows;
-        $stmt->close();
-        
-        return $affected > 0;
-    }
+function updateQuantity($conn, $id, $quantity, $session_id) {
+    $id = intval($id);
+    $quantity = intval($quantity);
+    $session_id = mysqli_real_escape_string($conn, $session_id);
 
-    public function removeItem($id, $session_id) {
-        $stmt = $this->conn->prepare("DELETE FROM order_item WHERE id = ? AND session_id = ?");
-        if (!$stmt) return false;
-        $stmt->bind_param("is", $id, $session_id);
-        $result = $stmt->execute();
-        $affected = $stmt->affected_rows;
-        $stmt->close();
-        return $affected > 0;
-    }
+    $query = "
+        UPDATE order_item 
+        SET quantity = $quantity 
+        WHERE id = $id AND session_id = '$session_id'
+    ";
 
-    //   // Add this method if missing
-    // public function clearCart($session_id) {
-    //     $stmt = $this->conn->prepare("DELETE FROM order_item WHERE session_id = ?");
-    //     $stmt->bind_param("s", $session_id);
-    //     return $stmt->execute();
-    // }
-
-    public function clearCart($session_id) {
-    $stmt = $this->conn->prepare("
-        DELETE FROM order_item 
-        WHERE session_id = ? AND order_id IS NULL
-    ");
-    $stmt->bind_param("s", $session_id);
-    return $stmt->execute();
+    mysqli_query($conn, $query);
+    return mysqli_affected_rows($conn) > 0;
 }
 
+function removeItem($conn, $id, $session_id) {
+    $id = intval($id);
+    $session_id = mysqli_real_escape_string($conn, $session_id);
+
+    $query = "
+        DELETE FROM order_item 
+        WHERE id = $id AND session_id = '$session_id'
+    ";
+
+    mysqli_query($conn, $query);
+    return mysqli_affected_rows($conn) > 0;
+}
+
+function clearCart($conn, $session_id) {
+    $session_id = mysqli_real_escape_string($conn, $session_id);
+
+    $query = "
+        DELETE FROM order_item 
+        WHERE session_id = '$session_id' AND order_id IS NULL
+    ";
+
+    return mysqli_query($conn, $query);
 }

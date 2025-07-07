@@ -52,12 +52,3 @@ if (file_exists($viewPath)) {
 } else {
     echo "View not found for section: {$section} and category: {$category}";
 }
-
-// Optionally, you can check category to load different views
-/*$category = $item['category'] ?? 'standard';
-
-if ($category === 'signature') {
-    include '../Views/alacarte_signature.php';  // If you have a different view for signature items
-} else {
-    include '../Views/alacarte_standard.php';
-}*/

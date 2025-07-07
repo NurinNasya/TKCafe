@@ -5,12 +5,11 @@ session_start();
 require_once '../Model/adminorder.php';
 require_once '../db.php';
 
-
+$conn = getConnection(); 
 // Include controller
 
 try {
-    $model = new AdminOrderModel($conn);
-    $orders = $model->getAllOrdersWithItems();
+   $orders = getAllOrdersWithItems($conn);
     
     if (!is_array($orders)) {
         throw new RuntimeException('No orders data received');
@@ -66,10 +65,7 @@ try {
                                 <?php endif; ?>
                                      <?php 
                                      $drink = is_array($item['customizations']) ? ($item['customizations']['drink'] ?? null) : null;
-if ($drink):
-                                    //  if (!empty($item['customizations']) && isset($item['customizations']['drink'])):
-                                // $custom = json_decode($item['customizations'], true);
-                                // if (!empty($custom) && isset($custom['drink'])):
+                                    if ($drink):
                             ?>
                                 <!-- <div class="notes">Drink: <?= ucwords(str_replace('-', ' ', htmlspecialchars($custom['drink']))) ?></div> -->
                                  <!-- <div class="notes">Drink: <?= ucwords(str_replace('-', ' ', htmlspecialchars($item['customizations']['drink']))) ?></div> -->

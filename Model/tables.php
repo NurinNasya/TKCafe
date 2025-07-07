@@ -1,70 +1,73 @@
 <?php
-
-function getConnection() {
-    return new mysqli("localhost", "root", "", "tkcafe"); // Change DB name
-}
-
+require_once __DIR__ . '/../db.php';
 
 function getAllTables() {
     $conn = getConnection();
     $sql = "SELECT * FROM tables ORDER BY id ASC";
-    $result = $conn->query($sql);
+    $result = mysqli_query($conn, $sql);
     $tables = [];
 
-    while ($row = $result->fetch_assoc()) {
+    while ($row = mysqli_fetch_assoc($result)) {
         $tables[] = $row;
     }
 
-    $conn->close();
+    mysqli_close($conn);
     return $tables;
 }
 
 function addTable($name, $seats, $status) {
     $conn = getConnection();
-    $stmt = $conn->prepare("INSERT INTO tables (table_name, seats, status) VALUES (?, ?, ?)");
-    $stmt->bind_param("sis", $name, $seats, $status);
     
-    if ($stmt->execute()) {
-        $insertId = $stmt->insert_id; // ✅ Get table_id
-        $stmt->close();
-        $conn->close();
-        return $insertId; // ✅ Return table_id to generate QR
+    $name = mysqli_real_escape_string($conn, $name);
+    $seats = intval($seats);
+    $status = mysqli_real_escape_string($conn, $status);
+
+    $query = "INSERT INTO tables (table_name, seats, status) VALUES ('$name', $seats, '$status')";
+
+    if (mysqli_query($conn, $query)) {
+        $insertId = mysqli_insert_id($conn);
+        mysqli_close($conn);
+        return $insertId;
     } else {
-        $stmt->close();
-        $conn->close();
+        mysqli_close($conn);
         return false;
     }
 }
 
 function getTableById($id) {
     $conn = getConnection();
-    $stmt = $conn->prepare("SELECT * FROM tables WHERE id = ?");
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $table = $result->fetch_assoc();
-    $stmt->close();
-    $conn->close();
+    $id = intval($id);
+    $query = "SELECT * FROM tables WHERE id = $id";
+    $result = mysqli_query($conn, $query);
+    $table = mysqli_fetch_assoc($result);
+    mysqli_close($conn);
     return $table;
 }
 
 function updateTable($id, $name, $seats, $status) {
     $conn = getConnection();
-    $stmt = $conn->prepare("UPDATE tables SET table_name = ?, seats = ?, status = ? WHERE id = ?");
-    $stmt->bind_param("sisi", $name, $seats, $status, $id);
-    $success = $stmt->execute();
-    $stmt->close();
-    $conn->close();
+
+    $id = intval($id);
+    $name = mysqli_real_escape_string($conn, $name);
+    $seats = intval($seats);
+    $status = mysqli_real_escape_string($conn, $status);
+
+    $query = "
+        UPDATE tables 
+        SET table_name = '$name', seats = $seats, status = '$status' 
+        WHERE id = $id
+    ";
+
+    $success = mysqli_query($conn, $query);
+    mysqli_close($conn);
     return $success;
 }
 
 function deleteTable($id) {
     $conn = getConnection();
-    $stmt = $conn->prepare("DELETE FROM tables WHERE id = ?");
-    $stmt->bind_param("i", $id);
-    $success = $stmt->execute();
-    $stmt->close();
-    $conn->close();
+    $id = intval($id);
+    $query = "DELETE FROM tables WHERE id = $id";
+    $success = mysqli_query($conn, $query);
+    mysqli_close($conn);
     return $success;
 }
-

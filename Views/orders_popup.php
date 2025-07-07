@@ -22,13 +22,6 @@ $buttonLabel = $order['status'] === 'pending' ? 'Preparing' :
         </div>
         <h1 class="order-title">Order <?= htmlspecialchars($order['order_number']) ?></h1>
     </div>
-           <!-- <div class="order-status-large status-<?= strtolower($order['status']) ?>">
-            <?= strtoupper(htmlspecialchars($order['status'])) ?>
-        </div>
-        <h1 class="order-title">Order <?= htmlspecialchars($order['order_number']) ?></h1> -->
-        <!-- <span class="order-status status-<?= strtolower($order['status']) ?>">
-            <?= htmlspecialchars($order['status']) ?>
-        </span> -->
     </div>
 
     <div class="order-meta">
@@ -49,10 +42,8 @@ $buttonLabel = $order['status'] === 'pending' ? 'Preparing' :
             <?php endif; ?>
              <?php 
             $drink = is_array($item['customizations']) ? ($item['customizations']['drink'] ?? null) : null;
-if ($drink):
-            //  if (!empty($item['customizations']) && isset($item['customizations']['drink'])):
-            // $custom = json_decode($item['customizations'], true);
-            // if (!empty($custom) && isset($custom['drink'])):
+            if ($drink):
+        
         ?>
             <!-- <div class="item-notes">Drink: <?= ucwords(str_replace('-', ' ', htmlspecialchars($custom['drink']))) ?></div> -->
              <!-- <div class="notes">Drink: <?= ucwords(str_replace('-', ' ', htmlspecialchars($item['customizations']['drink']))) ?></div> -->

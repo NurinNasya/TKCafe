@@ -2,14 +2,23 @@
 require_once '../db.php';
 require_once '../Model/dashboardstats.php';
 
-$statsModel = new DashboardStats($conn);
+session_start();
 
-$totalSales = $statsModel->getTotalSales();
-$totalOrders = $statsModel->getTotalOrders();
-$todaysOrders = $statsModel->getTodaysOrders(); // Rename here to match usage below
+$conn = getConnection();
+
+// Only allow access if logged in as admin
+if (!isset($_SESSION['admin'])) {
+    header("Location: login.php");
+    exit;
+}
+
+$totalSales = getTotalSales($conn);
+$totalOrders = getTotalOrders($conn);
+$todaysOrders = getTodaysOrders($conn);
+ // Rename here to match usage below
 
 // 🟢 For sales chart
-$salesData = $statsModel->getSalesLast7Days();
+$salesData = getSalesLast7Days($conn);
 $chartLabels = array_column($salesData, 'sale_date');
 $chartValues = array_column($salesData, 'total_sales');
 ?>
@@ -60,29 +69,6 @@ $chartValues = array_column($salesData, 'total_sales');
           <p class="stat-change">Updated just now</p>
         </div>
       </div>
-      <!-- <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-icon primary">💰</div>
-          <h3>Total Sales</h3>
-          <p class="stat-value">RM 1,240.50</p>
-          <p class="stat-change">+RM 150 today</p>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-icon success">🛒</div>
-          <h3>Total Orders</h3>
-          <p class="stat-value">523</p>
-          <p class="stat-change">+12 today</p>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-icon info">📅</div>
-          <h3>Today's Orders</h3>
-          <p class="stat-value">22</p>
-          <p class="stat-change">Updated just now</p>
-        </div>
-      </div> -->
-
   <!-- 📈 Sales Chart -->
       <section class="data-section">
         <div class="section-header">
@@ -91,51 +77,6 @@ $chartValues = array_column($salesData, 'total_sales');
         <canvas id="salesChart" style="max-height: 400px; margin-bottom: 2rem;"></canvas>
       </section>
 
-
-      <!-- Recent Orders Table -->
-      <!-- <section class="data-section">
-        <div class="section-header">
-          <h2>Recent Orders</h2>
-          <button class="btn btn-outline">View All</button>
-        </div>
-        
-        <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>Order ID</th>
-                <th>Table</th>
-                <th>Items</th>
-                <th>Amount</th>
-                <th>Status</th>
-                <th class="text-right">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>#1025</td>
-                <td>Table 3</td>
-                <td>2x Burger, 1x Fries</td>
-                <td>$24.50</td>
-                <td><span class="badge badge-warning">Preparing</span></td>
-                <td class="text-right">
-                  <button class="btn btn-sm btn-primary">View</button>
-                </td>
-              </tr>
-              <tr>
-                <td>#1024</td>
-                <td>Table 7</td>
-                <td>1x Pizza, 2x Soda</td>
-                <td>$18.00</td>
-                <td><span class="badge badge-success">Completed</span></td>
-                <td class="text-right">
-                  <button class="btn btn-sm btn-primary">View</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section> -->
     </main>
   </div>
    <!-- ✅ Chart.js + Data Passing + Custom JS -->

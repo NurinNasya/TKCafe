@@ -559,12 +559,6 @@ class Menu {
     }
     return null;
 }
-    /*public function getItemById($id) {
-        if (isset($this->menuItems[$id])) {
-            return $this->menuItems[$id];
-        }
-        return null;
-    }*/
 
     // Get items by category (standard or signature)
     public function getItemsByCategory($category) {
