@@ -14,6 +14,9 @@
 <header>
      <div class="header-inner">
      <div class="header-inner">
+       <a href="/TKCafe/Views/dinein-takeaway.php" class="back-btn">
+      <i class="fas fa-arrow-left"></i>
+      </a>
     <div class="logo-title">
      <img src="/TKCafe/public/images/tksb_logo.png" alt="Logo">
       <h1>TK Cafe</h1>

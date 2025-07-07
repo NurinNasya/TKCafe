@@ -27,15 +27,26 @@
     font-style: italic;
 }
 
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
 .receipt-total {
     margin-top: 2rem;
     border-top: 2px solid #333;
     padding-top: 1rem;
+    text-align: right; /* Ensure text aligns right inside container */
 }
 
 .grand-total {
     font-weight: bold;
     font-size: 1.2em;
+    display: flex;
+    justify-content: space-between; /* Automatically pushes label and amount apart */
+    margin-top: 1rem;
 }
 
 .receipt-footer {
@@ -60,4 +71,10 @@
     font-size: 1.05em;
     font-weight: 600;
     color: #333;
+}
+
+.order-number {
+    font-size: 1.6rem;
+    color: #000;
+    font-weight: 700;
 }

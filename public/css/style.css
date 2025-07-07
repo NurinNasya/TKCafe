@@ -177,7 +177,7 @@ background: linear-gradient(to right, #e59500,#704c1e);
 .menu-item-price {
   font-weight: 700;
   font-size: 2rem;
-  color: #333;
+  color: #000;
   margin-top: 10px;
   white-space: nowrap;
 }
@@ -241,7 +241,7 @@ background: linear-gradient(to right, #e59500,#704c1e);
 .menu-price {
   font-size: 32px;
   font-weight: bold;
-  color:rgb(70, 189, 102);
+  color:rgb(0, 0, 0);
   text-align: center;
   margin: 0 0 25px 0;
 }
@@ -673,6 +673,32 @@ background: linear-gradient(to right, #e59500,#704c1e);
 
 .close-popup-btn:hover {
   color: #e74c3c;
+}
+
+/* Back button styles */
+.back-btn {
+    margin-right: 40px;
+    font-size: 3rem;
+    color: #333; /* Match your design */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.back-btn:hover {
+    color: #ff5722; /* Orange color on hover - adjust to match your theme */
+}
+
+.logo-and-nav {
+    display: flex;
+    align-items: center;
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    /* Keep your existing header styles */
 }
 
 /* Optional: ensure container has relative positioning */
