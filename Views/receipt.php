@@ -42,10 +42,10 @@ $items = $order_data['items'] ?? [];
     <div class="receipt-container">
         <h1>Order Confirmation</h1>
         <div class="receipt-header">
-            <p>Order:<?= htmlspecialchars($order['order_number'] ?? 'N/A') ?></p>
-            <p>Date: <?= date('M j, Y H:i', strtotime($order['created_at'])) ?></p>
-            <p>Type: <?= ucfirst(str_replace('_', ' ', $order['order_type'])) ?></p>
-            <p>Table: <?= htmlspecialchars($order['table_name'] ?? 'N/A') ?></p> <!-- Add this -->
+        <p><strong>Order:</strong> <strong class="order-number"><?= htmlspecialchars($order['order_number'] ?? 'N/A') ?></strong></p>
+        <p><strong>Date:</strong> <?= date('M j, Y H:i', strtotime($order['created_at'])) ?></p>
+        <p><strong>Type:</strong> <?= ucfirst(str_replace('_', ' ', $order['order_type'])) ?></p>
+        <p><strong>Table:</strong> <?= htmlspecialchars($order['table_name'] ?? 'N/A') ?></p>
         </div>
 
         <?php if (empty($items)): ?>
@@ -93,7 +93,7 @@ $items = $order_data['items'] ?? [];
                 <span>RM <?= number_format($order['total'] * 0.1, 2) ?></span>
             </div>
             <div class="total-row grand-total">
-                <span>Total</span>
+                <span>TOTAL</span>
                 <span>RM <?= number_format($order['total'], 2) ?></span>
             </div>
         </div>
