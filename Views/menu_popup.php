@@ -100,7 +100,7 @@
 <!-- Stylish Remarks Section -->
 <div class="remarks-section">
   <label for="remarks" class="remarks-label">
-    <span class="remarks-icon">💬</span> Special Request
+    <span class="remarks-icon">💬</span> Remark
   </label>
   <textarea id="remarks" name="remarks" class="remarks-textarea" placeholder="E.g. No ice, less sugar, less spicy..."></textarea>
 </div>
