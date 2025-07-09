@@ -1,54 +1,44 @@
 <?php
+require_once '../model/menu.php';
+require_once '../db.php'; // ✅ This gives access to getConnection()
 
-require_once '../Model/menu.php'; // Adjust path based on your folder structure
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+$conn = getConnection(); 
 
-$menu = new Menu();
+// ADD MENU
+if (isset($_POST['addMenu'])) {
+    $name = $_POST['name'];
+    $description = $_POST['description'];
+    $price = $_POST['price'];
+    $category = $_POST['category'];
 
-// --- AJAX request handling start ---
-if (isset($_GET['id']) && isset($_SERVER['HTTP_ACCEPT']) && strpos($_SERVER['HTTP_ACCEPT'], 'application/json') !== false) {
-    $id = intval($_GET['id']);
-    $item = $menu->getItemById($id);
+    // Handle image upload
+    if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+        $image = $_FILES['image']['name'];
+        $temp = $_FILES['image']['tmp_name'];
+        $target = "../uploads/" . basename($image);
 
-    if ($item) {
-        header('Content-Type: application/json');
-        echo json_encode([
-            'name' => $item['name'],
-            'price' => $item['price'],
-            'description' => $item['description'],
-            'image' => $item['image'], // adjust key name as needed
-        ]);
+        if (move_uploaded_file($temp, $target)) {
+            // Save to database
+             if (addMenuItem($conn, $name, $description, $price, $category, $image)) {
+            header("Location: ../views/manage_menu.php");
+            exit();
+        } else {
+            echo "Failed to upload image.";
+        }
     } else {
-        http_response_code(404);
-        echo json_encode(['error' => 'Item not found']);
+        echo "Image is required.";
     }
-    exit;  // Important: stop the script here for AJAX requests
-}
-// --- AJAX request handling end ---
-
-
-if (!isset($_GET['id'])) {
-    echo "No menu item selected.";
-    exit;
 }
 
-$id = intval($_GET['id']);
-$item = $menu->getItemById($id);
-
-if (!$item) {
-    echo "Menu item not found.";
-    exit;
+// DELETE MENU
+if (isset($_GET['delete'])) {
+    $id = $_GET['delete'];
+    $menuModel->deleteMenu($id);
+    header("Location: ../views/manage_menu.php");
+    exit();
 }
-
-// Build path to view
-$viewPath = "../Views/menu_popup.php";
-
-// Include the appropriate view if it exists
-if (file_exists($viewPath)) {
-    include $viewPath;
-} else {
-    echo "View not found for section: {$section} and category: {$category}";
 }
+// EDIT and UPDATE could go here later...
+
+?>
