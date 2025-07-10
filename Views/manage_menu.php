@@ -53,7 +53,7 @@ $menuItems = getAllMenuItems($conn);
                 <td><img src="/TKCafe/uploads/<?= htmlspecialchars($menu['image']) ?>" width="50" alt="Menu Image"></td>
                 <td><?= htmlspecialchars($menu['category']) ?></td>
                 <td>
-                  <button class="btn btn-sm btn-primary edit-btn" data-id="<?= $menu['id'] ?>">Edit</button>
+                 <a href="edit_menu.php?id=<?= $menu['id'] ?>" class="btn btn-sm btn-primary">Edit</a>
                   <form action="/TKCafe/Controller/menuController.php" method="POST" style="display:inline;">
                     <input type="hidden" name="delete_menu_id" value="<?= $menu['id'] ?>">
                     <button type="submit" name="delete_menu" class="btn btn-sm btn-danger"
@@ -91,9 +91,9 @@ $menuItems = getAllMenuItems($conn);
                 <input type="number" name="price" step="0.01" required>
             </div>
 
-           <div class="form-group">
-          <label>Category</label>
-         <select name="category" required>
+        <div class="form-group">
+        <label>Category</label>
+        <select name="category" required>
         <option value="" disabled selected>Select Category</option>
         <option value="best-seller">Best Seller</option>
         <option value="standard">Ala Carte (Standard)</option>
@@ -123,6 +123,49 @@ $menuItems = getAllMenuItems($conn);
         </form>
       </div>
     </div>
+
+<!-- Edit Menu Popup Modal -->
+<div id="editMenuModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeEditForm()">&times;</span>
+    <h2>Edit Menu Item</h2>
+    <form id="editMenuForm" action="/TKCafe/Controller/menuController.php" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="id" id="edit-id">
+
+      <div class="form-group">
+        <label>Menu Name</label>
+        <input type="text" name="name" id="edit-name" required>
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+        <textarea name="description" id="edit-description" rows="3" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Price (RM)</label>
+        <input type="number" name="price" id="edit-price" step="0.01" required>
+      </div>
+
+      <div class="form-group">
+        <label>Category</label>
+        <input type="text" name="category" id="edit-category" required>
+      </div>
+
+      <div class="form-group">
+        <label>Current Image:</label><br>
+        <img id="edit-preview-image" src="" width="100"><br><br>
+        <input type="file" name="image">
+        <small>Leave blank to keep current image.</small>
+      </div>
+
+      <div class="form-buttons">
+        <button type="submit" name="updateMenu" class="btn btn-success">Update Menu</button>
+        <button type="button" onclick="closeEditForm()" class="btn btn-secondary">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
 
   </main>
 </div>
