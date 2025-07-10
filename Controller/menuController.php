@@ -41,4 +41,17 @@ if (isset($_GET['delete'])) {
 }
 // EDIT and UPDATE could go here later...
 
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $item = getMenuItemById($conn, $id); // This should be defined in your menu model
+
+    if ($item) {
+        require '../views/menu_popup.php';
+        exit;
+    } else {
+        echo "Item not found.";
+        exit;
+    }
+}
+
 ?>
