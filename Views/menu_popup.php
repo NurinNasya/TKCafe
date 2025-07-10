@@ -2,7 +2,17 @@
 <?php if (!isset($item)) {
     echo "No item data.";
     exit;
-} ?>
+}
+  $categoriesWithRemarks = [
+  'masakan-ala',
+  'masakan-side',
+  'lokcing',
+  'western',
+  'air-balang',
+  'soft-drinks',
+  'hot-drinks'
+];
+?>
 
 <link rel="stylesheet" href="/TKCafe/public/css/style.css" />
 
@@ -11,7 +21,8 @@
    
   <h1 class="menu-title"><?= htmlspecialchars($item['name']) ?></h1>
 
-  <img src="<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>" class="menu-image" />
+ <img src="/TKCafe/uploads/<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>" class="menu-image" />
+
 
   <p class="menu-description"><?= htmlspecialchars($item['description']) ?></p>
 
@@ -64,15 +75,22 @@
   <strong>Price:</strong> <?= 'RM' . number_format((float)str_replace('RM', '', $item['price']), 2) ?>
 </p>
 
-
+<?php if (in_array($item['category'], $categoriesWithRemarks)): ?>
 <!-- Stylish Remarks Section -->
-<div class="remarks-section">
+  <div class="remarks-section">
+    <label for="remarks" class="remarks-label">
+      <span class="remarks-icon">💬</span> Remark
+    </label>
+    <textarea id="remarks" name="remarks" class="remarks-textarea" placeholder="E.g. No ice, less sugar, less spicy..."></textarea>
+  </div>
+<?php endif; ?>
+<!-- <div class="remarks-section">
   <label for="remarks" class="remarks-label">
     <span class="remarks-icon">💬</span> Remark
   </label>
   <textarea id="remarks" name="remarks" class="remarks-textarea" placeholder="E.g. No ice, less sugar, less spicy..."></textarea>
 </div>
-
+ -->
 
 
   <div class="menu-controls">

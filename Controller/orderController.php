@@ -13,7 +13,7 @@ require_once __DIR__ . '/../db.php';
 header('Content-Type: application/json');
 
 $conn = getConnection();
-$menuModel = new Menu();
+// $menuModel = new Menu();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
@@ -50,15 +50,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'order_type' => $currentOrder['order_type'],
                 'total' => $total
             ],
-            'items' => array_map(function($item) use ($menuModel) {
-                $menuItem = $menuModel->getItemById($item['menu_id']);
-                return [
-                    'menu_id' => $item['menu_id'],
-                    'name' => $menuItem['name'] ?? 'Item #' . $item['menu_id'],
-                    'price' => (float)$item['price'],
-                    'quantity' => (int)$item['quantity'],
-                    'customizations' => $item['customizations'],
-                    'remarks' => $item['remarks'] ?? null
+            'items' => array_map(function($item) use ($conn) {
+            $menuItem = getMenuItemById($conn, $item['menu_id']);
+            return [
+                'menu_id' => $item['menu_id'],
+                'name' => $menuItem['name'] ?? 'Item #' . $item['menu_id'],
+                'price' => (float)$item['price'],
+                'quantity' => (int)$item['quantity'],
+                'customizations' => $item['customizations'],
+                'remarks' => $item['remarks'] ?? null
+            // 'items' => array_map(function($item) use ($menuModel) {
+                // $menuItem = $menuModel->getItemById($item['menu_id']);
+                // return [
+                //     'menu_id' => $item['menu_id'],
+                //     'name' => $menuItem['name'] ?? 'Item #' . $item['menu_id'],
+                //     'price' => (float)$item['price'],
+                //     'quantity' => (int)$item['quantity'],
+                //     'customizations' => $item['customizations'],
+                //     'remarks' => $item['remarks'] ?? null
                 ];
             }, $cart_items)
         ];

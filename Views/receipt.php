@@ -5,7 +5,7 @@ require_once '../Model/menu.php';
 require_once '../db.php';
 
 $conn = getConnection();
-$menuModel = new Menu();
+// $menuModel = new Menu();
 $order_id = $_GET['order_id'] ?? null;
 
 // ✅ Use function instead of object method
@@ -53,7 +53,8 @@ $items = $order_data['items'] ?? [];
         <?php else: ?>
             <div class="receipt-items">
                 <?php foreach ($items as $item): 
-                    $menuItem = $menuModel->getItemById($item['menu_id']);
+                  $menuItem = getMenuItemById($conn, $item['menu_id']);
+                    // $menuItem = $menuModel->getItemById($item['menu_id']);
                     if (!$menuItem) continue;
                 ?>
                     <div class="receipt-item">

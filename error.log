@@ -110,3 +110,7 @@ Stack trace:
 [07-Jul-2025 05:56:31 Europe/Berlin] PHP Fatal error:  Cannot redeclare clearCart() (previously declared in C:\xampp\htdocs\TKCafe\Model\order.php:140) in C:\xampp\htdocs\TKCafe\Model\cart.php on line 75
 [07-Jul-2025 05:56:34 Europe/Berlin] PHP Fatal error:  Cannot redeclare clearCart() (previously declared in C:\xampp\htdocs\TKCafe\Model\order.php:140) in C:\xampp\htdocs\TKCafe\Model\cart.php on line 75
 [07-Jul-2025 05:57:06 Europe/Berlin] PHP Fatal error:  Cannot redeclare clearCart() (previously declared in C:\xampp\htdocs\TKCafe\Model\order.php:140) in C:\xampp\htdocs\TKCafe\Model\cart.php on line 75
+[10-Jul-2025 04:59:05 Europe/Berlin] PHP Fatal error:  Uncaught Error: Class "Menu" not found in C:\xampp\htdocs\TKCafe\Controller\orderController.php:16
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\TKCafe\Controller\orderController.php on line 16

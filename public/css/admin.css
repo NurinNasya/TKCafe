@@ -1006,3 +1006,9 @@ textarea.input-field {
     justify-content: flex-end;
     gap: 10px;
 }
+
+.order-meta {
+    float: right;
+    text-align: right;
+    font-size: 0.95rem;
+}

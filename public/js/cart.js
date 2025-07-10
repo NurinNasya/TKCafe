@@ -193,8 +193,14 @@ if (window.cartInitialized) {
     .then(data => {
         if (!data.success) throw new Error(data.error || 'Failed to add item');
         alert('Added to cart!');
-        document.getElementById('remarks').value = '';
-        updateCartBadge();
+
+          const remarksField = document.getElementById('remarks');
+      if (remarksField) {
+        remarksField.value = '';
+      }
+      updateCartBadge();
+        // document.getElementById('remarks').value = '';
+        // updateCartBadge();
     })
     .catch(error => {
         console.error('Error:', error);

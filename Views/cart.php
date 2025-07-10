@@ -6,7 +6,7 @@ require_once '../db.php';
 
 $conn = getConnection(); // ✅ This is now necessary
 
-$menuModel = new Menu();
+// $menuItem = getMenuItemById($conn, $item['menu_id']); // ✅ NEW
 $session_id = session_id(); 
 $items = getItems($conn, $session_id); 
 // $items = $cartModel->getItems(session_id());
@@ -39,7 +39,17 @@ $total = 0;
     </div>
   <?php else: ?>
     <div class="cart-items">
-          <?php foreach ($items as $item): 
+          <?php 
+          foreach ($items as $item): 
+        $menuItem = getMenuItemById($conn, $item['menu_id']); // ✅ Move here
+        $subtotal = $item['price'] * $item['quantity'];
+        $total += $subtotal;
+
+        // Parse customizations
+        $customizations = !empty($item['customizations']) 
+        ? json_decode($item['customizations'], true) 
+        : null;
+          /*foreach ($items as $item): 
           $menuItem = $menuModel->getItemById($item['menu_id']);
           $subtotal = $item['price'] * $item['quantity'];
           $total += $subtotal;
@@ -47,11 +57,11 @@ $total = 0;
           // Parse customizations
           $customizations = !empty($item['customizations']) 
             ? json_decode($item['customizations'], true) 
-            : null;
+            : null;*/
         ?>
           <div class="cart-item" data-id="<?= $item['id'] ?>">
-            <img src="<?= htmlspecialchars($menuItem['image']) ?>" 
-                 alt="<?= htmlspecialchars($menuItem['name']) ?>" 
+          <img src="/TKCafe/uploads/<?= htmlspecialchars($menuItem['image']) ?>" 
+                alt="<?= htmlspecialchars($menuItem['name']) ?>"
                  class="cart-item-image">
             
             <div class="cart-item-details">
