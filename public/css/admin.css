@@ -560,9 +560,9 @@ th {
 }
 
 .status-new { background: #d4edff; color: #004085; }
-.status-preparing { background: #fff3cd; color: #856404; }
+.status-preparing { background: #d4edda; color: #155724; }
 .status-pending { background: #e2e3e5; color: #383d41; }   /* grey */
-.status-completed { background: #d4edda; color: #155724; } /* green */
+.status-completed { background:  #f8d7da; color:  #721c24; } /* green */
 
 
 .order-details {
@@ -1011,4 +1011,15 @@ textarea.input-field {
     float: right;
     text-align: right;
     font-size: 0.95rem;
+}
+
+.order-meta-popup {
+    text-align: left;
+    font-size: 0.95rem;
+    color: #444;
+    margin-top: 1rem;
+}
+
+.order-meta-popup p {
+    margin: 0.25rem 0;
 }

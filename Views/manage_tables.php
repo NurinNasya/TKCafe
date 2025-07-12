@@ -108,4 +108,3 @@ background:#fff; padding:20px; border:1px solid #ccc; z-index:1000; max-width:70
 </div>
 
 <script src="/TKCafe/public/js/tables.js"></script>
-
