@@ -5,8 +5,14 @@ require_once __DIR__ . '/menu.php';
 function getAllOrdersWithItems($conn) {
     $orders = [];
     // $menu = new Menu();
+       $orderQuery = $conn->query("
+        SELECT o.*, t.table_name 
+        FROM orders o 
+        LEFT JOIN tables t ON o.table_id = t.id 
+        ORDER BY o.created_at DESC
+    ");
 
-    $orderQuery = $conn->query("SELECT * FROM orders ORDER BY created_at DESC");
+    // $orderQuery = $conn->query("SELECT * FROM orders ORDER BY created_at DESC");
     if (!$orderQuery) {
         error_log("Order query failed: " . $conn->error);
         return [];
@@ -52,7 +58,14 @@ function getAllOrdersWithItems($conn) {
 
 function getOrderById($conn, $id) {
     // $menu = new Menu(); 
-    $stmt = $conn->prepare("SELECT * FROM orders WHERE id = ?");
+    // $stmt = $conn->prepare("SELECT * FROM orders WHERE id = ?");
+    $stmt = $conn->prepare("
+    SELECT o.*, t.table_name 
+    FROM orders o
+    LEFT JOIN tables t ON o.table_id = t.id
+    WHERE o.id = ?
+");
+
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();

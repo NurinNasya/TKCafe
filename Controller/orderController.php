@@ -23,6 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             throw new Exception("No active order found. Please start ordering from the menu.");
         }
 
+        $cutlery = isset($_POST['cutlery']) ? (int)$_POST['cutlery'] : 0;
+
         // 2. Check cart
         $cart_items = getItems($conn, session_id());
         if (empty($cart_items)) {
@@ -38,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $total = $subtotal + $service_charge;
 
         // 4. Finalize order
-        updateOrderTotals($conn, $currentOrder['id'], $total, $cart_items);
+        updateOrderTotals($conn, $currentOrder['id'], $total, $cart_items, $cutlery);
         $order_id = $currentOrder['id'];
 
         // 5. Prepare receipt

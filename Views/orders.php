@@ -58,6 +58,9 @@ try {
                             <p>Date: <?= date('M j, Y g:i A', strtotime($order['created_at'])) ?></p>
                             <!-- <p>Type: <?= ucfirst(str_replace('_', ' ', $order['order_type'])) ?></p> -->
                             <p>Table: <?= htmlspecialchars($order['table_name'] ?? 'N/A') ?></p> <!-- Add this -->
+                            <?php if (isset($order['cutlery'])): ?>
+                            <p>Cutlery: <?= $order['cutlery'] ? 'Yes' : 'No' ?></p>
+                            <?php endif; ?>
                         </div>
                         
                         <div class="order-items">

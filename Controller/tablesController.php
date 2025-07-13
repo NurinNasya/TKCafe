@@ -20,7 +20,7 @@ if (isset($_POST['add_table'])) {
         }
 
         $fileName = $qrDir . 'table_' . $table_id . '.png';
-        $tableUrl = "http://192.168.1.129/TKCafe/Views/dinein-takeaway.php?table_id=" . $table_id;
+        $tableUrl = "http://192.168.1.155/TKCafe/Views/dinein-takeaway.php?table_id=" . $table_id;
 
         QRcode::png($tableUrl, $fileName, QR_ECLEVEL_L, 5);
 

@@ -115,6 +115,8 @@ if (window.cartInitialized) {
     const originalText = btn.innerHTML;
     btn.innerHTML = '<span class="spinner"></span> PROCESSING...';
 
+    const cutleryChecked = document.getElementById('cutlerySwitch')?.checked ? 1 : 0;
+
     fetch('/TKCafe/Controller/orderController.php', {
         method: 'POST',
         headers: {
@@ -122,7 +124,8 @@ if (window.cartInitialized) {
             // 'Content-Type': 'application/json',
         },
         credentials: 'same-origin',
-        body: ''
+        body: `cutlery=${cutleryChecked}`
+        // body: 'cutlery=${cutleryChecked}'
         // body: JSON.stringify({ action: 'place_order' }) 
     })
     .then(async response => {

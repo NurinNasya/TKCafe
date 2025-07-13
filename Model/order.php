@@ -9,16 +9,23 @@ function generateOrderNumber($conn) {
     return '#' . str_pad($nextId, 3, '0', STR_PAD_LEFT);
 }
 
-function createInitialOrder($conn, $sessionId, $orderType) {
+// function createInitialOrder($conn, $sessionId, $orderType) {
+function createInitialOrder($conn, $sessionId, $orderType, $tableId) {
     $orderNumber = generateOrderNumber($conn);
+    $tableId = intval($tableId); // ensure it's an integer
 
     $sessionId = mysqli_real_escape_string($conn, $sessionId);
     $orderType = mysqli_real_escape_string($conn, $orderType);
 
     $query = "
-        INSERT INTO orders (order_number, session_id, order_type, status)
-        VALUES ('$orderNumber', '$sessionId', '$orderType', 'pending')
+    INSERT INTO orders (order_number, session_id, order_type, status, table_id)
+    VALUES ('$orderNumber', '$sessionId', '$orderType', 'pending', $tableId)
     ";
+    
+    // $query = "
+    //     INSERT INTO orders (order_number, session_id, order_type, status)
+    //     VALUES ('$orderNumber', '$sessionId', '$orderType', 'pending')
+    // ";
     
     if (!mysqli_query($conn, $query)) {
         throw new Exception("Order creation failed: " . mysqli_error($conn));
@@ -58,7 +65,7 @@ function updateOrderType($conn, $sessionId, $orderType) {
     return mysqli_affected_rows($conn) > 0;
 }
 
-function updateOrderTotals($conn, $orderId, $total, $items) {
+function updateOrderTotals($conn, $orderId, $total, $items,  $cutlery = 0) {
     mysqli_begin_transaction($conn);
 
     try {
@@ -88,7 +95,7 @@ function updateOrderTotals($conn, $orderId, $total, $items) {
         $total = floatval($total);
         $query = "
             UPDATE orders 
-            SET total = $total, status = 'pending', updated_at = NOW()
+            SET total = $total, cutlery = $cutlery, status = 'pending', updated_at = NOW()
             WHERE id = $orderId
         ";
         mysqli_query($conn, $query);

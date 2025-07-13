@@ -18,6 +18,7 @@ if (!isset($_POST['order_type'])) {
 
 $orderType = sanitizeOrderType($_POST['order_type']);
 $sessionId = session_id();
+$tableId = isset($_POST['table_id']) ? intval($_POST['table_id']) : 0; 
 
 try {
     $existingOrder = getCurrentOrderBySession($conn, $sessionId);
@@ -26,7 +27,7 @@ try {
         updateOrderType($conn, $sessionId, $orderType);
         $_SESSION['current_order'] = getCurrentOrderBySession($conn, $sessionId);
     } else {
-        $orderId = createInitialOrder($conn, $sessionId, $orderType);
+        $orderId = createInitialOrder($conn, $sessionId, $orderType, $tableId);
         $_SESSION['current_order'] = getCurrentOrderBySession($conn, $sessionId);
     }
 

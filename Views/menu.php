@@ -14,7 +14,48 @@ $menuItems = getAllMenuItems($conn);
 <div class="menu-items">
 
      <!-- BEST SELLER -->
-<?php if (!empty($menuItems)): ?>
+      <?php
+$categoryOrder = [
+  'best-seller',
+  'standard',
+  'signature',
+  'set-standard',
+  'set-signature',
+  'masakan-ala',
+  'masakan-side',
+  'lokcing',
+  'western',
+  'air-balang',
+  'soft-drinks',
+  'hot-drinks'
+];
+
+if (!empty($menuItems)):
+  foreach ($categoryOrder as $category):
+    foreach ($menuItems as $item):
+      if ($item['category'] === $category): ?>
+        <div class="menu-item" data-category="<?= htmlspecialchars($item['category']) ?>">
+          <img src="/TKCafe/uploads/<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>" class="menu-item-img" />
+          <div class="menu-item-info">
+            <div>
+              <h3><?= htmlspecialchars($item['name']) ?></h3>
+              <p><?= htmlspecialchars($item['description']) ?></p>
+              <div class="menu-item-price">RM<?= number_format($item['price'], 2) ?></div>
+            </div>
+            <div>
+              <button class="select-btn" data-id="<?= $item['id'] ?>">Select</button>
+            </div>
+          </div>
+        </div>
+<?php   endif;
+    endforeach;
+  endforeach;
+else: ?>
+  <p>No menu items found.</p>
+<?php endif; ?>
+</div>
+
+<!-- <?php if (!empty($menuItems)): ?>
     <?php foreach ($menuItems as $item): ?>
       <div class="menu-item" data-category="<?= htmlspecialchars($item['category']) ?>">
       <img src="/TKCafe/uploads/<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>" class="menu-item-img" />
@@ -33,7 +74,10 @@ $menuItems = getAllMenuItems($conn);
   <?php else: ?>
     <p>No menu items found.</p>
   <?php endif; ?>
-</div>
+</div> -->
+
+
+
    <!-- <div class="menu-item" data-category="best-seller">
     <img src="/TKCafe/public/images/LAKSA PENANG.jpg" alt="Laksa Penang" class="menu-item-img" />
     <div class="menu-item-info">

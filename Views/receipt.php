@@ -46,6 +46,9 @@ $items = $order_data['items'] ?? [];
         <p><strong>Date:</strong> <?= date('M j, Y H:i', strtotime($order['created_at'])) ?></p>
         <p><strong>Type:</strong> <?= ucfirst(str_replace('_', ' ', $order['order_type'])) ?></p>
         <p><strong>Table:</strong> <?= htmlspecialchars($order['table_name'] ?? 'N/A') ?></p>
+        <?php if (isset($order['cutlery'])): ?>
+        <p><strong>Cutlery:</strong> <?= $order['cutlery'] ? 'Yes' : 'No' ?></p>
+        <?php endif; ?>
         </div>
 
         <?php if (empty($items)): ?>
