@@ -15,15 +15,11 @@ $total = 0;
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-
   <title>Your Cart - TK Cafe</title>
   <link rel="stylesheet" href="/TKCafe/public/css/style.css" />
   <link rel="stylesheet" href="/TKCafe/public/css/cart.css" />
 </head>
 <body>
-
-
 
 <div class="cart-container">
 
