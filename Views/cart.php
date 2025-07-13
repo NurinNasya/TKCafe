@@ -100,6 +100,14 @@ $total = 0;
         <?php endforeach; ?>
     </div>
     
+      <div class="cutlery-toggle">
+      <label for="cutlerySwitch">Cutlery</label>
+      <label class="switch">
+        <input type="checkbox" id="cutlerySwitch">
+        <span class="slider round"></span>
+      </label>
+    </div>
+
     <div class="cart-summary">
       <div class="summary-row">
         <span>Subtotal</span>
