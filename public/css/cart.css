@@ -386,3 +386,23 @@ body {
 .remarks-display p {
     margin: 0;
 }
+
+/*voucher css */
+
+.voucher-form {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+.voucher-form input {
+  flex: 1;
+  padding: 5px;
+}
+.voucher-form button {
+  padding: 5px 10px;
+}
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
