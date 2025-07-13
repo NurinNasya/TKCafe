@@ -386,3 +386,55 @@ body {
 .remarks-display p {
     margin: 0;
 }
+
+.cutlery-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  padding: 0 10px;
+  font-size: 1.3rem; /* ⬅️ Slightly bigger */
+  font-weight: 500;  /* ⬅️ Bolder */
+}
+
+.cutlery-toggle .switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.cutlery-toggle .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.cutlery-toggle .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 28px;
+}
+
+.cutlery-toggle .slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+.cutlery-toggle input:checked + .slider {
+   background-color: #c08e4a; 
+}
+
+.cutlery-toggle input:checked + .slider:before {
+  transform: translateX(22px);
+}
