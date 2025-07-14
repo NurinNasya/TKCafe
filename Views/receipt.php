@@ -27,9 +27,21 @@ if (empty($order_data)) {
     exit;
 }
 
-
 $order = $order_data['order'];
 $items = $order_data['items'] ?? [];
+
+// extract vouncher info
+$voucherAmount = $order['voucher_amount'] ?? 0;
+$voucherCode = $order['voucher_code'] ?? '';
+ // ✅ NEW: Calculate subtotal from items
+                $subtotal = 0;
+                foreach ($items as $item) {
+                    $subtotal += $item['price'] * $item['quantity'];
+                }
+
+                $serviceCharge = $subtotal * 0.10;
+                $totalBeforeDiscount = $subtotal + $serviceCharge;
+                $finalTotal = $totalBeforeDiscount - $voucherAmount;
 ?>
 <!DOCTYPE html>
 <html>
@@ -87,20 +99,54 @@ $items = $order_data['items'] ?? [];
             </div>
         <?php endif; ?>
 
-        <div class="receipt-total">
+            
+                    <?php
+               
+                ?>
+
+            <div class="receipt-total">
+
             <div class="total-row">
                 <span>Subtotal</span>
-                <span>RM <?= number_format($order['total'] / 1.1, 2) ?></span>
+                <span>RM <?= number_format($subtotal, 2) ?></span>
+            </div>
+            <div class="total-row">
+                <span>Service Charge (10%)</span>
+                <span>RM <?= number_format($serviceCharge, 2) ?></span>
+            </div>
+            <?php if ($voucherAmount > 0): ?>
+            <div class="total-row">
+                <span>Voucher Discount (<?= htmlspecialchars($voucherCode) ?>)</span>
+                <span>- RM <?= number_format($voucherAmount, 2) ?></span>
+            </div>
+            <?php endif; ?>
+            <div class="total-row grand-total">
+                <span>TOTAL</span>
+                <span>RM <?= number_format($order['total'], 2) ?></span>
+            </div>
+
+
+            <!-- <div class="total-row">
+                <span>Subtotal</span>
+              <span>RM <?= number_format($displaySubtotal, 2) ?></span>
             </div>
             <div class="total-row">
                 <span>Service Charge (10%)</span>
                 <span>RM <?= number_format($order['total'] * 0.1, 2) ?></span>
             </div>
+
+            <?php if ($voucherAmount > 0): ?>
+            <div class="total-row">
+            <span>Voucher Discount (<?= htmlspecialchars($voucherCode) ?>)</span>
+            <span>- RM <?= number_format($voucherAmount, 2) ?></span>
+        </div>
+        <?php endif; ?>
+
             <div class="total-row grand-total">
                 <span>TOTAL</span>
                 <span>RM <?= number_format($order['total'], 2) ?></span>
             </div>
-        </div>
+        </div> -->
 
         <div class="receipt-footer">
             <p>Thank you for your order!</p>

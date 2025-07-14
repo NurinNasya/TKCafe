@@ -11,6 +11,69 @@ $session_id = session_id();
 $items = getItems($conn, $session_id); 
 // $items = $cartModel->getItems(session_id());
 $total = 0;
+
+  // First, calculate the subtotal before applying voucher
+foreach ($items as $item) {
+    $subtotal = $item['price'] * $item['quantity'];
+    $total += $subtotal;
+}
+
+// === Voucher Handling ===
+$voucherAmount = 0;
+$voucherCode = '';
+$error = '';
+
+// ✅ Auto-load existing voucher from session (if previously applied)
+if (isset($_SESSION['voucher'])) {
+    $voucherCode = $_SESSION['voucher']['code'];
+    $voucherAmount = $_SESSION['voucher']['amount'];
+}
+
+if (isset($_POST['apply_voucher'])) {
+    $voucherCode = strtoupper(trim($_POST['voucher_code']));
+    $query = "SELECT * FROM vouchers WHERE code = '$voucherCode' AND valid_until >= CURDATE()";
+    $voucherResult = mysqli_query($conn, $query);
+
+    if ($voucherRow = mysqli_fetch_assoc($voucherResult)) {
+        if ($total >= $voucherRow['min_spend']) {
+            $voucherAmount = $voucherRow['discount_amount'];
+
+            // ✅ FIXED: Save applied voucher to session so it can be used in orderController
+            $_SESSION['voucher'] = [
+                'code' => $voucherCode,
+                'amount' => $voucherAmount
+            ];
+        } else {
+            $error = "Spend RM " . number_format($voucherRow['min_spend'], 2) . " to use this voucher.";
+            unset($_SESSION['voucher']); // Clear session if not valid
+        }
+    } else {
+        $error = "Invalid or expired voucher.";
+        unset($_SESSION['voucher']); // Clear session if invalid
+    }
+}
+
+// // === Voucher Handling ===
+// $voucherAmount = 0;
+// $voucherCode = '';
+// $error = '';
+
+// if (isset($_POST['apply_voucher'])) {
+//     $voucherCode = strtoupper(trim($_POST['voucher_code']));
+//     $query = "SELECT * FROM vouchers WHERE code = '$voucherCode' AND valid_until >= CURDATE()";
+//     $voucherResult = mysqli_query($conn, $query);
+
+//     if ($voucherRow = mysqli_fetch_assoc($voucherResult)) {
+//         if ($total >= $voucherRow['min_spend']) {
+//             $voucherAmount = $voucherRow['discount_amount'];
+//         } else {
+//             $error = "Spend RM " . number_format($voucherRow['min_spend'], 2) . " to use this voucher.";
+//         }
+//     } else {
+//         $error = "Invalid or expired voucher.";
+//     }
+// }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,13 +96,16 @@ $total = 0;
       <p>Your cart is empty</p>
       <a href="/TKCafe/Views/menu.php" class="btn">Browse Menu</a>
     </div>
+
   <?php else: ?>
     <div class="cart-items">
+
           <?php 
           foreach ($items as $item): 
         $menuItem = getMenuItemById($conn, $item['menu_id']); // ✅ Move here
         $subtotal = $item['price'] * $item['quantity'];
-        $total += $subtotal;
+        
+        
 
         // Parse customizations
         $customizations = !empty($item['customizations']) 
@@ -109,16 +175,36 @@ $total = 0;
         <span>Subtotal</span>
         <span>RM <?= number_format($total, 2) ?></span>
       </div>
+
+     <!-- Voucher Form -->
+  <form method="POST" class="voucher-form">
+  <input type="text" name="voucher_code" placeholder="Enter voucher code" value="<?= htmlspecialchars($voucherCode) ?>">
+  <button type="submit" name="apply_voucher">Apply</button>
+  <?php if (!empty($error)): ?>
+    <p class="error"><?= $error ?></p>
+  <?php endif; ?>
+   </form>
+
+
       <div class="summary-row">
         <span>Service Charge (10%)</span>
-        <span>RM <?= number_format($total * 0.10, 2) ?></span>
+       <span>RM <?= number_format(($total * 1.10) - $voucherAmount, 2) ?></span>
+
       </div>
       <div class="summary-row total">
         <span>Grand Total =</span>
-        <span>RM <?= number_format($total * 1.10, 2) ?></span>
+       <span>RM <?= number_format(($total * 1.10) - $voucherAmount, 2) ?></span>
       </div>
-      
-      <button class="checkout-btn">PLACE ORDER</button>
+
+   <!-- Voucher Discount -->
+  <?php if ($voucherAmount > 0): ?>
+  <div class="summary-row">
+    <span>Voucher Discount</span>
+    <span>- RM <?= number_format($voucherAmount, 2) ?></span>
+   </div>
+  <?php endif; ?>
+
+  <button class="checkout-btn">PLACE ORDER</button>
      
     </div>
   <?php endif; ?>

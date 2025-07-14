@@ -36,11 +36,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         foreach ($cart_items as $item) {
             $subtotal += $item['price'] * $item['quantity'];
         }
+         
+        // handle vouncher from session
+        $voucherAmount = 0;
+        $voucherCode = '';
+        if (isset($_SESSION['voucher']) && is_array($_SESSION['voucher'])) {
+            if (isset($_SESSION['voucher']['amount'])) {
+                $voucherAmount = floatval($_SESSION['voucher']['amount']);
+            }
+            if (isset($_SESSION['voucher']['code'])) {
+                $voucherCode = $_SESSION['voucher']['code'];
+    }
+        // if (isset($_SESSION['voucher'])) {
+        //     $voucherAmount = $_SESSION['voucher']['amount'] ?? 0
+        //     $voucherCode = isset($_SESSION['voucher']['code']) ? $_SESSION['voucher']['code'] : null;
+            // $voucherCode = $_SESSION['voucher']['code'] ?? '';
+        }
+
+        // calculate total  with discount
         $service_charge = $subtotal * 0.10;
-        $total = $subtotal + $service_charge;
+        $total = $subtotal + $service_charge - $voucherAmount;
+        $total = max(0, $total); // prevent negative total
+        
+      
 
         // 4. Finalize order
-        updateOrderTotals($conn, $currentOrder['id'], $total, $cart_items, $cutlery);
+        // added voucher code & amount
+        updateOrderTotals($conn, $currentOrder['id'], $total, $cart_items, $cutlery ,$voucherCode, $voucherAmount);
         $order_id = $currentOrder['id'];
 
         // 5. Prepare receipt
@@ -74,8 +96,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }, $cart_items)
         ];
 
-        // $_SESSION['last_order'] = $receipt_data;
-        $_SESSION['last_order'] = getOrderDetails($conn, $order_id);
+        // store voucher info in receipt info//
+       $_SESSION['last_order'] = [
+    'order' => getOrderDetails($conn, $order_id),
+    'items' => $receipt_data['items'],
+    ];
+    $_SESSION['last_order']['order']['voucher_amount'] = $voucherAmount;
+    $_SESSION['last_order']['order']['voucher_code'] = $voucherCode;
+
+         
+        //clear voucher after placing the order//
+        unset($_SESSION['voucher']);
 
         // 6. Clear cart
         clearCart($conn, session_id());

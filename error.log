@@ -114,3 +114,50 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\TKCafe\Controller\orderController.php on line 16
+[13-Jul-2025 09:37:58 Europe/Berlin] Executing order UPDATE: 
+           UPDATE orders 
+            SET total = 11, 
+                cutlery = 0, 
+                voucher_code = NULL, 
+                voucher_amount = 0,
+                status = 'pending', 
+                updated_at = NOW()
+            WHERE id = 126
+        
+[13-Jul-2025 09:52:44 Europe/Berlin] Executing order UPDATE: 
+           UPDATE orders 
+            SET total = 13.2, 
+                cutlery = 0, 
+                voucher_code = NULL, 
+                voucher_amount = 0,
+                status = 'pending', 
+                updated_at = NOW()
+            WHERE id = 127
+        
+[13-Jul-2025 09:57:48 Europe/Berlin] Executing order UPDATE: 
+           UPDATE orders 
+            SET total = 13.2, 
+                cutlery = 0, 
+                voucher_code = NULL, 
+                voucher_amount = 0,
+                status = 'pending', 
+                updated_at = NOW()
+            WHERE id = 128
+        
+[13-Jul-2025 10:03:39 Europe/Berlin] Executing order UPDATE: 
+           UPDATE orders 
+            SET total = 17.6, 
+                cutlery = 0, 
+                voucher_code = NULL, 
+                voucher_amount = 0,
+                status = 'pending', 
+                updated_at = NOW()
+            WHERE id = 129
+        
+[14-Jul-2025 04:02:02 Europe/Berlin] 🔥 Sending to updateOrderTotals: Code = , Amount = 0
+[14-Jul-2025 04:02:02 Europe/Berlin] 🔥 Executing order UPDATE with: total=33, cutlery=0, voucher= (0)
+[14-Jul-2025 04:03:11 Europe/Berlin] 🔥 Sending to updateOrderTotals: Code = , Amount = 0
+[14-Jul-2025 04:03:11 Europe/Berlin] 🔥 Executing order UPDATE with: total=39.6, cutlery=0, voucher= (0)
+[14-Jul-2025 04:46:22 Europe/Berlin] 🔥 Executing order UPDATE with: total=27.5, cutlery=0, voucher= (0)
+[14-Jul-2025 05:06:03 Europe/Berlin] 🔥 Executing order UPDATE with: total=33, cutlery=0, voucher= (0)
+[14-Jul-2025 05:27:47 Europe/Berlin] 🔥 Executing order UPDATE with: total=28, cutlery=0, voucher=NEW (5)

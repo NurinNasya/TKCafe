@@ -320,3 +320,48 @@ function removeItem(itemId) {
 
 
 }
+
+// voucher //
+
+document.addEventListener('DOMContentLoaded', function () {
+  const voucherForm = document.getElementById('voucherForm');
+  const codeInput = document.getElementById('voucherCode');
+  const errorMsg = document.getElementById('voucherError');
+  const discountRow = document.getElementById('voucherDiscountRow');
+  const discountValue = document.getElementById('voucherDiscount');
+  const grandTotalText = document.getElementById('grandTotal');
+
+  if (voucherForm) {
+    voucherForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorMsg.textContent = '';
+
+      const formData = new FormData();
+      formData.append('voucher_code', codeInput.value.trim());
+
+      fetch('/TKCafe/Controller/ajaxVoucherController.php', {
+        method: 'POST',
+        body: formData
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data); // ADD THIS LINE
+          if (data.success) {
+            discountRow.style.display = 'flex';
+            discountValue.textContent = `- RM ${parseFloat(data.discount).toFixed(2)}`;
+            grandTotalText.textContent = `RM ${data.grand_total}`;
+          } else {
+            discountRow.style.display = 'none';
+            discountValue.textContent = `- RM 0.00`;
+            grandTotalText.textContent = `RM ${data.subtotal}`;
+            errorMsg.textContent = data.error || 'Failed to apply voucher.';
+          }
+        })
+        .catch(err => {
+          console.error('Voucher error:', err);
+          errorMsg.textContent = 'Server error';
+        });
+    });
+  }
+});
+
