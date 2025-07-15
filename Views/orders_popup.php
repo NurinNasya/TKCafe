@@ -23,12 +23,17 @@ $buttonLabel = $order['status'] === 'pending' ? 'Preparing' :
         <h1 class="order-title">Order <?= htmlspecialchars($order['order_number']) ?></h1>
     </div>
     </div>
-
+    <div class="order-meta-popup">
+    <p><strong>Date:</strong> <?= date('M j, Y g:i A', strtotime($order['created_at'])) ?></p>
+    <p><strong>Type:</strong> <?= ucfirst(str_replace('_', ' ', $order['order_type'])) ?></p>
+    <p><strong>Table:</strong> <?= htmlspecialchars($order['table_name'] ?? 'N/A') ?></p>
+    </div>
+<!-- 
     <div class="order-meta">
         <p><strong>Date:</strong> <?= date('M j, Y g:i A', strtotime($order['created_at'])) ?></p>
         <p><strong>Type:</strong> <?= ucfirst(str_replace('_', ' ', $order['order_type'])) ?></p>
-         <p>Table: <?= htmlspecialchars($order['table_name'] ?? 'N/A') ?></p> <!-- Add this -->
-    </div>
+         <p>Table: <?= htmlspecialchars($order['table_name'] ?? 'N/A') ?></p>
+    </div> -->
 
     <div class="order-items-list">
         <h3>Items:</h3>
