@@ -16,6 +16,10 @@
         <a href="manage_menu.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'manage_menu.php' ? 'active' : '' ?>">
             <span class="nav-icon">📝</span> Menu
         </a>
+        <a href="manage_vouchers.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'manage_vouchers.php' ? 'active' : '' ?>">
+            <span class="nav-icon">📝</span> Voucher
+        </a>
+
       <a href="/TKCafe/Controller/adminController.php?action=logout" class="nav-link">
         <span class="nav-icon">🚪</span> Logout
         </a>

@@ -47,3 +47,33 @@ function deleteVoucher($id) {
     mysqli_close($conn);
     return $success;
 }
+
+// ✅ Get a single voucher by its ID (used in edit_voucher.php)
+function getVoucherById($id) {
+    $conn = getConnection();
+    $id = intval($id);
+    $sql = "SELECT * FROM vouchers WHERE id = $id";
+    $result = mysqli_query($conn, $sql);
+    $voucher = mysqli_fetch_assoc($result);
+    mysqli_close($conn);
+    return $voucher;
+}
+
+// ✅ Update an existing voucher (used in voucherController.php)
+function updateVoucher($id, $code, $description, $amount, $minSpend, $validUntil) {
+    $conn = getConnection();
+    $id = intval($id);
+    $code = strtoupper(mysqli_real_escape_string($conn, $code));
+    $description = mysqli_real_escape_string($conn, $description);
+    $amount = floatval($amount);
+    $minSpend = floatval($minSpend);
+    $validUntil = mysqli_real_escape_string($conn, $validUntil);
+
+    $sql = "UPDATE vouchers 
+            SET code = '$code', description = '$description', discount_amount = $amount, min_spend = $minSpend, valid_until = '$validUntil'
+            WHERE id = $id";
+
+    $success = mysqli_query($conn, $sql);
+    mysqli_close($conn);
+    return $success;
+}

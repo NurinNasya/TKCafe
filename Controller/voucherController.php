@@ -19,3 +19,17 @@ if (isset($_POST['delete_voucher'])) {
     header("Location: ../Views/manage_vouchers.php?" . ($success ? "deleted=1" : "error=1"));
     exit;
 }
+
+
+if (isset($_POST['update_voucher'])) {
+    $id = $_POST['edit_id'];
+    $code = $_POST['edit_code'];
+    $description = $_POST['edit_description'];
+    $discount = $_POST['edit_discount'];
+    $minSpend = $_POST['edit_min_spend'];
+    $validUntil = $_POST['edit_valid_until'];
+
+    $success = updateVoucher($id, $code, $description, $discount, $minSpend, $validUntil);
+    header("Location: ../Views/manage_vouchers.php?" . ($success ? "updated=1" : "error=1"));
+    exit;
+}
