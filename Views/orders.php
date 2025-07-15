@@ -71,20 +71,22 @@ try {
                                 <?php if (!empty($item['remarks'])): ?>
                                 <div class="notes">Note: <?= htmlspecialchars($item['remarks']) ?></div>
                                 <?php endif; ?>
-                                     <?php 
-                                     $drink = is_array($item['customizations']) ? ($item['customizations']['drink'] ?? null) : null;
-                                    if ($drink):
+                            <?php 
+                            $custom = is_string($item['customizations']) 
+                                ? json_decode($item['customizations'], true) 
+                                : (is_array($item['customizations']) ? $item['customizations'] : []);
+
+                            $drink = isset($custom['drink']) ? $custom['drink'] : null;
+
+                            if ($drink):
                             ?>
-                                <!-- <div class="notes">Drink: <?= ucwords(str_replace('-', ' ', htmlspecialchars($custom['drink']))) ?></div> -->
-                                 <!-- <div class="notes">Drink: <?= ucwords(str_replace('-', ' ', htmlspecialchars($item['customizations']['drink']))) ?></div> -->
-                                   <div class="notes">Drink: <?= ucwords(str_replace('-', ' ', htmlspecialchars($drink))) ?></div>
+                            <div class="notes">Drink: <?= ucwords(str_replace('-', ' ', htmlspecialchars($drink))) ?></div>
                             <?php endif; ?>
                             </div>
                             <?php endforeach; ?>
                         </div>
                         
                         <div class="order-footer">
-                            <!-- <span class="order-total">RM <?= number_format($order['total'], 2) ?></span> -->
                             <div class="order-actions">
                               <button class="btn btn-sm btn-outline view-btn">View</button>
 

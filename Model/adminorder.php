@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/menu.php';
 
+error_log("✅ Test log from getAllOrdersWithItems");
 
 function getAllOrdersWithItems($conn) {
     $orders = [];
@@ -47,6 +48,7 @@ function getAllOrdersWithItems($conn) {
             }
 
             $item['customizations'] = json_decode($item['customizations'] ?? '{}', true);
+             error_log("🔍 [getAllOrdersWithItems] Item {$item['id']} customizations: " . print_r($item['customizations'], true));
         }
 
         $order['items'] = $items;
@@ -98,6 +100,11 @@ function getOrderById($conn, $id) {
         }
 
         $item['customizations'] = json_decode($item['customizations'] ?? '{}', true);
+
+        // error_log("Decoded customizations for item ID {$item['id']}: " . print_r($item['customizations'], true));
+        error_log("🔍 Item {$item['id']} customizations: " . print_r($item['customizations'], true));
+
+
     }
 
     $order['items'] = $items;
