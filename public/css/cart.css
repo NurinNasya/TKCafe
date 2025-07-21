@@ -17,6 +17,8 @@ body {
   border-radius: 12px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
 }
+
+
 /* Header section with back button and title */
 .cart-header {
   display: flex;
