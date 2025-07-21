@@ -65,7 +65,7 @@ function updateOrderType($conn, $sessionId, $orderType) {
     return mysqli_affected_rows($conn) > 0;
 }
 
-function updateOrderTotals($conn, $orderId, $total, $items,  $cutlery = 0) {
+function updateOrderTotals($conn, $orderId, $total, $items,  $cutlery = 0, $voucherCode = null, $voucherAmount = 0.00) {
     mysqli_begin_transaction($conn);
 
     try {
@@ -82,6 +82,9 @@ function updateOrderTotals($conn, $orderId, $total, $items,  $cutlery = 0) {
             // $sessionId   = mysqli_real_escape_string($conn, $item['session_id']);
             $custom      = !empty($item['customizations']) ? "'" . mysqli_real_escape_string($conn, json_encode($item['customizations'])) . "'" : "NULL";
             $remarks     = isset($item['remarks']) ? "'" . mysqli_real_escape_string($conn, $item['remarks']) . "'" : "NULL";
+            $voucherCode = isset($voucherCode) ? "'" . mysqli_real_escape_string($conn, $voucherCode) . "'" : "NULL";
+            $voucherAmount = isset($voucherAmount) ? floatval($voucherAmount) : 0.00;
+
 
             $query = "
                 INSERT INTO order_item (order_id, menu_id, quantity, price, session_id, customizations, remarks)
@@ -93,9 +96,11 @@ function updateOrderTotals($conn, $orderId, $total, $items,  $cutlery = 0) {
 
         // 3. Update total
         $total = floatval($total);
+        $voucherCode = isset($voucherCode) ? "'" . mysqli_real_escape_string($conn, $voucherCode) . "'" : "NULL";
+        $voucherAmount = isset($voucherAmount) ? floatval($voucherAmount) : 0.00;
         $query = "
             UPDATE orders 
-            SET total = $total, cutlery = $cutlery, status = 'pending', updated_at = NOW()
+            SET total = $total, voucher_code = $voucherCode, voucher_amount = $voucherAmount, cutlery = $cutlery, status = 'pending', updated_at = NOW()
             WHERE id = $orderId
         ";
         mysqli_query($conn, $query);

@@ -23,7 +23,8 @@ $buttonLabel = $order['status'] === 'pending' ? 'Preparing' :
             <h1 class="order-title">Order <?= htmlspecialchars($order['order_number']) ?></h1>
         </div>
     </div>
-    <div class="order-meta" style="text-align: left;">
+    <!-- <div class="order-meta" style="text-align: left;"> -->
+        <div class="order-meta bigger-meta" style="text-align: left;">
         <p><strong>Date:</strong> <?= date('M j, Y g:i A', strtotime($order['created_at'])) ?></p>
         <p><strong>Type:</strong> <?= ucfirst(str_replace('_', ' ', $order['order_type'])) ?></p>
         <p><strong>Table:</strong> <?= htmlspecialchars($order['table_name'] ?? 'N/A') ?></p>
@@ -65,6 +66,8 @@ $buttonLabel = $order['status'] === 'pending' ? 'Preparing' :
                 <?= htmlspecialchars($buttonLabel) ?>
             </button>
         <?php endif; ?>
-        <button class="btn btn-outline close-popup">Close</button>
+        <button class="btn btn-outline close-popup close-btn">Close</button>
     </div>
 </div>
+<script src="/TKCafe/public/js/tabmenu.js"></script>
+<script src="/TKCafe/public/js/orders.js"></script>
