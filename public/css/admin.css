@@ -1437,3 +1437,43 @@ textarea.input-field {
 .add-btn-top:hover {
   background-color: #2563eb;
 }
+
+//tabmenu
+.tab-menu {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    padding: 8px 16px;
+    background: #f0f0f0;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+.tab-btn.active {
+    background-color: #333;
+    color: white;
+}
+
+.bigger-meta {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.close-btn {
+    width: auto !important;
+    min-width: unset !important;
+    max-width: 100px; /* adjust as needed */
+    padding: 6px 14px !important;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+.status-section {
+  display: none;
+}
