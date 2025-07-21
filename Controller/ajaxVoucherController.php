@@ -1,4 +1,9 @@
 <?php
+ob_clean(); // Clear any accidental output
+header('Content-Type: application/json');
+session_start();
+require_once '../Model/voucher.php';
+require_once '../Model/cart.php';
 require_once '../db.php';
 $conn = getConnection();
 
@@ -12,7 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($row = mysqli_fetch_assoc($result)) {
         // Get subtotal from session or force client to send it
-        session_start();
         require_once '../Model/cart.php';
         $session_id = session_id();
         $items = getItems($conn, $session_id);
@@ -46,4 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     echo json_encode($response);
+    exit; // Ensure no extra output after JSON
+
 }

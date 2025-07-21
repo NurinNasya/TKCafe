@@ -98,6 +98,13 @@ document.addEventListener('click', function (e) {
             console.log(data);
             if (data.success) {
                 alert(`Order updated to ${nextStatus}`);
+
+                // Get currently active tab
+                const activeTab = document.querySelector('.tab-btn.active');
+                if (activeTab) {
+                    localStorage.setItem('activeTab', activeTab.dataset.status);
+                }
+
                 closePopup();
                 window.location.reload();
             } else {
@@ -110,3 +117,51 @@ document.addEventListener('click', function (e) {
         });
     }
 });
+
+//tabmenu
+document.addEventListener('DOMContentLoaded', function () {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const sections = document.querySelectorAll('.status-section');
+
+    // Load last active tab from localStorage
+    const savedStatus = localStorage.getItem('activeTab');
+    const defaultStatus = savedStatus || 'pending'; // default tab
+
+    // Show the saved/default tab on page load
+    const defaultButton = document.querySelector(`.tab-btn[data-status="${defaultStatus}"]`);
+    if (defaultButton) defaultButton.click();
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const status = this.dataset.status;
+
+            // Save to localStorage
+            localStorage.setItem('activeTab', status);
+
+            // Update tab active state
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            // Show corresponding section
+            sections.forEach(section => {
+                section.style.display = section.dataset.status === status ? 'grid' : 'none';
+            });
+        });
+    });
+});
+
+//     tabButtons.forEach(button => {
+//         button.addEventListener('click', function () {
+//             const status = this.dataset.status;
+
+//             // Update tab active state
+//             tabButtons.forEach(btn => btn.classList.remove('active'));
+//             this.classList.add('active');
+
+//             // Show corresponding section
+//             sections.forEach(section => {
+//                 section.style.display = section.dataset.status === status ? 'grid' : 'none';
+//             });
+//         });
+//     });
+// });
