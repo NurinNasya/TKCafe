@@ -1,0 +1,158 @@
+/* ===== Booking Form - Warm & Friendly Theme ===== */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f3e9dd; /* soft brownish-beige */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Form Container */
+.form-container {
+    background-color: #fffefc;
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    max-width: 500px;
+    width: 100%;
+    border: 1px solid #e5d3bc;
+}
+
+/* Heading */
+.form-container h2 {
+    text-align: center;
+    color: #5c4033; /* coffee brown */
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    font-size: 1.7rem;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 1.3rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #6b4c3b; /* warm brown */
+}
+
+.form-group input {
+    width: 95%;
+    padding: 0.7rem 1rem;
+    border: 1px solid #cdb8a0;
+    border-radius: 8px;
+    background-color: #fdfaf7;
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #b08a67;
+    box-shadow: 0 0 0 3px rgba(176, 138, 103, 0.2);
+    outline: none;
+}
+
+/* Submit Button */
+button[type="submit"] {
+    width: 100%;
+    padding: 0.85rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    background-color: #8b5e3c; /* coffee orange-brown */
+    color: #fffefc;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #6a442a;
+}
+
+/* Success Popup */
+.popup {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.popup-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.popup-content p {
+    font-size: 1.1rem;
+    color: #2e7d32;
+    margin-bottom: 1rem;
+}
+
+.popup-content button {
+    background-color: #2e7d32;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.popup-content button:hover {
+    background-color: #1b5e20;
+}
+
+/* Optional Buttons */
+.btn-edit, .btn-delete {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-edit {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.btn-edit:hover {
+    background-color: #d5d5d5;
+}
+
+.btn-delete {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #c0392b;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .form-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .form-container h2 {
+        font-size: 1.5rem;
+    }
+}

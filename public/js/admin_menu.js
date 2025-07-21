@@ -41,3 +41,48 @@ document.addEventListener("DOMContentLoaded", function () {
 function closeEditForm() {
   document.getElementById("editMenuModal").style.display = "none";
 }
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const imageModal = document.getElementById('imageModal');
+  const popupImage = document.getElementById('popupImage');
+
+  document.querySelectorAll('.popup-image').forEach(img => {
+    img.addEventListener('click', function () {
+      const imageUrl = this.getAttribute('data-image');
+      popupImage.src = imageUrl;
+      imageModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  window.closeImageModal = function () {
+    imageModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+
+  imageModal.addEventListener('click', function (e) {
+    if (e.target === imageModal) {
+      closeImageModal();
+    }
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const searchInput = document.getElementById('menuSearchInput');
+  const rows = document.querySelectorAll('table tbody tr');
+
+  searchInput.addEventListener('input', function () {
+    const query = this.value.toLowerCase();
+
+    rows.forEach(row => {
+      const name = row.cells[1]?.textContent.toLowerCase() || '';
+      const description = row.cells[2]?.textContent.toLowerCase() || '';
+      const category = row.cells[5]?.textContent.toLowerCase() || '';
+
+      const matches = name.includes(query) || description.includes(query) || category.includes(query);
+      row.style.display = matches ? '' : 'none';
+    });
+  });
+});
+

@@ -26,6 +26,6 @@ if (isset($_POST['username'], $_POST['password']) && !isset($_POST['register']))
 // LOGOUT
 if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     session_destroy();
-    header("Location: /TKCafe/views/login.php");
+    header("Location: /TKCafe/views/dinein-takeaway.php");
     exit;
 }

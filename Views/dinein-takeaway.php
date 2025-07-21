@@ -18,17 +18,17 @@ if ($table_id) {
     <title>Choose Your Experience</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/TKCafe/public/css/dinein-takeaway.css">
+     <link rel="stylesheet" href="/TKCafe/public/css/login.css">
 </head>
 <body>
     <body>
-    <!-- 🔒 Login Button (top right corner) -->
-    <div style="position: absolute; top: 20px; right: 20px; z-index: 999;">
-        <a href="login.php">
-            <button style="padding: 8px 16px; background-color:rgb(192, 142, 74); color: white; border: none; border-radius: 4px; cursor: pointer;">
-                Login
-            </button>
-        </a>
-    </div>
+   <!-- 🔒 Login Button (top right corner) -->
+<div style="position: absolute; top: 20px; right: 20px; z-index: 999;">
+    <button id="openLoginModal" style="padding: 8px 16px; background-color:rgb(192, 142, 74); color: white; border: none; border-radius: 4px; cursor: pointer;">
+        Login
+    </button>
+</div>
+
     <div class="container">
         <div class="selection-wrapper">
             <?php if (isset($_SESSION['dinein_takeaway_error'])): ?>
@@ -75,6 +75,27 @@ if ($table_id) {
         </div>
     </div>
 
+                <!-- 🔒 Login Modal -->
+            <div id="loginModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+
+                <h2>Admin Login</h2>
+                <form method="POST" action="/TKCafe/Controller/adminController.php">
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" name="password" required>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+                </form>
+            </div>
+            </div>
+
+     <script src="/TKCafe/public/js/login-admin.js"></script>
     <script src="/TKCafe/public/js/dinein-takeaway.js"></script>
 </body>
 </html>

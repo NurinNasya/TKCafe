@@ -4,20 +4,29 @@ $vouchers = getAllVouchers();
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Manage Vouchers</title>
   <link rel="stylesheet" href="/TKCafe/public/css/admin.css">
 </head>
 <body>
 <div class="admin-container">
   <?php include 'partials/sidebar.php'; ?>
-  <main class="main-content">
-    <h1>Manage Vouchers</h1>
 
+
+ <main class="main-content">
+  <section class="section">
+    <div class="section-header">
+      <h2>Manage Vouchers</h2>
+
+    </div>
+
+    <div class="card">
+      <h3>Voucher List</h3>
+         <button class="btn btn-primary" id="openAddModal">+ Add Voucher</button>
+      <div class="table-container">
     <table>
-       <!-- Add Voucher Button -->
-<button id="openAddModal" class="btn btn-primary add-btn-top">+ Add Voucher</button>
       <thead>
         <tr>
           <th>Code</th>
@@ -35,7 +44,18 @@ $vouchers = getAllVouchers();
             <td><?= htmlspecialchars($voucher['description']) ?></td>
             <td>RM <?= number_format($voucher['discount_amount'], 2) ?></td>
             <td>RM <?= number_format($voucher['min_spend'], 2) ?></td>
-            <td><?= $voucher['valid_until'] ?></td>
+            <?php
+            $validDate = new DateTime($voucher['valid_until']);
+            $today = new DateTime();
+            $interval = $today->diff($validDate);
+            $daysLeft = (int)$interval->format('%r%a');
+
+            $validClass = $daysLeft <= 3 ? 'expiring-soon' : '';
+          ?>
+          <td class="<?= $validClass ?>">
+            <?= $voucher['valid_until'] ?>
+</td>
+
             <td>
 
                   <!-- Edit Button -->
@@ -67,41 +87,41 @@ $vouchers = getAllVouchers();
         <?php endforeach; ?>
       </tbody>
     
-    <!-- Edit Voucher Modal -->
-<div id="editModal" style="display: none;">
-  <div class="edit-modal-content">
-    <span class="close">&times;</span>
-    <h2>Edit Voucher</h2>
-    <form method="POST" action="/TKCafe/Controller/voucherController.php">
-      <input type="hidden" name="edit_id" id="edit-id">
-      <input type="text" name="edit_code" id="edit-code" required>
-      <input type="text" name="edit_description" id="edit-description">
-      <input type="number" name="edit_discount" id="edit-discount" step="0.01" required>
-      <input type="number" name="edit_min_spend" id="edit-min" step="0.01" required>
-      <input type="date" name="edit_valid_until" id="edit-valid" required>
-      <button type="submit" name="update_voucher" class="btn btn-success">Save Changes</button>
-      <button type="button" class="btn btn-secondary" onclick="closeEditForm()">Cancel</button>
-    </form>
-  </div>
-</div>
+            <!-- Edit Voucher Modal -->
+        <div id="editModal" style="display: none;">
+          <div class="edit-modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Voucher</h2>
+            <form method="POST" action="/TKCafe/Controller/voucherController.php">
+              <input type="hidden" name="edit_id" id="edit-id">
+              <input type="text" name="edit_code" id="edit-code" required>
+              <input type="text" name="edit_description" id="edit-description">
+              <input type="number" name="edit_discount" id="edit-discount" step="0.01" required>
+              <input type="number" name="edit_min_spend" id="edit-min" step="0.01" required>
+              <input type="date" name="edit_valid_until" id="edit-valid" required>
+              <button type="submit" name="update_voucher" class="btn btn-success">Save Changes</button>
+              <button type="button" class="btn btn-secondary" onclick="closeEditForm()">Cancel</button>
+            </form>
+          </div>
+        </div>
 
-<!-- Add Voucher Modal -->
-<div id="addModal" class="modal" style="display: none;">
-  <div class="modal-content">
-    <span class="close" id="closeAddModal">&times;</span>
-    <h2>Add New Voucher</h2>
-    <form method="POST" action="/TKCafe/Controller/voucherController.php">
-      <input type="text" name="code" placeholder="Voucher Code (e.g. WELCOME10)" required>
-      <input type="text" name="description" placeholder="Description">
-      <input type="number" name="discount" step="0.01" placeholder="Discount (e.g. 10.00)" required>
-      <input type="number" name="min_spend" step="0.01" placeholder="Min Spend (e.g. 20.00)" required>
-      <input type="date" name="valid_until" required>
-      <button type="submit" name="add_voucher" class="btn btn-success">Add Voucher</button>
-    </form>
-  </div>
-</div>
+        
+        <!-- Add Voucher Modal -->
+        <div id="addModal" class="modal" style="display: none;">
+          <div class="modal-content">
+            <span class="close" id="closeAddModal">&times;</span>
+            <h2>Add New Voucher</h2>
+            <form method="POST" action="/TKCafe/Controller/voucherController.php">
+              <input type="text" name="code" placeholder="Voucher Code (e.g. WELCOME10)" required>
+              <input type="text" name="description" placeholder="Description">
+              <input type="number" name="discount" step="0.01" placeholder="Discount (e.g. 10.00)" required>
+              <input type="number" name="min_spend" step="0.01" placeholder="Min Spend (e.g. 20.00)" required>
+              <input type="date" name="valid_until" required>
+              <button type="submit" name="add_voucher" class="btn btn-success">Add Voucher</button>
+            </form>
+          </div>
+        </div>
 
-
-      <script src="/TKCafe/public/js/voucher.js"></script>
-</body>
-</html>
+              <script src="/TKCafe/public/js/voucher.js"></script>
+        </body>
+        </html>

@@ -30,6 +30,10 @@ $menuItems = getAllMenuItems($conn);
       </div>
 
       <div class="table-container">
+
+      <div style="margin-bottom: 1rem;">
+      <input type="text" id="menuSearchInput" placeholder="Search menu by name, category, or description..." style="padding: 8px; width: 100%; max-width: 400px; border-radius: 4px; border: 1px solid #ccc;">
+    </div>
         <table>
           <thead>
             <tr>
@@ -43,17 +47,25 @@ $menuItems = getAllMenuItems($conn);
             </tr>
           </thead>
           <tbody>
-                 <?php if (!empty($menuItems)) : ?>
-              <?php foreach ($menuItems as $menu) : ?>
-              <tr>
-                <td><?= htmlspecialchars($menu['id']) ?></td>
+              <?php if (!empty($menuItems)) : ?>
+                <?php $counter = 1; foreach (array_reverse($menuItems) as $menu) : ?>
+
+          <tr>
+                <td><?= $counter++ ?></td> <!-- Row number -->
                 <td><?= htmlspecialchars($menu['name']) ?></td>
                 <td><?= htmlspecialchars($menu['description']) ?></td>
                 <td>RM <?= number_format($menu['price'], 2) ?></td>
-                <td><img src="/TKCafe/uploads/<?= htmlspecialchars($menu['image']) ?>" width="50" alt="Menu Image"></td>
+                <td>
+                    <img src="/TKCafe/uploads/<?= htmlspecialchars($menu['image']) ?>" 
+                        width="50" 
+                        alt="Menu Image" 
+                        class="popup-image" 
+                        data-image="/TKCafe/uploads/<?= htmlspecialchars($menu['image']) ?>">
+                  </td>
+
                 <td><?= htmlspecialchars($menu['category']) ?></td>
                 <td>
-                 <a href="edit_menu.php?id=<?= $menu['id'] ?>" class="btn btn-sm btn-primary">Edit</a>
+                 <button type="button" class="btn btn-sm btn-primary edit-menu"data-menu='<?= json_encode($menu) ?>'>Edit</button>
                   <form action="/TKCafe/Controller/menuController.php" method="POST" style="display:inline;">
                     <input type="hidden" name="delete_menu_id" value="<?= $menu['id'] ?>">
                     <button type="submit" name="delete_menu" class="btn btn-sm btn-danger"
@@ -107,7 +119,6 @@ $menuItems = getAllMenuItems($conn);
         <option value="air-balang">Air Balang</option>
         <option value="soft-drinks">Soft Drinks</option>
         <option value="hot-drinks">Hot Drinks</option>
-    
        </select>
        </div>
 
@@ -139,7 +150,7 @@ $menuItems = getAllMenuItems($conn);
 
       <div class="form-group">
         <label>Description</label>
-        <textarea name="description" id="edit-description" rows="3" required></textarea>
+        <textarea name="description" id="edit-description" rows="3" ></textarea>
       </div>
 
       <div class="form-group">
@@ -166,6 +177,16 @@ $menuItems = getAllMenuItems($conn);
     </form>
   </div>
 </div>
+
+
+<!-- Image Popup Modal -->
+<div id="imageModal" class="modal" style="display: none;">
+  <div class="modal-content" style="max-width: 600px; position: relative; text-align: center;">
+    <span class="close" onclick="closeImageModal()">&times;</span>
+    <img id="popupImage" src="" alt="Full Size" style="max-width: 100%; border-radius: 8px;">
+  </div>
+</div>
+
 
   </main>
 </div>

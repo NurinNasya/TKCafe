@@ -15,7 +15,6 @@ $tables = getAllTables(); // fetch data
 <body>
 <div class="admin-container">
   <?php require 'partials/sidebar.php'; ?>
-
   <main class="main-content">
     <header class="top-header">
       <h1>Manage Tables</h1>

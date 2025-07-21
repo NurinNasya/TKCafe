@@ -109,7 +109,7 @@ nav a:hover {
   font-size: 1.8rem;
   font-weight: 600;
   color: #4a3726;
-  border-radius: 25px;
+  border-radius: 25px;  
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
