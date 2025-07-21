@@ -65,8 +65,10 @@ function updateOrderType($conn, $sessionId, $orderType) {
     return mysqli_affected_rows($conn) > 0;
 }
 
-function updateOrderTotals($conn, $orderId, $total, $items,  $cutlery = 0) {
-    mysqli_begin_transaction($conn);
+   
+   function updateOrderTotals($conn, $orderId, $total, $items, $cutlery = 0, $voucherCode = null, $voucherAmount = 0)
+{
+    mysqli_autocommit($conn, false);
 
     try {
         // 1. Delete existing items
@@ -75,40 +77,69 @@ function updateOrderTotals($conn, $orderId, $total, $items,  $cutlery = 0) {
 
         // 2. Insert all items
         foreach ($items as $item) {
-            $menuId      = intval($item['menu_id']);
-            $quantity    = intval($item['quantity']);
-            $price       = floatval($item['price']);
+            $menuId   = intval($item['menu_id']);
+            $quantity = intval($item['quantity']);
+            $price    = floatval($item['price']);
             $sessionId = mysqli_real_escape_string($conn, session_id());
-            // $sessionId   = mysqli_real_escape_string($conn, $item['session_id']);
-            $custom      = !empty($item['customizations']) ? "'" . mysqli_real_escape_string($conn, json_encode($item['customizations'])) . "'" : "NULL";
-            $remarks     = isset($item['remarks']) ? "'" . mysqli_real_escape_string($conn, $item['remarks']) . "'" : "NULL";
+            $custom   = !empty($item['customizations']) ? json_encode($item['customizations']) : null;
+            $remarks  = isset($item['remarks']) ? $item['remarks'] : null;
 
-            $query = "
-                INSERT INTO order_item (order_id, menu_id, quantity, price, session_id, customizations, remarks)
-                VALUES ($orderId, $menuId, $quantity, $price, '$sessionId', $custom, $remarks)
-            ";
+            $stmt = $conn->prepare("
+                INSERT INTO order_item 
+                (order_id, menu_id, quantity, price, session_id, customizations, remarks)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+            ");
 
-            mysqli_query($conn, $query);
+            $stmt->bind_param(
+                "iiidsss",
+                $orderId,
+                $menuId,
+                $quantity,
+                $price,
+                $sessionId,
+                $custom,
+                $remarks
+            );
+
+            $stmt->execute();
+            $stmt->close();
         }
 
-        // 3. Update total
-        $total = floatval($total);
-        $query = "
+        // 3. Update order with total + voucher
+        $status = 'pending';
+        $now = date('Y-m-d H:i:s');
+
+        $stmt = $conn->prepare("
             UPDATE orders 
-            SET total = $total, cutlery = $cutlery, status = 'pending', updated_at = NOW()
-            WHERE id = $orderId
-        ";
-        mysqli_query($conn, $query);
+            SET total = ?, cutlery = ?, voucher_code = ?, voucher_amount = ?, status = ?, updated_at = ?
+            WHERE id = ?
+        ");
+
+        $stmt->bind_param(
+            "didsssi",
+            $total,
+            $cutlery,
+            $voucherCode,
+            $voucherAmount,
+            $status,
+            $now,
+            $orderId
+        );
+
+        error_log("🔥 Executing order UPDATE with: total=$total, cutlery=$cutlery, voucher=$voucherCode ($voucherAmount)");
+        $stmt->execute();
+        $stmt->close();
 
         mysqli_commit($conn);
         return true;
 
     } catch (Exception $e) {
         mysqli_rollback($conn);
-        error_log("Order update failed: " . $e->getMessage());
+        error_log("❌ Order update failed: " . $e->getMessage());
         throw $e;
     }
 }
+
 
 function getOrderDetails($conn, $orderId) {
     $orderId = intval($orderId);
