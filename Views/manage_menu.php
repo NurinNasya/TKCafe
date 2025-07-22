@@ -4,6 +4,19 @@ require_once '../db.php';
 
 $conn = getConnection(); 
 $menuItems = getAllMenuItems($conn);
+
+$itemsPerPage = 10;
+$totalItems = count($menuItems);
+$totalPages = ceil($totalItems / $itemsPerPage);
+
+// Get current page from URL, default to 1
+$currentPage = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
+$currentPage = min($totalPages, $currentPage); // Clamp to max page
+
+$startIndex = ($currentPage - 1) * $itemsPerPage;
+$menuItemsToShow = array_slice(array_reverse($menuItems), $startIndex, $itemsPerPage);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +61,8 @@ $menuItems = getAllMenuItems($conn);
           </thead>
           <tbody>
               <?php if (!empty($menuItems)) : ?>
-                <?php $counter = 1; foreach (array_reverse($menuItems) as $menu) : ?>
+               <?php $counter = $startIndex + 1; foreach ($menuItemsToShow as $menu) : ?>
+
 
           <tr>
                 <td><?= $counter++ ?></td> <!-- Row number -->
@@ -78,8 +92,41 @@ $menuItems = getAllMenuItems($conn);
               <tr><td colspan="7" style="text-align: center;">No menu items found.</td></tr>
             <?php endif; ?>
           </tbody>
+
         </table>
-      </div>
+
+            <div class="pagination">
+              <?php if ($currentPage > 1): ?>
+                <a href="?page=<?= $currentPage - 1 ?>" class="btn btn-sm">Prev</a>
+              <?php endif; ?>
+
+              <?php
+              $maxDisplay = 5;
+              $start = max(1, $currentPage - 2);
+              $end = min($totalPages, $currentPage + 2);
+
+              if ($start > 1) {
+                echo '<a href="?page=1" class="btn btn-sm">1</a>';
+                if ($start > 2) echo '<span class="dots">...</span>';
+              }
+
+              for ($i = $start; $i <= $end; $i++) {
+                $activeClass = ($i == $currentPage) ? 'btn-primary' : '';
+                echo "<a href='?page=$i' class='btn btn-sm $activeClass'>$i</a>";
+              }
+
+              if ($end < $totalPages) {
+                if ($end < $totalPages - 1) echo '<span class="dots">...</span>';
+                echo "<a href='?page=$totalPages' class='btn btn-sm'>$totalPages</a>";
+              }
+              ?>
+
+              <?php if ($currentPage < $totalPages): ?>
+                <a href="?page=<?= $currentPage + 1 ?>" class="btn btn-sm">Next</a>
+              <?php endif; ?>
+            </div>
+
+  
     </section>
 
     <!-- Add Menu Popup Modal -->
