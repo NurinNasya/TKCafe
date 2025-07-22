@@ -50,7 +50,7 @@ try {
                         <div class="order-card" data-order-id="<?= $order['id'] ?>">
 
                             <div class="order-header">
-                                <span class="order-id"><?= htmlspecialchars($order['order_number']) ?></span>
+                                <span class="order-id" style="font-size: 20px;"><?= htmlspecialchars($order['order_number']) ?></span>
                                 <span class="order-meta">
                                     <?= ucfirst(str_replace('_', ' ', $order['order_type'])) ?> |
                                     <span class="order-status status-<?= strtolower($order['status']) ?>">
