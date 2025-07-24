@@ -99,8 +99,7 @@ $bookings = array_slice($allBookings, $startIndex, $itemsPerPage);
               </form>
               </td>
               <td>
-               <button type="button" 
-                        class="btn edit-btn edit-booking-link"
+                <a href="#" class="edit-booking-link"
                         data-id="<?= $booking['id'] ?>" 
                         data-name="<?= htmlspecialchars($booking['customer_name']) ?>" 
                         data-phone="<?= htmlspecialchars($booking['phone_number']) ?>" 
