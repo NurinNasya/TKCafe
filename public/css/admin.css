@@ -1278,6 +1278,8 @@ textarea.input-field {
   }
 }
 
+
+
 .modal {
   display: none;
   position: fixed;
@@ -1438,44 +1440,35 @@ textarea.input-field {
   background-color: #2563eb;
 }
 
-/* tabmenu*/
+/* Tab Menu Styled Order(admin)*/
 .tab-menu {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
+/* Pill-style tab buttons */
 .tab-btn {
-    padding: 8px 16px;
-    background: #f0f0f0;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: 0.2s;
+  padding: 10px 20px;
+  border-radius: 30px;
+  background-color: #e3e3e3;
+  color: #444;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Hover effect */
+.tab-btn:hover {
+  background-color: #ccc;
+}
+
+/* Active tab style */
 .tab-btn.active {
-    background-color: #333;
-    color: white;
-}
-
-.bigger-meta {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    line-height: 1.6;
-}
-
-.close-btn {
-    width: auto !important;
-    min-width: unset !important;
-    max-width: 100px; /* adjust as needed */
-    padding: 6px 14px !important;
-    font-size: 0.95rem;
-    white-space: nowrap;
-}
-
-.status-section {
-  display: none;
+  background-color: #5c6bc0;
+  color: white;
+  font-weight: bold;
 }
 
 
@@ -1751,22 +1744,12 @@ textarea.input-field {
 }
 
 .edit-btn {
-  background-color: #4caf50;
+  background-color: #2563eb;
   color: white;
 }
 
 .edit-btn:hover {
-  background-color: #43a047;
-}
-
-.delete-btn {
-  background-color: #f44336;
-  color: white;
-  margin-left: 6px;
-}
-
-.delete-btn:hover {
-  background-color: #d32f2f;
+  background-color: #2563eb;
 }
 
 
@@ -1944,5 +1927,110 @@ textarea.input-field {
   cursor: pointer;
 }
 
+/* pagination table*/
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
 
+.pagination .btn-sm {
+  padding: 5px 10px;
+  text-decoration: none;
+  background-color: #ddd;
+  border-radius: 4px;
+  color: #333;
+}
+
+.pagination .btn-primary {
+  background-color: #4a3726;
+  color: #fff;
+}
+
+/* pagination menu*/
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.pagination .btn-sm {
+  padding: 5px 10px;
+  text-decoration: none;
+  background-color: #ddd;
+  border-radius: 4px;
+  color: #333;
+}
+
+.pagination .btn-primary {
+  background-color: #4a3726;
+  color: #fff;
+}
+
+.pagination .dots {
+  padding: 5px 10px;
+  color: #555;
+}
+
+
+/* pagination booking*/
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.pagination .btn-sm {
+  padding: 5px 10px;
+  text-decoration: none;
+  background-color: #ddd;
+  border-radius: 4px;
+  color: #333;
+}
+
+.pagination .btn-primary {
+  background-color: #4a3726;
+  color: #fff;
+}
+
+.pagination .dots {
+  padding: 5px 10px;
+  color: #555;
+}
+
+
+/* pagination voucher*/
+
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.pagination a {
+  padding: 5px 10px;
+  text-decoration: none;
+  background-color: #ddd;
+  border-radius: 4px;
+  color: #333;
+}
+
+.pagination a:hover {
+  background-color: #ddd;
+}
+
+.pagination a.active {
+  background-color: #4a3726;
+  color: white;
+}
 
