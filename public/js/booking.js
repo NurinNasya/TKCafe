@@ -9,6 +9,7 @@ function updateDropdownColor(dropdown) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  // Update dropdown colors
   const dropdowns = document.querySelectorAll('.status-dropdown');
   dropdowns.forEach(function (dropdown) {
     updateDropdownColor(dropdown);
@@ -18,21 +19,16 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Modal Logic
-  const modal = document.getElementById('editModal');
-  const closeBtn = document.querySelector('.close-button');
+  // ===== Edit Booking Modal Logic =====
+  const editModal = document.getElementById('editModal');
+  const closeEditBtn = editModal?.querySelector('.close-button');
 
-  // Ensure modal is hidden initially
-  if (modal) {
-    modal.style.display = 'none';
-  }
+  if (editModal) editModal.style.display = 'none';
 
-  // Track user action
   document.querySelectorAll('.edit-booking-link').forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault();
 
-      // Populate form
       document.getElementById('edit-booking-id').value = this.dataset.id;
       document.getElementById('edit-name').value = this.dataset.name;
       document.getElementById('edit-phone').value = this.dataset.phone;
@@ -41,20 +37,42 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('edit-guests').value = this.dataset.guests;
       document.getElementById('edit-table').value = this.dataset.table;
 
-      // Open modal manually
-      modal.style.display = 'flex';
+      editModal.style.display = 'flex';
     });
   });
 
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      modal.style.display = 'none';
+  if (closeEditBtn) {
+    closeEditBtn.addEventListener('click', () => {
+      editModal.style.display = 'none';
     });
   }
 
-  window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.style.display = 'none';
+  // ===== Add Booking Modal Logic =====
+  const bookingModal = document.getElementById("bookingFormModal");
+  const openBtn = document.getElementById("openBookingFormBtn");
+  const closeBookingBtn = bookingModal?.querySelector('.close-button');
+
+  if (bookingModal) bookingModal.style.display = 'none';
+
+  if (openBtn) {
+    openBtn.addEventListener('click', function () {
+      bookingModal.style.display = 'flex';
+    });
+  }
+
+  if (closeBookingBtn) {
+    closeBookingBtn.addEventListener('click', function () {
+      bookingModal.style.display = 'none';
+    });
+  }
+
+  // Close either modal if clicking outside
+  window.addEventListener('click', function (event) {
+    if (event.target === bookingModal) {
+      bookingModal.style.display = 'none';
+    }
+    if (event.target === editModal) {
+      editModal.style.display = 'none';
     }
   });
 });
