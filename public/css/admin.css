@@ -1944,5 +1944,147 @@ textarea.input-field {
   cursor: pointer;
 }
 
+/* ===== Category Toggle Grid ===== */
+.toggle-section {
+  margin: 20px 0;
+}
 
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
 
+.category-toggle {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 12px 15px;
+  transition: all 0.3s ease;
+}
+
+.category-toggle:hover {
+  background: #e9ecef;
+}
+
+.toggle-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.category-name {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Switch styling (existing) */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #dc2626;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Best Seller Toggle Styles */
+.best-seller-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toggle-btn {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+#bestSellerToggle:checked + .toggle-btn {
+    background-color: #4c3f56ff;
+    border-color: #4c3f56ff;
+}
+
+#bestSellerToggle:checked + .toggle-btn::after {
+    content: "✓";
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+}
+
+#bestSellerToggle {
+    display: none; /* Hide the actual checkbox */
+}
+
+.toggle-label {
+    font-size: 16px;
+    color: #555;
+}
+
+/* .btn-remark {
+    background: #fff;
+    border: 2px solid #ffc107;
+    color: #ffc107;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    margin-left: 10px;
+}
+
+.btn-remark:hover {
+    background: #fff8e1;
+}
+
+.btn-remark.active {
+    background: #ffc107;
+    color: white;
+}
