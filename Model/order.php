@@ -1,12 +1,21 @@
 <?php
 
-function generateOrderNumber($conn) {
-    $query = "SELECT MAX(id) AS last_id FROM orders";
-    $result = mysqli_query($conn, $query);
-    $row = mysqli_fetch_assoc($result);
-    $nextId = isset($row['last_id']) ? $row['last_id'] + 1 : 1;
+// function generateOrderNumber($conn) {
+//     $query = "SELECT MAX(CAST(SUBSTRING(order_number, 2) AS UNSIGNED)) AS max_num FROM orders";
+//     $result = mysqli_query($conn, $query);
+//     $row = mysqli_fetch_assoc($result);
+//     $next = isset($row['max_num']) ? $row['max_num'] + 1 : 1;
 
-    return '#' . str_pad($nextId, 3, '0', STR_PAD_LEFT);
+//     return '#' . str_pad($next, 3, '0', STR_PAD_LEFT);
+// }
+
+ function generateOrderNumber($conn) {
+     $query = "SELECT MAX(id) AS last_id FROM orders";
+     $result = mysqli_query($conn, $query);
+     $row = mysqli_fetch_assoc($result);
+     $nextId = isset($row['last_id']) ? $row['last_id'] + 1 : 1;
+
+     return '#' . str_pad($nextId, 3, '0', STR_PAD_LEFT);
 }
 
 // function createInitialOrder($conn, $sessionId, $orderType) {
