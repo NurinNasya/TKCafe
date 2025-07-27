@@ -16,7 +16,6 @@ $currentPage = min($totalPages, $currentPage); // Clamp to max page
 $startIndex = ($currentPage - 1) * $itemsPerPage;
 $menuItemsToShow = array_slice(array_reverse($menuItems), $startIndex, $itemsPerPage);
 
-
 ?>
 
 <!DOCTYPE html>
