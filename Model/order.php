@@ -132,7 +132,6 @@ function updateOrderTotals($conn, $orderId, $total, $items,  $cutlery = 0, $vouc
     }
 }
 
-
 function getOrderDetails($conn, $orderId) {
     $orderId = intval($orderId);
 
