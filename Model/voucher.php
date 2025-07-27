@@ -77,3 +77,23 @@ function updateVoucher($id, $code, $description, $amount, $minSpend, $validUntil
     mysqli_close($conn);
     return $success;
 }
+
+
+// voucher.php (Model)
+function getVouchersByPage($limit, $offset) {
+    $conn = getConnection();
+    $stmt = $conn->prepare("SELECT * FROM vouchers LIMIT ? OFFSET ?");
+    $stmt->bind_param("ii", $limit, $offset);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $vouchers = $result->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+    return $vouchers;
+}
+
+function countVouchers() {
+    $conn = getConnection();
+    $result = $conn->query("SELECT COUNT(*) as total FROM vouchers");
+    $row = $result->fetch_assoc();
+    return $row['total'];
+}

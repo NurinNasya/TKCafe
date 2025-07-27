@@ -83,8 +83,7 @@ if (isset($_POST['apply_voucher'])) {
           foreach ($items as $item): 
         $menuItem = getMenuItemById($conn, $item['menu_id']);
         $subtotal = $item['price'] * $item['quantity'];
-        
-        
+       
 
         // Parse customizations
         $customizations = !empty($item['customizations']) 

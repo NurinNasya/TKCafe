@@ -1,6 +1,19 @@
 <?php
 require_once '../Model/voucher.php';
 $vouchers = getAllVouchers();
+
+// Pagination settings
+$limit = 5; // Number of vouchers per page
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$page = max($page, 1); // ensure page >= 1
+$offset = ($page - 1) * $limit;
+
+$totalVouchers = countVouchers();
+$totalPages = ceil($totalVouchers / $limit);
+
+// Get current page vouchers
+$vouchers = getVouchersByPage($limit, $offset);
+
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +29,6 @@ $vouchers = getAllVouchers();
 
 
  <main class="main-content">
-  <section class="section">
     <div class="section-header">
       <h2>Manage Vouchers</h2>
 
@@ -24,11 +36,13 @@ $vouchers = getAllVouchers();
 
     <div class="card">
       <h3>Voucher List</h3>
+      <div style="text-align: right; margin-bottom: 15px;">
          <button class="btn btn-primary" id="openAddModal">+ Add Voucher</button>
       <div class="table-container">
     <table>
       <thead>
         <tr>
+           <th>No.</th>
           <th>Code</th>
           <th>Description</th>
           <th>Discount</th>
@@ -38,8 +52,12 @@ $vouchers = getAllVouchers();
         </tr>
       </thead>
       <tbody>
+        <?php $counter = ($page - 1) * $limit + 1; ?>
         <?php foreach ($vouchers as $voucher): ?>
           <tr>
+            <td>
+             <tr>
+             <td><?= $counter++ ?></td>
             <td><?= htmlspecialchars($voucher['code']) ?></td>
             <td><?= htmlspecialchars($voucher['description']) ?></td>
             <td>RM <?= number_format($voucher['discount_amount'], 2) ?></td>
@@ -55,38 +73,51 @@ $vouchers = getAllVouchers();
           <td class="<?= $validClass ?>">
             <?= $voucher['valid_until'] ?>
 </td>
+  <td>
+  <div style="display: flex; gap: 5px;">
+    <!-- Edit Button -->
+    <button 
+      class="btn btn-sm btn-warning edit-btn"
+      data-id="<?= $voucher['id'] ?>"
+      data-code="<?= htmlspecialchars($voucher['code']) ?>"
+      data-description="<?= htmlspecialchars($voucher['description']) ?>"
+      data-discount="<?= $voucher['discount_amount'] ?>"
+      data-min="<?= $voucher['min_spend'] ?>"
+      data-valid="<?= $voucher['valid_until'] ?>"
+    >
+      Edit
+    </button>
 
-            <td>
-
-                  <!-- Edit Button -->
-                  <button 
-                    class="btn btn-sm btn-warning edit-btn"
-                    data-id="<?= $voucher['id'] ?>"
-                    data-code="<?= htmlspecialchars($voucher['code']) ?>"
-                    data-description="<?= htmlspecialchars($voucher['description']) ?>"
-                    data-discount="<?= $voucher['discount_amount'] ?>"
-                    data-min="<?= $voucher['min_spend'] ?>"
-                    data-valid="<?= $voucher['valid_until'] ?>"
-                  >
-                    Edit
-                  </button>
-
-        
-                  <!-- Delete Form -->
-                  <form method="POST" action="/TKCafe/Controller/voucherController.php"
-                        class="delete-form" onsubmit="return confirm('Delete this voucher?')">
-                    <input type="hidden" name="voucher_id" value="<?= $voucher['id'] ?>">
-                    <button type="submit" name="delete_voucher" class="btn btn-sm btn-danger">Delete</button>
-                  </form>
-
-                </td>
+    <!-- Delete Form -->
+    <form method="POST" action="/TKCafe/Controller/voucherController.php"
+          class="delete-form" onsubmit="return confirm('Delete this voucher?')">
+      <input type="hidden" name="voucher_id" value="<?= $voucher['id'] ?>">
+      <button type="submit" name="delete_voucher" class="btn btn-sm btn-danger">Delete</button>
+    </form>
+  </div>
+</td>
 
               </form>
             </td>
           </tr>
         <?php endforeach; ?>
       </tbody>
-    
+            </table> 
+            <div class="pagination">
+              <?php if ($page > 1): ?>
+                <a href="?page=<?= $page - 1 ?>">&laquo; Prev</a>
+              <?php endif; ?>
+
+              <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                <a href="?page=<?= $i ?>" class="<?= ($i == $page) ? 'active' : '' ?>">
+                  <?= $i ?>
+                </a>
+              <?php endfor; ?>
+
+              <?php if ($page < $totalPages): ?>
+                <a href="?page=<?= $page + 1 ?>">Next &raquo;</a>
+              <?php endif; ?>
+</div>
             <!-- Edit Voucher Modal -->
         <div id="editModal" style="display: none;">
           <div class="edit-modal-content">

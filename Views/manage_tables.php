@@ -2,6 +2,21 @@
 include_once '../Model/tables.php'; 
 require_once '../db.php';
 $tables = getAllTables(); // fetch data
+
+// Pagination Setup
+$itemsPerPage = 10;
+$totalTables = count($tables);
+$totalPages = ceil($totalTables / $itemsPerPage);
+
+// Get current page from query string, default is 1
+$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$currentPage = max(1, min($totalPages, $currentPage)); // Clamp value
+
+// Calculate offset
+$startIndex = ($currentPage - 1) * $itemsPerPage;
+
+// Slice the array for current page
+$tablesToShow = array_slice($tables, $startIndex, $itemsPerPage);
 ?>
 
 
@@ -45,7 +60,8 @@ $tables = getAllTables(); // fetch data
         <?php if (empty($tables)): ?>
           <tr><td colspan="6">No tables found.</td></tr>
         <?php else: ?>
-          <?php $counter = 1; foreach ($tables as $table): ?>
+         <?php $counter = $startIndex + 1; foreach ($tablesToShow as $table): ?>
+
             <tr>
               <td><?= $counter++ ?></td>
               <td><?= htmlspecialchars($table['table_name']) ?></td>
@@ -84,7 +100,23 @@ $tables = getAllTables(); // fetch data
         <?php endif; ?>
       </tbody>
     </table>
-  </div>
+
+<div class="pagination">
+  <?php if ($currentPage > 1): ?>
+    <a href="?page=<?= $currentPage - 1 ?>" class="btn btn-sm">Previous</a>
+  <?php endif; ?>
+
+  <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+    <a href="?page=<?= $i ?>" class="btn btn-sm <?= ($i == $currentPage) ? 'btn-primary' : '' ?>">
+      <?= $i ?>
+    </a>
+  <?php endfor; ?>
+
+  <?php if ($currentPage < $totalPages): ?>
+    <a href="?page=<?= $currentPage + 1 ?>" class="btn btn-sm">Next</a>
+  <?php endif; ?>
+</div>
+
 
 <!-- Overlay and Popup (Optional Interface Preview for Modal Style) -->
 <div id="overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999;"></div>
