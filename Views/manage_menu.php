@@ -4,6 +4,21 @@ require_once '../db.php';
 
 $conn = getConnection(); 
 $menuItems = getAllMenuItems($conn);
+$allCategories = [
+    'best-seller' => 'Best Seller',
+    'standard' => 'Ala Carte (Standard)',
+    'signature' => 'Ala Carte (Signature)',
+    'set-standard' => 'Set Standard Combo',
+    'set-signature' => 'Set Signature Combo',
+    'masakan-ala' => 'Masakan Panas (Ala Carte)',
+    'masakan-side' => 'Masakan Panas (Side Dish)',
+    'lokcing' => 'Lokcing (Ala Carte)',
+    'western' => 'Western Side Dish (Ala Carte)',
+    'air-balang' => 'Air Balang',
+    'soft-drinks' => 'Soft Drinks',
+    'hot-drinks' => 'Hot Drinks'
+];
+$hiddenCategories = getHiddenCategories($conn);
 
 $itemsPerPage = 10;
 $totalItems = count($menuItems);
@@ -15,8 +30,6 @@ $currentPage = min($totalPages, $currentPage); // Clamp to max page
 
 $startIndex = ($currentPage - 1) * $itemsPerPage;
 $menuItemsToShow = array_slice(array_reverse($menuItems), $startIndex, $itemsPerPage);
-
-
 ?>
 
 <!DOCTYPE html>
@@ -34,6 +47,28 @@ $menuItemsToShow = array_slice(array_reverse($menuItems), $startIndex, $itemsPer
     <header class="top-header">
       <h1>Manage Menu</h1>
     </header>
+
+       <!-- 🟣 Hide/Show Category Section -->
+        <div class="toggle-section">
+          <h3>Hide / Show Categories</h3>
+           <p>(click to show or hide categories)</p>
+          <div class="category-grid">
+            <?php foreach ($allCategories as $key => $label): ?>
+              <div class="category-toggle">
+                <label class="toggle-label">
+                  <span class="category-name"><?= htmlspecialchars($label) ?></span>
+                  <label class="switch">
+                    <input type="checkbox" 
+                          class="category-toggle-checkbox" 
+                          data-category="<?= htmlspecialchars($key) ?>"
+                          <?= in_array($key, $hiddenCategories) ? 'checked' : '' ?>>
+                    <span class="slider round"></span>
+                  </label>
+                </label>
+              </div>
+            <?php endforeach; ?>
+          </div>
+        </div>
 
     <!-- Table List with Add Button -->
     <section class="data-section">
@@ -174,6 +209,30 @@ $menuItemsToShow = array_slice(array_reverse($menuItems), $startIndex, $itemsPer
                 <input type="file" name="image" accept="image/*" required>
             </div>
 
+            <div class="form-group">
+                <label>Remarks as Best Seller:</label>
+                <div class="best-seller-toggle">
+                    <input type="checkbox" id="bestSellerToggle" name="best_seller" value="1" onclick="toggleBestSeller()">
+                    <label for="bestSellerToggle" class="toggle-btn"></label>
+                    <span class="toggle-label">Best Seller</span>
+                </div>
+            </div>
+            <!-- <div class="form-group">
+              <label>Remarks as Best Seller:</label>
+              <div class="best-seller-toggle">
+                  <input type="checkbox" id="bestSellerToggle" onclick="toggleBestSeller()">
+                  <label for="bestSellerToggle" class="toggle-btn"></label>
+                  <span class="toggle-label">Best Seller</span>
+              </div>
+          </div> -->
+
+            <!-- <div class="form-group">
+            <label>Remarks:</label>
+            <button type="button" class="btn-remark" onclick="setBestSeller()">
+                Best Seller
+            </button>
+        </div> -->
+
             <div class="form-buttons">
                 <button type="submit" name="addMenu" class="btn btn-success">Add Menu</button>
                 <button type="button" onclick="closeAddForm()" class="btn btn-secondary">Cancel</button>
@@ -216,6 +275,24 @@ $menuItemsToShow = array_slice(array_reverse($menuItems), $startIndex, $itemsPer
         <input type="file" name="image">
         <small>Leave blank to keep current image.</small>
       </div>
+
+      <div class="form-group">
+        <label>Remarks as Best Seller:</label>
+        <div class="best-seller-toggle">
+            <input type="checkbox" id="editBestSellerToggle" name="best_seller" value="1" onclick="toggleBestSeller()">
+            <label for="editBestSellerToggle" class="toggle-btn"></label>
+            <span class="toggle-label">Best Seller</span>
+        </div>
+    </div>
+      
+          <!-- <div class="form-group">
+              <label>Remarks as Best Seller:</label>
+              <div class="best-seller-toggle">
+                  <input type="checkbox" id="bestSellerToggle" onclick="toggleBestSeller()">
+                  <label for="bestSellerToggle" class="toggle-btn"></label>
+                  <span class="toggle-label">Best Seller</span>
+              </div>
+          </div> -->
 
       <div class="form-buttons">
         <button type="submit" name="updateMenu" class="btn btn-success">Update Menu</button>
