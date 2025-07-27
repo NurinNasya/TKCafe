@@ -23,7 +23,7 @@
     </div>
      <a href="/TKCafe/Views/cart.php" class="cart-icon">
       <i class="fas fa-shopping-basket"></i>
-      <span class="cart-badge"></span> <!-- Add this line -->
+      <span class="cart-badge"></span>
     </a>
     <nav>
     </nav>

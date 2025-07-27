@@ -72,8 +72,8 @@ try {
                                 <div class="item">
                                     <span class="quantity"><?= $item['quantity'] ?>x</span>
                                     <span class="name"><?= htmlspecialchars($item['menu_name']) ?></span>
-                                    <?php if (!empty($item['remarks'])): ?>
-                                    <div class="notes">Note: <?= htmlspecialchars($item['remarks']) ?></div>
+                                    <?php if (!empty($item['remarks'])&& $item['remarks'] !== 'NULL'): ?>
+                                    <div class="notes">Note: <?= htmlspecialchars($item['remarks'])?></div>
                                     <?php endif; ?>
                                     <?php 
                                     $custom = is_string($item['customizations']) 

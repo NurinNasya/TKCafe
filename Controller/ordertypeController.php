@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['fresh_start'])) {
+    session_regenerate_id(true); // Destroy old session
+    $_SESSION['fresh_start'] = true; // Mark new session
+}
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -35,7 +39,8 @@ try {
     forceRedirect('/TKCafe/Views/menu.php');
 
 } catch (Exception $e) {
-    error_log("Order error: " . $e->getMessage());
+    die("Order error: " . $e->getMessage());
+    // error_log("Order error: " . $e->getMessage());
     redirectWithError('Failed to process selection');
 }
 

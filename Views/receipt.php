@@ -75,7 +75,7 @@ $voucherCode = $order['voucher_code'] ?? '';
                     <div class="receipt-item">
                         <div class="item-info">
                             <h3><?= htmlspecialchars($menuItem['name']) ?></h3>
-                            <?php if (!empty($item['remarks'])): ?>
+                            <?php if (!empty($item['remarks'])&& $item['remarks'] !== 'NULL'): ?>
                                 <p class="remarks">Note: <?= htmlspecialchars($item['remarks']) ?></p>
                             <?php endif; ?>
                     <!-- <?php if (!empty($item['customizations']) && is_array($item['customizations'])): ?>
@@ -124,29 +124,6 @@ $voucherCode = $order['voucher_code'] ?? '';
                 <span>TOTAL</span>
                 <span>RM <?= number_format($order['total'], 2) ?></span>
             </div>
-
-
-            <!-- <div class="total-row">
-                <span>Subtotal</span>
-              <span>RM <?= number_format($displaySubtotal, 2) ?></span>
-            </div>
-            <div class="total-row">
-                <span>Service Charge (10%)</span>
-                <span>RM <?= number_format($order['total'] * 0.1, 2) ?></span>
-            </div>
-
-            <?php if ($voucherAmount > 0): ?>
-            <div class="total-row">
-            <span>Voucher Discount (<?= htmlspecialchars($voucherCode) ?>)</span>
-            <span>- RM <?= number_format($voucherAmount, 2) ?></span>
-        </div>
-        <?php endif; ?>
-
-            <div class="total-row grand-total">
-                <span>TOTAL</span>
-                <span>RM <?= number_format($order['total'], 2) ?></span>
-            </div>
-        </div> -->
 
         <div class="receipt-footer">
             <p>Thank you for your order!</p>

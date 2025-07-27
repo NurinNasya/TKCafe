@@ -39,7 +39,7 @@ $buttonLabel = $order['status'] === 'pending' ? 'Preparing' :
                     <?= $item['quantity'] ?>x <?= htmlspecialchars($item['menu_name']) ?>
                 </span>
 
-                <?php if (!empty($item['remarks'])): ?>
+                <?php if (!empty($item['remarks'])&& $item['remarks'] !== 'NULL'): ?>
                     <div class="item-notes">Note: <?= htmlspecialchars($item['remarks']) ?></div>
                 <?php endif; ?>
 
