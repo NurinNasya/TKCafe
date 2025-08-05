@@ -1,14 +1,5 @@
 <?php
 
-// function generateOrderNumber($conn) {
-//     $query = "SELECT MAX(CAST(SUBSTRING(order_number, 2) AS UNSIGNED)) AS max_num FROM orders";
-//     $result = mysqli_query($conn, $query);
-//     $row = mysqli_fetch_assoc($result);
-//     $next = isset($row['max_num']) ? $row['max_num'] + 1 : 1;
-
-//     return '#' . str_pad($next, 3, '0', STR_PAD_LEFT);
-// }
-
  function generateOrderNumber($conn) {
      $query = "SELECT MAX(id) AS last_id FROM orders";
      $result = mysqli_query($conn, $query);
@@ -92,7 +83,11 @@ function updateOrderTotals($conn, $orderId, $total, $items,  $cutlery = 0, $vouc
             $sessionId = mysqli_real_escape_string($conn, session_id());
 
             // $sessionId   = mysqli_real_escape_string($conn, $item['session_id']);
-            $custom      = !empty($item['customizations']) ? "'" . mysqli_real_escape_string($conn, json_encode($item['customizations'])) . "'" : "NULL";
+            $custom = !empty($item['customizations']) 
+            ? json_encode($item['customizations'], JSON_UNESCAPED_UNICODE) 
+            : null;
+            //$custom = !empty($item['customizations']) ? "'" . mysqli_real_escape_string($conn, $item['customizations']) . "'" : "NULL";
+            // $custom      = !empty($item['customizations']) ? "'" . mysqli_real_escape_string($conn, json_encode($item['customizations'])) . "'" : "NULL";
             $remarks     = isset($item['remarks']) ? "'" . mysqli_real_escape_string($conn, $item['remarks']) . "'" : "NULL";
             $voucherCode = isset($voucherCode) ? "'" . mysqli_real_escape_string($conn, $voucherCode) . "'" : "NULL";
             $voucherAmount = isset($voucherAmount) ? floatval($voucherAmount) : 0.00;
@@ -165,7 +160,17 @@ function getOrderDetails($conn, $orderId) {
 
     $items = [];
     while ($row = mysqli_fetch_assoc($result)) {
-        $row['customizations'] = !empty($row['customizations']) ? json_decode($row['customizations'], true) : null;
+        if (!empty($row['customizations'])) {
+    $decoded = json_decode($row['customizations'], true);
+    if (is_string($decoded)) {
+        $decoded = json_decode($decoded, true); // second decode if it's still a string
+    }
+    $row['customizations'] = is_array($decoded) ? $decoded : null;
+} else {
+    $row['customizations'] = null;
+}
+
+        //$row['customizations'] = !empty($row['customizations']) ? json_decode($row['customizations'], true) : null;
         $items[] = $row;
     }
 
@@ -174,12 +179,3 @@ function getOrderDetails($conn, $orderId) {
         'items' => $items
     ];
 }
-
-// function clearOrderCart($conn, $sessionId) {
-//     $sessionId = mysqli_real_escape_string($conn, $sessionId);
-
-//     $query = "DELETE FROM order_item WHERE session_id = '$sessionId'";
-//     mysqli_query($conn, $query);
-
-//     return mysqli_affected_rows($conn);
-// }

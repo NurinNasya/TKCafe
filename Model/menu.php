@@ -1,6 +1,13 @@
 
 <?php
 
+function getAllCategories($conn) {
+    $sql = "SELECT * FROM categories ORDER BY id ASC";
+    $result = mysqli_query($conn, $sql);
+    return mysqli_fetch_all($result, MYSQLI_ASSOC);
+}
+
+
 function getAllMenuItems($conn) {
     $sql = "SELECT * FROM menu ORDER BY created_at DESC";
     $result = mysqli_query($conn, $sql);
@@ -82,3 +89,16 @@ function deleteMenuItem($conn, $id) {
     return mysqli_query($conn, $sql);
 }
 
+function categoryExists($conn, $slug) {
+    $slug = mysqli_real_escape_string($conn, $slug);
+    $sql = "SELECT id FROM categories WHERE slug = '$slug'";
+    $result = mysqli_query($conn, $sql);
+    return mysqli_num_rows($result) > 0;
+}
+
+function insertCategory($conn, $name, $slug) {
+    $name = mysqli_real_escape_string($conn, $name);
+    $slug = mysqli_real_escape_string($conn, $slug);
+    $sql = "INSERT INTO categories (name, slug) VALUES ('$name', '$slug')";
+    return mysqli_query($conn, $sql);
+}

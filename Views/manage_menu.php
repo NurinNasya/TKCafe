@@ -4,20 +4,8 @@ require_once '../db.php';
 
 $conn = getConnection(); 
 $menuItems = getAllMenuItems($conn);
-$allCategories = [
-    'best-seller' => 'Best Seller',
-    'standard' => 'Ala Carte (Standard)',
-    'signature' => 'Ala Carte (Signature)',
-    'set-standard' => 'Set Standard Combo',
-    'set-signature' => 'Set Signature Combo',
-    'masakan-ala' => 'Masakan Panas (Ala Carte)',
-    'masakan-side' => 'Masakan Panas (Side Dish)',
-    'lokcing' => 'Lokcing (Ala Carte)',
-    'western' => 'Western Side Dish (Ala Carte)',
-    'air-balang' => 'Air Balang',
-    'soft-drinks' => 'Soft Drinks',
-    'hot-drinks' => 'Hot Drinks'
-];
+$allCategories = getAllCategories($conn);
+
 $hiddenCategories = getHiddenCategories($conn);
 
 $itemsPerPage = 10;
@@ -51,22 +39,26 @@ $menuItemsToShow = array_slice(array_reverse($menuItems), $startIndex, $itemsPer
        <!-- 🟣 Hide/Show Category Section -->
         <div class="toggle-section">
           <h3>Hide / Show Categories</h3>
-           <p>(click to show or hide categories)</p>
+          <p>
+            (click to show or hide categories 
+            [<span class="status-indicator status-on"></span> = ON / 
+            <span class="status-indicator status-off"></span> = OFF])
+          </p>
           <div class="category-grid">
-            <?php foreach ($allCategories as $key => $label): ?>
-              <div class="category-toggle">
-                <label class="toggle-label">
-                  <span class="category-name"><?= htmlspecialchars($label) ?></span>
-                  <label class="switch">
-                    <input type="checkbox" 
-                          class="category-toggle-checkbox" 
-                          data-category="<?= htmlspecialchars($key) ?>"
-                          <?= in_array($key, $hiddenCategories) ? 'checked' : '' ?>>
-                    <span class="slider round"></span>
-                  </label>
+          <?php foreach ($allCategories as $cat): ?>
+            <div class="category-toggle">
+              <label class="toggle-label">
+                <span class="category-name"><?= htmlspecialchars($cat['name']) ?></span>
+                <label class="switch">
+                  <input type="checkbox" 
+                        class="category-toggle-checkbox" 
+                        data-category="<?= htmlspecialchars($cat['slug']) ?>"
+                        <?= in_array($cat['slug'], $hiddenCategories) ? 'checked' : '' ?>>
+                  <span class="slider round"></span>
                 </label>
-              </div>
-            <?php endforeach; ?>
+              </label>
+            </div>
+          <?php endforeach; ?>
           </div>
         </div>
 
@@ -187,21 +179,19 @@ $menuItemsToShow = array_slice(array_reverse($menuItems), $startIndex, $itemsPer
 
         <div class="form-group">
         <label>Category</label>
-        <select name="category" required>
+        <select name="category" id="categorySelect" required>
         <option value="" disabled selected>Select Category</option>
-        <option value="best-seller">Best Seller</option>
-        <option value="standard">Ala Carte (Standard)</option>
-        <option value="signature">Ala Carte (Signature)</option>
-        <option value="set-standard">Set Standard Combo</option>
-        <option value="set-signature">Set Signature Combo</option>
-        <option value="masakan-ala">Masakan Panas (Ala Carte)</option>
-        <option value="masakan-side">Masakan Panas (Side Dish)</option>
-        <option value="lokcing">Lokcing (Ala Carte)</option>
-        <option value="western">Western Side Dish (Ala Carte)</option>
-        <option value="air-balang">Air Balang</option>
-        <option value="soft-drinks">Soft Drinks</option>
-        <option value="hot-drinks">Hot Drinks</option>
+        <?php foreach ($allCategories as $cat): ?>
+        <option value="<?= htmlspecialchars($cat['slug']) ?>">
+        <?= htmlspecialchars($cat['name']) ?>
+        </option>
+        <?php endforeach; ?>
+        <option value="__other__">Other</option>
        </select>
+       <div class="form-group" id="newCategoryInput" style="display: none;">
+        <label>New Category Name</label>
+        <input type="text" name="custom_category" id="customCategoryInput">
+    </div>
        </div>
 
             <div class="form-group">
@@ -209,30 +199,15 @@ $menuItemsToShow = array_slice(array_reverse($menuItems), $startIndex, $itemsPer
                 <input type="file" name="image" accept="image/*" required>
             </div>
 
-            <div class="form-group">
+                  <div class="form-group">
                 <label>Remarks as Best Seller:</label>
                 <div class="best-seller-toggle">
-                    <input type="checkbox" id="bestSellerToggle" name="best_seller" value="1" onclick="toggleBestSeller()">
-                    <label for="bestSellerToggle" class="toggle-btn"></label>
-                    <span class="toggle-label">Best Seller</span>
-                </div>
-            </div>
-            <!-- <div class="form-group">
-              <label>Remarks as Best Seller:</label>
-              <div class="best-seller-toggle">
-                  <input type="checkbox" id="bestSellerToggle" onclick="toggleBestSeller()">
-                  <label for="bestSellerToggle" class="toggle-btn"></label>
+                  <input type="hidden" name="best_seller" value="0">
+                  <input type="checkbox" id="addBestSellerToggle" name="best_seller" value="1" onclick="toggleBestSeller(this)">
+                  <label for="addBestSellerToggle" class="toggle-btn"></label>
                   <span class="toggle-label">Best Seller</span>
+                </div>
               </div>
-          </div> -->
-
-            <!-- <div class="form-group">
-            <label>Remarks:</label>
-            <button type="button" class="btn-remark" onclick="setBestSeller()">
-                Best Seller
-            </button>
-        </div> -->
-
             <div class="form-buttons">
                 <button type="submit" name="addMenu" class="btn btn-success">Add Menu</button>
                 <button type="button" onclick="closeAddForm()" class="btn btn-secondary">Cancel</button>
@@ -279,21 +254,12 @@ $menuItemsToShow = array_slice(array_reverse($menuItems), $startIndex, $itemsPer
       <div class="form-group">
         <label>Remarks as Best Seller:</label>
         <div class="best-seller-toggle">
-            <input type="checkbox" id="editBestSellerToggle" name="best_seller" value="1" onclick="toggleBestSeller()">
-            <label for="editBestSellerToggle" class="toggle-btn"></label>
-            <span class="toggle-label">Best Seller</span>
+          <input type="checkbox" id="editBestSellerToggle" name="best_seller" value="1" onclick="toggleBestSeller(this)">
+          <label for="editBestSellerToggle" class="toggle-btn"></label>
+          <span class="toggle-label">Best Seller</span>
         </div>
-    </div>
+      </div>
       
-          <!-- <div class="form-group">
-              <label>Remarks as Best Seller:</label>
-              <div class="best-seller-toggle">
-                  <input type="checkbox" id="bestSellerToggle" onclick="toggleBestSeller()">
-                  <label for="bestSellerToggle" class="toggle-btn"></label>
-                  <span class="toggle-label">Best Seller</span>
-              </div>
-          </div> -->
-
       <div class="form-buttons">
         <button type="submit" name="updateMenu" class="btn btn-success">Update Menu</button>
         <button type="button" onclick="closeEditForm()" class="btn btn-secondary">Cancel</button>

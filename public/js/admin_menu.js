@@ -128,66 +128,33 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-function toggleBestSeller() {
-    const isBestSeller = document.getElementById('bestSellerToggle').checked;
-    const categorySelect = document.querySelector('select[name="category"]') || 
-                         document.getElementById('edit-category');
-    
-    if (isBestSeller) {
-        if (categorySelect.tagName === 'SELECT') {
-            categorySelect.value = 'best-seller';
+document.addEventListener('DOMContentLoaded', function () {
+    const categorySelect = document.getElementById('categorySelect');
+    const newCategoryInput = document.getElementById('newCategoryInput');
+
+    categorySelect.addEventListener('change', function () {
+        if (this.value === '__other__') {
+            newCategoryInput.style.display = 'block';
+            newCategoryInput.setAttribute('required', 'required');
         } else {
-            categorySelect.value = 'best-seller';
+            newCategoryInput.style.display = 'none';
+            newCategoryInput.removeAttribute('required');
         }
-    }
-    
+    });
+});
+
+function toggleBestSeller(checkbox) {
+  const isBestSeller = checkbox.checked;
+  const form = checkbox.closest("form");
+
     // Add hidden field to ensure best_seller status is submitted
-    let bestSellerInput = document.querySelector('input[name="best_seller"]');
-    if (!bestSellerInput) {
-        bestSellerInput = document.createElement('input');
-        bestSellerInput.type = 'hidden';
-        bestSellerInput.name = 'best_seller';
-        document.querySelector('form').appendChild(bestSellerInput);
-    }
-    bestSellerInput.value = isBestSeller ? '1' : '0';
+  let bestSellerInput = form.querySelector('input[name="best_seller"][type="hidden"]');
+  if (!bestSellerInput) {
+    bestSellerInput = document.createElement('input');
+    bestSellerInput.type = 'hidden';
+    bestSellerInput.name = 'best_seller';
+    form.appendChild(bestSellerInput);
+  }
+
+  bestSellerInput.value = isBestSeller ? '1' : '0';
 }
-
-// function toggleBestSeller() {
-//     const isBestSeller = document.getElementById('bestSellerToggle').checked;
-//     const categorySelect = document.getElementById('categorySelect');
-    
-//     if (isBestSeller) {
-//         categorySelect.value = 'best-seller';
-//     } else {
-//         categorySelect.value = ''; // Or set to default
-//     }
-// }
-// function setBestSeller() {
-//     // Set the category dropdown to "Best Seller"
-//     document.getElementById('categorySelect').value = 'best-seller';
-    
-//     // Optional: Add visual feedback
-//     const btn = document.querySelector('.btn-remark');
-//     btn.classList.add('active');
-//     setTimeout(() => btn.classList.remove('active'), 1000);
-// }
-// document.querySelectorAll('.category-toggle-checkbox').forEach(checkbox => {
-//   checkbox.addEventListener('change', function () {
-//     const category = this.dataset.category;
-//     const hide = this.checked ? 1 : 0;
-
-//     fetch('../controllers/menuController.php', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/x-www-form-urlencoded'
-//       },
-//       body: `action=toggle_category&category=${encodeURIComponent(category)}&hide=${hide}`
-//     })
-//     .then(response => response.json())
-//     .then(data => {
-//       if (!data.success) {
-//         alert('Failed to update category visibility.');
-//       }
-//     });
-//   });
-// });

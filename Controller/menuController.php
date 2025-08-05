@@ -24,12 +24,30 @@ if (isset($_POST['addMenu'])) {
     $description = $_POST['description'];
     $price = $_POST['price'];
     $category = $_POST['category'];
-    $best_seller = isset($_POST['best_seller']) ? 1 : 0; // Get toggle state
+    $best_seller = (isset($_POST['best_seller']) && $_POST['best_seller'] == '1') ? 1 : 0;
+
+    // $best_seller = isset($_POST['best_seller']) ? 1 : 0; // Get toggle state
+
+       // Handle custom category input
+    if ($category === '__other__' && !empty($_POST['custom_category'])) {
+        $customCategory = trim($_POST['custom_category']);
+        $slug = strtolower(str_replace(' ', '-', $customCategory));
+
+        // Insert the category only if it doesn't exist
+        if (!categoryExists($conn, $slug)) {
+            insertCategory($conn, $customCategory, $slug);
+        }
+
+        $category = $slug; // Use the new slug for the menu item
+    }
     
     // Force category to 'best-seller' if toggle is on
-    if ($best_seller) {
-        $category = 'best-seller';
-    }
+//      elseif ($best_seller) {
+//     $category = 'best-seller'; // Only override if not using custom category
+// }
+    // if ($best_seller) {
+    //     $category = 'best-seller';
+    // }
 
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
         $image = $_FILES['image']['name'];

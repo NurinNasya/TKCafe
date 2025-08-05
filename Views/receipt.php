@@ -78,17 +78,12 @@ $voucherCode = $order['voucher_code'] ?? '';
                             <?php if (!empty($item['remarks'])&& $item['remarks'] !== 'NULL'): ?>
                                 <p class="remarks">Note: <?= htmlspecialchars($item['remarks']) ?></p>
                             <?php endif; ?>
-                    <!-- <?php if (!empty($item['customizations']) && is_array($item['customizations'])): ?>
-                            <p class="customization">
-                                Drink: <?= ucwords(str_replace('-', ' ', htmlspecialchars($item['customizations']['drink'] ?? 'Not specified'))) ?>
-                            </p>
-                            <?php endif; ?> -->
-
                             <?php if (!empty($item['customizations'])): 
-                                $custom = json_decode($item['customizations'], true);
                             ?>
-                                <p class="customization">Drink: <?= ucwords(str_replace('-', ' ', $custom['drink'] ?? 'Not specified')) ?></p>
-                            <?php endif; ?>
+                              <p class="customization">
+                                    Drink: <?= ucwords(str_replace('-', ' ', $item['customizations']['drink'] ?? 'Not specified')) ?>
+                                </p>
+                            <?php endif; ?> 
                         </div>
                         <div class="item-price">
                             <span><?= $item['quantity'] ?> × RM <?= number_format((float)$item['price'], 2) ?></span>
@@ -98,12 +93,6 @@ $voucherCode = $order['voucher_code'] ?? '';
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-
-            
-                    <?php
-               
-                ?>
-
             <div class="receipt-total">
 
             <div class="total-row">

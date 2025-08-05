@@ -39,23 +39,28 @@ $bestSellerItems = getBestSellerItems($conn); // Get bestsellers separately
 
     <!-- REGULAR CATEGORIES -->
     <?php
-    $categoryOrder = [
-        'best-seller', // This will now only contain non-bestseller items from best-seller category
-        'standard',
-        'signature',
-        'set-standard',
-        'set-signature',
-        'masakan-ala',
-        'masakan-side',
-        'lokcing',
-        'western',
-        'air-balang',
-        'soft-drinks',
-        'hot-drinks'
-    ];
+    $allCategories = getAllCategories($conn);
+
+    // $categoryOrder = [
+    //     'best-seller', // This will now only contain non-bestseller items from best-seller category
+    //     'standard',
+    //     'signature',
+    //     'set-standard',
+    //     'set-signature',
+    //     'masakan-ala',
+    //     'masakan-side',
+    //     'lokcing',
+    //     'western',
+    //     'air-balang',
+    //     'soft-drinks',
+    //     'hot-drinks'
+    // ];
 
     if (!empty($menuItems)):
-        foreach ($categoryOrder as $category):
+        // foreach ($categoryOrder as $category):
+             foreach ($allCategories as $catData):
+            $category = $catData['slug'] ?? $catData['name']; 
+              //$category = $catData['slug'];  or 'name', depending on your DB structure
             if (in_array($category, $hiddenCategories)) continue;
             foreach ($menuItems as $item):
                 // Skip if this is a bestseller item (already shown above)
