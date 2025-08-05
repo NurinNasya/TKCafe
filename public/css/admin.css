@@ -2212,3 +2212,21 @@ input:checked + .slider:before {
   background-color: #4a3726;
   color: white;
 }
+
+/* search booking */
+.search-input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* notification pending booking */
+.pending-notification {
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  color: #856404;
+  padding: 10px 15px;
+  margin: 10px 0;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
