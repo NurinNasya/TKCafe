@@ -2033,7 +2033,7 @@ textarea.input-field {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: #4CAF50;
   transition: .4s;
   border-radius: 24px;
 }
@@ -2058,6 +2058,22 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
+.status-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 0 5px;
+}
+
+.status-on {
+  background-color: #22c55e; /* green */
+}
+
+.status-off {
+  background-color: #dc2626; /* red */
+}
+
 /* Best Seller Toggle Styles */
 .best-seller-toggle {
     display: flex;
@@ -2076,7 +2092,26 @@ input:checked + .slider:before {
     position: relative;
 }
 
-#bestSellerToggle:checked + .toggle-btn {
+.best-seller-toggle input[type="checkbox"] {
+  display: none;
+}
+
+.best-seller-toggle input[type="checkbox"]:checked + .toggle-btn {
+  background-color: #4c3f56ff;
+  border-color: #4c3f56ff;
+}
+
+.best-seller-toggle input[type="checkbox"]:checked + .toggle-btn::after {
+  content: "✓";
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+}
+
+/* #bestSellerToggle:checked + .toggle-btn {
     background-color: #4c3f56ff;
     border-color: #4c3f56ff;
 }
@@ -2092,8 +2127,8 @@ input:checked + .slider:before {
 }
 
 #bestSellerToggle {
-    display: none; /* Hide the actual checkbox */
-}
+    display: none;
+} */
 
 .toggle-label {
     font-size: 16px;
