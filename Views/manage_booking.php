@@ -1,7 +1,12 @@
 <?php
 require_once '../Model/booking.php'; // Adjust path if needed
+$pendingCount = count(getAllBookings('Pending'));
+
 $statusFilter = isset($_GET['status']) ? $_GET['status'] : 'all';
-$allBookings = getAllBookings($statusFilter);
+
+$searchTerm = isset($_GET['search']) ? trim($_GET['search']) : '';
+
+$allBookings = getAllBookings($statusFilter, $searchTerm);
 
 /// Setup pagination
 $itemsPerPage = 10;
@@ -37,6 +42,14 @@ $bookings = array_slice($allBookings, $startIndex, $itemsPerPage);
     <main class="main-content">
       <header class="top-header">
         <h1>Manage Bookings</h1>
+
+        <?php if ($pendingCount > 0): ?>
+  <div style="color: #d9534f; font-weight: bold; margin-bottom: 10px;">
+    🔔 You have <?= $pendingCount ?> pending booking<?= $pendingCount > 1 ? 's' : '' ?>!
+    <a href="manage_booking.php?status=Pending" style="margin-left: 10px;" class="btn btn-sm btn-primary">View</a>
+  </div>
+<?php endif; ?>
+
         <!-- Add Booking Button -->
         <div style="text-align: right; margin-bottom: 15px;">
           <button id="openBookingFormBtn" class="btn btn-primary">+ Add Booking</button>
@@ -46,9 +59,17 @@ $bookings = array_slice($allBookings, $startIndex, $itemsPerPage);
       <!-- Filters -->
       <div class="booking-filters">
         <a href="manage_booking.php" class="<?= $statusFilter === 'all' ? 'active' : '' ?>">All</a>
+        <a href="manage_booking.php?status=Pending" class="<?= $statusFilter === 'Pending' ? 'active' : '' ?>">Pending</a>
         <a href="manage_booking.php?status=Confirmed" class="<?= $statusFilter === 'Confirmed' ? 'active' : '' ?>">Confirmed</a>
         <a href="manage_booking.php?status=Cancelled" class="<?= $statusFilter === 'Canceled' ? 'active' : '' ?>">Cancelled</a>
       </div>
+
+      <!-- ✅ SEARCH FORM -->
+<form method="GET" action="manage_booking.php" style="margin: 20px 0;">
+  <input type="text" name="search" placeholder="Search by customer or phone" value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>" class="search-input" style="padding: 6px; width: 250px;">
+  <input type="hidden" name="status" value="<?= $statusFilter ?>">
+  <button type="submit" class="btn btn-primary btn-sm">Search</button>
+</form>
 
       <!-- Booking Table -->
       <table class="booking-table">
@@ -93,6 +114,7 @@ $bookings = array_slice($allBookings, $startIndex, $itemsPerPage);
             <input type="hidden" name="booking_id" value="<?= $booking['id'] ?>">
             <input type="hidden" name="action" value="updateStatus">
            <select name="status" onchange="updateDropdownColor(this); this.form.submit()" class="status-dropdown <?= strtolower($booking['status']) ?>">
+             <option value="Pending" <?= $booking['status'] == 'Pending' ? 'selected' : '' ?>>Pending</option>
             <option value="Confirmed" <?= $booking['status'] == 'Confirmed' ? 'selected' : '' ?>>Confirmed</option>
             <option value="Cancelled" <?= $booking['status'] == 'Cancelled' ? 'selected' : '' ?>>Cancelled</option>
         </select>
@@ -117,7 +139,7 @@ $bookings = array_slice($allBookings, $startIndex, $itemsPerPage);
 
   <div class="pagination">
   <?php if ($currentPage > 1): ?>
-    <a href="?status=<?= $statusFilter ?>&page=<?= $currentPage - 1 ?>" class="btn btn-sm">Prev</a>
+  <a href="?status=<?= $statusFilter ?>&search=<?= urlencode($searchTerm) ?>&page=<?= $currentPage - 1 ?>" class="btn btn-sm">Prev</a>
   <?php endif; ?>
 
   <?php
@@ -132,7 +154,8 @@ $bookings = array_slice($allBookings, $startIndex, $itemsPerPage);
 
   for ($i = $start; $i <= $end; $i++) {
     $activeClass = ($i == $currentPage) ? 'btn-primary' : '';
-    echo "<a href='?status=$statusFilter&page=$i' class='btn btn-sm $activeClass'>$i</a>";
+    echo "<a href='?status=$statusFilter&search=" . urlencode($searchTerm) . "&page=$i' class='btn btn-sm $activeClass'>$i</a>";
+
   }
 
   if ($end < $totalPages) {
@@ -154,7 +177,7 @@ $bookings = array_slice($allBookings, $startIndex, $itemsPerPage);
     <form method="post" action="/TKCafe/Controller/bookingController.php" class="booking-form">
       <input type="hidden" name="action" value="addBooking">
       <div class="form-group">
-        <label for="name">Full Name</label>
+        <label for="name">Customer Name</label>
         <input type="text" id="name" name="name" placeholder="Enter your full name" required>
       </div>
       <div class="form-group">

@@ -3,7 +3,7 @@ require_once __DIR__ . '/../db.php';
 
 function addBooking($data) {
     $conn = getConnection();
-    $status = 'Confirmed'; // default status
+    $status = 'Pending'; // default status
     $stmt = $conn->prepare("INSERT INTO bookings (customer_name, phone_number, booking_date, booking_time, guests, table_number, status) VALUES (?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("sssssss", $data['name'], $data['phone'], $data['date'], $data['time'], $data['guests'], $data['table'], $status);
     return $stmt->execute();
@@ -18,17 +18,41 @@ function updateBookingStatus($id, $status) {
 
 }
 
-function getAllBookings($status = null) {
-    $conn = getConnection();
-    if ($status && $status !== 'all') {
-        $stmt = $conn->prepare("SELECT * FROM bookings WHERE status = ? ORDER BY booking_date DESC");
-        $stmt->bind_param("s", $status);
-        $stmt->execute();
-        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-    } else {
-        $result = $conn->query("SELECT * FROM bookings ORDER BY booking_date DESC");
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
+function getAllBookings($status = null, $searchTerm = '') {
+$conn = getConnection();
+$query = "SELECT * FROM bookings WHERE 1=1";
+
+$params = [];
+$types = "";
+
+// Filter by status if not "all"
+if ($status && $status !== 'all') {
+    $query .= " AND status = ?";
+    $types .= "s";
+    $params[] = $status;
+}
+
+// Filter by search term (name or phone)
+if (!empty($searchTerm)) {
+    $query .= " AND (customer_name LIKE ? OR phone_number LIKE ?)";
+    $types .= "ss";
+    $searchWildcard = '%' . $searchTerm . '%';
+    $params[] = $searchWildcard;
+    $params[] = $searchWildcard;
+}
+
+$query .= " ORDER BY booking_date DESC";
+
+$stmt = $conn->prepare($query);
+
+// Bind parameters dynamically if any
+if (!empty($params)) {
+    $stmt->bind_param($types, ...$params);
+}
+
+$stmt->execute();
+return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
 }
 
 function updateBookingTable($id, $tableNumber) {
