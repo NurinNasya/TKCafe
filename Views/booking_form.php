@@ -6,6 +6,7 @@
    <link rel="stylesheet" href="/TKCafe/public/css/booking.css">
 </head>
 <body>
+     <div class="background-wrapper">
     <div class="form-container">
         <h2>Reserve Your Table</h2>
        <form method="post" action="/TKCafe/Controller/bookingController.php" class="booking-form">
@@ -17,7 +18,8 @@
 
             <div class="form-group">
                 <label for="phone">Phone Number</label>
-                <input type="text" id="phone" name="phone" placeholder="e.g., 012-3456789" required>
+                <input type="text"  maxlength="11" id="phone" name="phone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                 placeholder="e.g., 012-3456789" required>
             </div>
 
             <div class="form-group">
@@ -46,7 +48,7 @@
                       <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
                   <div class="popup success-popup" id="successPopup">
                       <div class="popup-content">
-                          <p> Booking successful!</p>
+                          <p> Your booking has been received! Please wait for confirmation. Our admin will contact you if the table is unavailable.</p>
                           <button onclick="document.getElementById('successPopup').style.display='none'">OK</button>
                       </div>
                   </div>

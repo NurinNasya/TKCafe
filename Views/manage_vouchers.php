@@ -1,5 +1,6 @@
 <?php
 require_once '../Model/voucher.php';
+$search = isset($_GET['search']) ? trim($_GET['search']) : null;
 $vouchers = getAllVouchers();
 
 // Pagination settings
@@ -8,13 +9,17 @@ $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $page = max($page, 1); // ensure page >= 1
 $offset = ($page - 1) * $limit;
 
-$totalVouchers = countVouchers();
+if ($search) {
+    $totalVouchers = countSearchedVouchers($search); // 🔧 change
+    $vouchers = searchVouchersByPage($search, $limit, $offset); // 🔧 change
+} else {
+    $totalVouchers = countVouchers(); // existing
+    $vouchers = getVouchersByPage($limit, $offset); // existing
+}
+
 $totalPages = ceil($totalVouchers / $limit);
-
-// Get current page vouchers
-$vouchers = getVouchersByPage($limit, $offset);
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +41,12 @@ $vouchers = getVouchersByPage($limit, $offset);
 
     <div class="card">
       <h3>Voucher List</h3>
+      <form method="GET" style="margin-bottom: 15px; display: flex; gap: 10px;">
+  <input type="text" name="search" placeholder="Search voucher code..." value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>" class="input-field">
+  <button type="submit" class="btn btn-sm btn-primary">Search</button>
+</form>
+
+
       <div style="text-align: right; margin-bottom: 15px;">
          <button class="btn btn-primary" id="openAddModal">+ Add Voucher</button>
       <div class="table-container">
@@ -104,20 +115,22 @@ $vouchers = getVouchersByPage($limit, $offset);
       </tbody>
             </table> 
             <div class="pagination">
-              <?php if ($page > 1): ?>
-                <a href="?page=<?= $page - 1 ?>">&laquo; Prev</a>
-              <?php endif; ?>
+            <div class="pagination">
+  <?php if ($page > 1): ?>
+    <a href="?page=<?= $page - 1 ?><?= $search ? '&search=' . urlencode($search) : '' ?>">&laquo; Prev</a>
+  <?php endif; ?>
 
-              <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                <a href="?page=<?= $i ?>" class="<?= ($i == $page) ? 'active' : '' ?>">
-                  <?= $i ?>
-                </a>
-              <?php endfor; ?>
+  <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+    <a href="?page=<?= $i ?><?= $search ? '&search=' . urlencode($search) : '' ?>" class="<?= ($i == $page) ? 'active' : '' ?>">
+      <?= $i ?>
+    </a>
+  <?php endfor; ?>
 
-              <?php if ($page < $totalPages): ?>
-                <a href="?page=<?= $page + 1 ?>">Next &raquo;</a>
-              <?php endif; ?>
+  <?php if ($page < $totalPages): ?>
+    <a href="?page=<?= $page + 1 ?><?= $search ? '&search=' . urlencode($search) : '' ?>">Next &raquo;</a>
+  <?php endif; ?>
 </div>
+
             <!-- Edit Voucher Modal -->
         <div id="editModal" style="display: none;">
           <div class="edit-modal-content">

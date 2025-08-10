@@ -24,7 +24,7 @@ $buttonLabel = $order['status'] === 'pending' ? 'Preparing' :
         </div>
     </div>
     <!-- <div class="order-meta" style="text-align: left;"> -->
-        <div class="order-meta bigger-meta" style="text-align: left;">
+        <div class="order-meta bigger-meta" style="text-align: left; font-size: 1.3rem;">
         <p><strong>Date:</strong> <?= date('M j, Y g:i A', strtotime($order['created_at'])) ?></p>
         <p><strong>Type:</strong> <?= ucfirst(str_replace('_', ' ', $order['order_type'])) ?></p>
         <p><strong>Table:</strong> <?= htmlspecialchars($order['table_name'] ?? 'N/A') ?></p>

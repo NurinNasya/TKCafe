@@ -39,10 +39,16 @@ $tablesToShow = array_slice($tables, $startIndex, $itemsPerPage);
  
 <!-- Table List with Add Button at Top-Right -->
 <section class="data-section">
+  
   <div class="section-header" style="display: flex; justify-content: space-between; align-items: center;">
     <h2>Table List</h2>
+    
     <button class="btn btn-primary" onclick="openAddForm()">+ Add Table</button>
   </div>
+ <form method="GET" style="margin-bottom: 15px; display: flex; gap: 10px;">
+  <input type="text" name="search" placeholder="Search table name..." value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>" class="input-field">
+  <button type="submit" class="btn btn-sm btn-primary">Search</button>
+</form>
 
   <div class="table-container">
     <table>
@@ -102,19 +108,19 @@ $tablesToShow = array_slice($tables, $startIndex, $itemsPerPage);
     </table>
 
 <div class="pagination">
-  <?php if ($currentPage > 1): ?>
-    <a href="?page=<?= $currentPage - 1 ?>" class="btn btn-sm">Previous</a>
-  <?php endif; ?>
+ <?php if ($currentPage > 1): ?>
+  <a href="?page=<?= $currentPage - 1 ?>&search=<?= urlencode($search) ?>" class="btn btn-sm">Previous</a>
+<?php endif; ?>
 
-  <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-    <a href="?page=<?= $i ?>" class="btn btn-sm <?= ($i == $currentPage) ? 'btn-primary' : '' ?>">
-      <?= $i ?>
-    </a>
-  <?php endfor; ?>
+<?php for ($i = 1; $i <= $totalPages; $i++): ?>
+  <a href="?page=<?= $i ?>&search=<?= urlencode($search) ?>" class="btn btn-sm <?= ($i == $currentPage) ? 'btn-primary' : '' ?>">
+    <?= $i ?>
+  </a>
+<?php endfor; ?>
 
-  <?php if ($currentPage < $totalPages): ?>
-    <a href="?page=<?= $currentPage + 1 ?>" class="btn btn-sm">Next</a>
-  <?php endif; ?>
+<?php if ($currentPage < $totalPages): ?>
+  <a href="?page=<?= $currentPage + 1 ?>&search=<?= urlencode($search) ?>" class="btn btn-sm">Next</a>
+<?php endif; ?>
 </div>
 
 

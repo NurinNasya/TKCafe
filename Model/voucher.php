@@ -97,3 +97,28 @@ function countVouchers() {
     $row = $result->fetch_assoc();
     return $row['total'];
 }
+
+function searchVouchersByPage($keyword, $limit, $offset) {
+    $conn = getConnection();
+    $keyword = '%' . $conn->real_escape_string($keyword) . '%';
+    $stmt = $conn->prepare("SELECT * FROM vouchers WHERE code LIKE ? OR description LIKE ? LIMIT ? OFFSET ?");
+    $stmt->bind_param("ssii", $keyword, $keyword, $limit, $offset);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $vouchers = $result->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+    return $vouchers;
+}
+
+//  to count total matching vouchers for pagination
+function countSearchedVouchers($keyword) {
+    $conn = getConnection();
+    $keyword = '%' . $conn->real_escape_string($keyword) . '%';
+    $stmt = $conn->prepare("SELECT COUNT(*) as total FROM vouchers WHERE code LIKE ? OR description LIKE ?");
+    $stmt->bind_param("ss", $keyword, $keyword);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $stmt->close();
+    return $row['total'];
+}

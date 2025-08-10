@@ -24,6 +24,7 @@ $bookings = array_slice($allBookings, $startIndex, $itemsPerPage);
 <!DOCTYPE html>
 <html>
 <head>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
   <meta charset="UTF-8">
   <title>Manage Bookings</title>
   <link rel="stylesheet" href="/TKCafe/public/css/admin.css">
@@ -38,17 +39,22 @@ $bookings = array_slice($allBookings, $startIndex, $itemsPerPage);
   <div class="admin-container">
 
     <?php require 'partials/sidebar.php'; ?>
-    
     <main class="main-content">
       <header class="top-header">
         <h1>Manage Bookings</h1>
 
-        <?php if ($pendingCount > 0): ?>
-  <div style="color: #d9534f; font-weight: bold; margin-bottom: 10px;">
-    🔔 You have <?= $pendingCount ?> pending booking<?= $pendingCount > 1 ? 's' : '' ?>!
-    <a href="manage_booking.php?status=Pending" style="margin-left: 10px;" class="btn btn-sm btn-primary">View</a>
+<?php if ($pendingCount > 0): ?>
+  <div class="modern-alert">
+    <div class="icon-circle">
+      <span class="material-symbols-outlined">event_note</span>
+    </div>
+    <div class="alert-info">
+      <h2>Pending Bookings!</h2>
+      <p><strong><?= $pendingCount ?></strong> booking<?= $pendingCount > 1 ? 's are' : ' is' ?> waiting for confirmation.</p>
+    </div>
+    <a href="manage_booking.php?status=Pending" class="alert-action-btn">Manage Now</a>
   </div>
-<?php endif; ?>
+  <?php endif; ?>
 
         <!-- Add Booking Button -->
         <div style="text-align: right; margin-bottom: 15px;">
@@ -121,15 +127,16 @@ $bookings = array_slice($allBookings, $startIndex, $itemsPerPage);
               </form>
               </td>
               <td>
-                <a href="#" class="edit-booking-link"
-                        data-id="<?= $booking['id'] ?>" 
-                        data-name="<?= htmlspecialchars($booking['customer_name']) ?>" 
-                        data-phone="<?= htmlspecialchars($booking['phone_number']) ?>" 
-                        data-date="<?= $booking['booking_date'] ?>" 
-                        data-time="<?= $booking['booking_time'] ?>" 
-                        data-guests="<?= $booking['guests'] ?>" 
-                        data-table="<?= $booking['table_number'] ?>">
-                        Edit
+             <button type="button" class="btn btn-sm btn-primary edit-booking-btn"
+  data-id="<?= $booking['id'] ?>" 
+  data-name="<?= htmlspecialchars($booking['customer_name']) ?>" 
+  data-phone="<?= htmlspecialchars($booking['phone_number']) ?>" 
+  data-date="<?= $booking['booking_date'] ?>" 
+  data-time="<?= $booking['booking_time'] ?>" 
+  data-guests="<?= $booking['guests'] ?>" 
+  data-table="<?= $booking['table_number'] ?>">
+  Edit
+</button>
                       </a>
                     </td>
                    </tr>
@@ -169,7 +176,7 @@ $bookings = array_slice($allBookings, $startIndex, $itemsPerPage);
   <?php endif; ?>
 </div>
 
- <!-- Booking Form Modal -->
+ <!-- Booking Form Modal (Add booking) -->
 <div class="modal" id="bookingFormModal">
   <div class="modal-content">
     <span class="close-button" onclick="closeBookingForm()">&times;</span>
@@ -182,8 +189,10 @@ $bookings = array_slice($allBookings, $startIndex, $itemsPerPage);
       </div>
       <div class="form-group">
         <label for="phone">Phone Number</label>
-        <input type="text" id="phone" name="phone" placeholder="e.g., 012-3456789" required>
-      </div>
+         <input type="text"  maxlength="11" id="phone" name="phone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+          placeholder="e.g., 012-3456789" required>
+          </div>
+          
       <div class="form-group">
         <label for="date">Booking Date</label>
         <input type="date" id="date" name="date" required>
@@ -220,7 +229,7 @@ $bookings = array_slice($allBookings, $startIndex, $itemsPerPage);
                           <input type="text" name="name" id="edit-name" required>
 
                           <label>Phone:</label>
-                          <input type="text" name="phone" id="edit-phone" required>
+                          <input type="text" name="phone" id="edit-phone" required maxlength="11" pattern="\d{10,11}" title="Enter 10 to 11 digits only" oninput="this.value = this.value.replace(/\D/g, '')">
 
                           <label>Date:</label>
                           <input type="date" name="date" id="edit-date" required>
@@ -244,7 +253,6 @@ $bookings = array_slice($allBookings, $startIndex, $itemsPerPage);
   </div>
                 
                   
-<script src="/TKCafe/public/js/booking.js"></script>
 <script src="/TKCafe/public/js/booking.js"></script>
 </body>
 </html>

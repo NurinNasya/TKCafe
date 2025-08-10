@@ -13,10 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     ];
 
    if (addBooking($data)) {
-    header("Location: ../Views/manage_booking.php?success=1");
+    header("Location: ../Views/booking_form.php?success=1");
     exit;
 } else {
-    header("Location: ../Views/manage_booking.php?error=1");
+    header("Location: ../Views/booking_form.php?error=1");
     exit;
 }
 

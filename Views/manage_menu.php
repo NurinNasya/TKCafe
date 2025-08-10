@@ -160,7 +160,7 @@ $menuItemsToShow = array_slice(array_reverse($menuItems), $startIndex, $itemsPer
     <div id="addMenuModal" class="modal">
       <div class="modal-content">
         <span class="close" onclick="closeAddForm()">&times;</span>
-        <h2>Add New Menu Item</h2>
+        <h2>Add New Menu </h2>
         <form action="/TKCafe/Controller/menuController.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label>Menu Name</label>
@@ -172,10 +172,10 @@ $menuItemsToShow = array_slice(array_reverse($menuItems), $startIndex, $itemsPer
                 <textarea name="description" rows="3"></textarea>
             </div>
 
-            <div class="form-group">
-                <label>Price (RM)</label>
-                <input type="number" name="price" step="0.01" required>
-            </div>
+               <div class="form-group">
+              <label>Price (RM)</label>
+             <input type="number" name="price" step="0.01" min="0" required>
+              </div>
 
         <div class="form-group">
         <label>Category</label>
@@ -188,6 +188,8 @@ $menuItemsToShow = array_slice(array_reverse($menuItems), $startIndex, $itemsPer
         <?php endforeach; ?>
         <option value="__other__">Other</option>
        </select>
+
+       
        <div class="form-group" id="newCategoryInput" style="display: none;">
         <label>New Category Name</label>
         <input type="text" name="custom_category" id="customCategoryInput">
@@ -196,7 +198,7 @@ $menuItemsToShow = array_slice(array_reverse($menuItems), $startIndex, $itemsPer
 
             <div class="form-group">
                 <label>Upload Image</label>
-                <input type="file" name="image" accept="image/*" required>
+                <input type="file" name="image" accept="image/*">
             </div>
 
                   <div class="form-group">
@@ -236,7 +238,7 @@ $menuItemsToShow = array_slice(array_reverse($menuItems), $startIndex, $itemsPer
 
       <div class="form-group">
         <label>Price (RM)</label>
-        <input type="number" name="price" id="edit-price" step="0.01" required>
+        <input type="text" name="price" id="edit-price" step="0.01" required>
       </div>
 
       <div class="form-group">

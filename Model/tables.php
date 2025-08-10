@@ -1,19 +1,30 @@
 <?php
 require_once __DIR__ . '/../db.php';
 
-function getAllTables() {
+function getAllTables($search = '') {
     $conn = getConnection();
-    $sql = "SELECT * FROM tables ORDER BY id ASC";
-    $result = mysqli_query($conn, $sql);
-    $tables = [];
+    
+    if (!empty($search)) {
+        $stmt = $conn->prepare("SELECT * FROM tables WHERE table_name LIKE ? ORDER BY id ASC");
+        $searchTerm = '%' . $search . '%';
+        $stmt->bind_param("s", $searchTerm);
+    } else {
+        $stmt = $conn->prepare("SELECT * FROM tables ORDER BY id ASC");
+    }
 
-    while ($row = mysqli_fetch_assoc($result)) {
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $tables = [];
+    while ($row = $result->fetch_assoc()) {
         $tables[] = $row;
     }
 
-    mysqli_close($conn);
+    $stmt->close();
+    $conn->close();
     return $tables;
 }
+
 
 function addTable($name, $seats, $status) {
     $conn = getConnection();

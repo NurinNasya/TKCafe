@@ -7,47 +7,65 @@ function updateDropdownColor(dropdown) {
     dropdown.classList.add('cancelled');
   }
 }
-
 document.addEventListener('DOMContentLoaded', function () {
-  // Update dropdown colors
+
+  const popup = document.getElementById('successPopup');
+  if (popup) {
+    setTimeout(() => {
+      const url = new URL(window.location.href);
+      url.searchParams.delete('success');
+      window.history.replaceState({}, document.title, url.pathname + url.search);
+    }, 100);
+  }
+  //  FIX: Force-hide the edit modal in case it's visible after hard refresh
+  document.getElementById('editModal').style.display = 'none';
+  document.body.style.overflow = 'auto';
+
+  // ====== STATUS DROPDOWN COLORING ======
   const dropdowns = document.querySelectorAll('.status-dropdown');
   dropdowns.forEach(function (dropdown) {
     updateDropdownColor(dropdown);
-
     dropdown.addEventListener('change', function () {
       updateDropdownColor(dropdown);
     });
   });
 
-  // ===== Edit Booking Modal Logic =====
-  const editModal = document.getElementById('editModal');
-  const closeEditBtn = editModal?.querySelector('.close-button');
+  // ====== EDIT BOOKING MODAL ======
+  document.querySelectorAll('.edit-booking-btn').forEach(button => {
+    button.addEventListener('click', function () {
+      console.log('Edit button clicked'); //  Debug
 
-  if (editModal) editModal.style.display = 'none';
+      // Get booking data
+      const id = this.dataset.id;
+      const name = this.dataset.name;
+      const phone = this.dataset.phone;
+      const date = this.dataset.date;
+      const time = this.dataset.time;
+      const guests = this.dataset.guests;
+      const table = this.dataset.table;
 
-  document.querySelectorAll('.edit-booking-link').forEach(link => {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
+      // Set form values
+      document.getElementById('edit-booking-id').value = id;
+      document.getElementById('edit-name').value = name;
+      document.getElementById('edit-phone').value = phone;
+      document.getElementById('edit-date').value = date;
+      document.getElementById('edit-time').value = time;
+      document.getElementById('edit-guests').value = guests;
+      document.getElementById('edit-table').value = table;
 
-      document.getElementById('edit-booking-id').value = this.dataset.id;
-      document.getElementById('edit-name').value = this.dataset.name;
-      document.getElementById('edit-phone').value = this.dataset.phone;
-      document.getElementById('edit-date').value = this.dataset.date;
-      document.getElementById('edit-time').value = this.dataset.time;
-      document.getElementById('edit-guests').value = this.dataset.guests;
-      document.getElementById('edit-table').value = this.dataset.table;
-
-      editModal.style.display = 'flex';
+      // Show modal
+      document.getElementById('editModal').style.display = 'block';
+      document.body.style.overflow = 'hidden';
     });
   });
 
-  if (closeEditBtn) {
-    closeEditBtn.addEventListener('click', () => {
-      editModal.style.display = 'none';
-    });
-  }
+  // Close edit modal
+  document.querySelector('#editModal .close-button').addEventListener('click', function () {
+    document.getElementById('editModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+  });
 
-  // ===== Add Booking Modal Logic =====
+  // ====== ADD BOOKING MODAL ======
   const bookingModal = document.getElementById("bookingFormModal");
   const openBtn = document.getElementById("openBookingFormBtn");
   const closeBookingBtn = bookingModal?.querySelector('.close-button');
@@ -66,7 +84,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Close either modal if clicking outside
+  // ====== CLICK OUTSIDE TO CLOSE MODAL ======
+  const editModal = document.getElementById("editModal");
   window.addEventListener('click', function (event) {
     if (event.target === bookingModal) {
       bookingModal.style.display = 'none';
@@ -76,3 +95,5 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
+

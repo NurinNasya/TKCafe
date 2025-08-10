@@ -49,24 +49,30 @@ if (isset($_POST['addMenu'])) {
     //     $category = 'best-seller';
     // }
 
-    if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-        $image = $_FILES['image']['name'];
-        $temp = $_FILES['image']['tmp_name'];
-        $target = "../uploads/" . basename($image);
+   // === Image Upload Handling (optional) ===
+if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+    $image = $_FILES['image']['name'];
+    $temp = $_FILES['image']['tmp_name'];
+    $target = "../uploads/" . basename($image);
 
-        if (move_uploaded_file($temp, $target)) {
-            if (addMenuItem($conn, $name, $description, $price, $category, $image, $best_seller)) {
-                header("Location: ../views/manage_menu.php");
-                exit();
-            } else {
-                echo "Failed to save to database.";
-            }
-        } else {
-            echo "Failed to upload image.";
-        }
-    } else {
-        echo "Image is required.";
+    // Move uploaded image to uploads folder
+    if (!move_uploaded_file($temp, $target)) {
+        echo "Failed to upload image.";
+        exit();
     }
+} else {
+    // No image uploaded, use default placeholder
+    $image = "no-image.png"; // 🔁 Make sure this image exists in the /uploads/ folder
+}
+
+// === Save menu to database ===
+if (addMenuItem($conn, $name, $description, $price, $category, $image, $best_seller)) {
+    header("Location: ../views/manage_menu.php");
+    exit();
+} else {
+    echo "Failed to save to database.";
+}
+
 }
 
 // UPDATE MENU
