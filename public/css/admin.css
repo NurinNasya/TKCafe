@@ -2111,50 +2111,11 @@ input:checked + .slider:before {
   font-size: 12px;
 }
 
-/* #bestSellerToggle:checked + .toggle-btn {
-    background-color: #4c3f56ff;
-    border-color: #4c3f56ff;
-}
-
-#bestSellerToggle:checked + .toggle-btn::after {
-    content: "✓";
-    color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 12px;
-}
-
-#bestSellerToggle {
-    display: none;
-} */
-
 .toggle-label {
     font-size: 16px;
     color: #555;
 }
 
-/* .btn-remark {
-    background: #fff;
-    border: 2px solid #ffc107;
-    color: #ffc107;
-    padding: 6px 12px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s;
-    margin-left: 10px;
-}
-
-.btn-remark:hover {
-    background: #fff8e1;
-}
-
-.btn-remark.active {
-    background: #ffc107;
-    color: white;
-}
 
 /* pagination booking*/
 
