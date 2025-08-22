@@ -1,6 +1,12 @@
 <?php 
 session_start();
 
+// ✅ CLEAR ANY EXISTING ORDER DATA WHEN STARTING FRESH
+unset($_SESSION['current_order']);
+unset($_SESSION['current_order_id']);
+unset($_SESSION['last_order']);
+unset($_SESSION['voucher']);
+
 // ✅ Get the table_id
 $table_id = isset($_GET['table_id']) ? intval($_GET['table_id']) : null;
 

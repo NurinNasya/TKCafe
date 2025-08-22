@@ -45,7 +45,7 @@ $tablesToShow = array_slice($tables, $startIndex, $itemsPerPage);
     
     <button class="btn btn-primary" onclick="openAddForm()">+ Add Table</button>
   </div>
- <form method="GET" style="margin-bottom: 15px; display: flex; gap: 10px;">
+ <form method="GET" style="margin-bottom: 15px; display: flex; gap: 10px;justify-content: flex-end;">
   <input type="text" name="search" placeholder="Search table name..." value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>" class="input-field">
   <button type="submit" class="btn btn-sm btn-primary">Search</button>
 </form>

@@ -25,23 +25,15 @@ $sessionId = session_id();
 $tableId = isset($_POST['table_id']) ? intval($_POST['table_id']) : 0; 
 
 try {
-    $existingOrder = getCurrentOrderBySession($conn, $sessionId);
-
-    if ($existingOrder) {
-        updateOrderType($conn, $sessionId, $orderType);
-        $_SESSION['current_order'] = getCurrentOrderBySession($conn, $sessionId);
-    } else {
-        $orderId = createInitialOrder($conn, $sessionId, $orderType, $tableId);
-        $_SESSION['current_order'] = getCurrentOrderBySession($conn, $sessionId);
-    }
+    // ✅ ALWAYS CREATE A NEW ORDER - NEVER REUSE EXISTING ONE
+    $orderId = createInitialOrder($conn, $sessionId, $orderType, $tableId);
+    $_SESSION['current_order'] = getCurrentOrderBySession($conn, $sessionId);
 
     $_SESSION['current_order_type'] = $orderType;
     forceRedirect('/TKCafe/Views/menu.php');
 
 } catch (Exception $e) {
     die("Order error: " . $e->getMessage());
-    // error_log("Order error: " . $e->getMessage());
-    redirectWithError('Failed to process selection');
 }
 
 // --- Helper functions ---

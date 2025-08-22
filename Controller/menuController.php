@@ -82,7 +82,8 @@ if (isset($_POST['updateMenu'])) {
     $description = $_POST['description'];
     $price = $_POST['price'];
     $category = $_POST['category'];
-     $best_seller = isset($_POST['best_seller']) ? 1 : 0;
+    // $best_seller = isset($_POST['best_seller']) && $_POST['best_seller'] == '1' ? 1 : 0;
+    $best_seller = isset($_POST['best_seller']) ? 1 : 0;
 
     if (!empty($_FILES['image']['name'])) {
         $image = $_FILES['image']['name'];

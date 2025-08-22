@@ -31,12 +31,17 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("edit-category").value = menu.category;
       document.getElementById("edit-preview-image").src = "/TKCafe/uploads/" + menu.image;
   
-            // Set bestseller toggle state
-            const bestSellerToggle = document.getElementById('bestSellerToggle');
-            if (bestSellerToggle) {
-                bestSellerToggle.checked = menu.best_seller == 1;
-                toggleBestSeller(); // Update the form state
-            }
+            // // Set bestseller toggle state
+            // const bestSellerToggle = document.getElementById('bestSellerToggle');
+            // if (bestSellerToggle) {
+            //     bestSellerToggle.checked = menu.best_seller == 1;
+            //     toggleBestSeller(); // Update the form state
+            // }
+
+             // ✅ Set Best Seller toggle correctly
+      const bestSellerToggle = document.getElementById('editBestSellerToggle');
+      bestSellerToggle.checked = menu.best_seller == 1;
+      //toggleBestSeller(bestSellerToggle); // ensure hidden input matches checkbox
 
       // Show modal
       document.getElementById("editMenuModal").style.display = "block";
@@ -143,18 +148,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-function toggleBestSeller(checkbox) {
-  const isBestSeller = checkbox.checked;
-  const form = checkbox.closest("form");
 
-    // Add hidden field to ensure best_seller status is submitted
-  let bestSellerInput = form.querySelector('input[name="best_seller"][type="hidden"]');
-  if (!bestSellerInput) {
-    bestSellerInput = document.createElement('input');
-    bestSellerInput.type = 'hidden';
-    bestSellerInput.name = 'best_seller';
-    form.appendChild(bestSellerInput);
+document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.getElementById("toggleCategoryBtn");
+  const hiddenCats = document.querySelectorAll(".hidden-category");
+
+  if (btn) {
+    btn.addEventListener("click", function () {
+      const isShowing = btn.textContent === "Show Less";
+
+      hiddenCats.forEach(cat => {
+        cat.style.display = isShowing ? "none" : "block";
+      });
+
+      btn.textContent = isShowing ? "Show More" : "Show Less";
+    });
   }
-
-  bestSellerInput.value = isBestSeller ? '1' : '0';
-}
+});

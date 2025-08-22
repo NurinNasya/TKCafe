@@ -29,17 +29,12 @@
 
             <div class="form-group">
                 <label for="time">Booking Time</label>
-                <input type="time" id="time" name="time" required>
+                <input type="time" id="time" name="time" min="09:00" max="17:00" required>
             </div>
 
             <div class="form-group">
                 <label for="guests">Number of Guests</label>
                 <input type="number" id="guests" name="guests" min="1" placeholder="e.g., 4" required>
-            </div>
-
-            <div class="form-group">
-                <label for="table">Table Number (Optional)</label>
-                <input type="text" id="table" name="table" placeholder="Leave blank for auto-assign">
             </div>
 
             <button type="submit">Book Now</button>

@@ -35,21 +35,20 @@ $totalPages = ceil($totalVouchers / $limit);
 
  <main class="main-content">
     <div class="section-header">
-      <h2>Manage Vouchers</h2>
-
+      <h2 style="font-weight: bold;">Manage Vouchers</h2>
     </div>
 
     <div class="card">
-      <h3>Voucher List</h3>
-      <form method="GET" style="margin-bottom: 15px; display: flex; gap: 10px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+  <h3>Voucher List</h3>
+  <button class="btn btn-primary" id="openAddModal">+ Add Voucher</button>
+</div>
+
+      <div class="table-container">
+      <form method="GET" style="margin-bottom: 15px; display: flex; gap: 10px; justify-content: flex-end;">
   <input type="text" name="search" placeholder="Search voucher code..." value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>" class="input-field">
   <button type="submit" class="btn btn-sm btn-primary">Search</button>
 </form>
-
-
-      <div style="text-align: right; margin-bottom: 15px;">
-         <button class="btn btn-primary" id="openAddModal">+ Add Voucher</button>
-      <div class="table-container">
     <table>
       <thead>
         <tr>

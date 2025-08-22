@@ -1,6 +1,4 @@
 <?php
-//require_once '../Model/register.php';
-//require_once '../Model/admin.php';
 session_start();
 
 // LOGIN with hardcoded values

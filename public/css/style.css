@@ -833,7 +833,7 @@ background: linear-gradient(to right, #e59500,#704c1e);
     color: white;
     padding: 3px 8px;
     border-radius: 12px;
-    font-size: 12px;
+    font-size: 20px;
     font-weight: bold;
     z-index: 1;
 }
@@ -848,31 +848,3 @@ background: linear-gradient(to right, #e59500,#704c1e);
 .menu-item {
     position: relative; /* Needed for absolute positioning of badge */
 }
-
-/* // Best Seller Badge
-.best-seller-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #ff6b6b;
-    color: white;
-    padding: 3px 8px;
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-// Highlight Best Seller Items
-.best-seller-highlight {
-    position: relative;
-    border: 2px solid #ffd166;
-    box-shadow: 0 2px 8px rgba(255, 209, 102, 0.3);
-}
-
-// Make Best Sellers appear first in their categories 
-.menu-item {
-    order: var(--is-best-seller, 1);
-}
-.best-seller-highlight {
-    --is-best-seller: 0;
-} */

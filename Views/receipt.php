@@ -1,20 +1,25 @@
 <?php
 session_start();
+// ✅ KEEP THE TABLE_ID FOR FUTURE ORDERS!
+$table_id = $_SESSION['table_id'] ?? null;
+
+// ✅ CLEAR THE CURRENT ORDER WHEN VIEWING RECEIPT
+unset($_SESSION['current_order']);
+unset($_SESSION['current_order_id']); 
+// ✅ RESTORE THE TABLE_ID FOR THE NEXT ORDER
+if ($table_id) {
+    $_SESSION['table_id'] = $table_id;
+}
 require_once '../Model/order.php';
 require_once '../Model/menu.php';
 require_once '../db.php';
 
 $conn = getConnection();
-// $menuModel = new Menu();
 $order_id = $_GET['order_id'] ?? null;
 
 // ✅ Use function instead of object method
 $order_data = getOrderDetails($conn, $order_id);
 
-// // Get order data
-// $order_data = $orderModel->getOrderDetails($order_id);
-
-// Fallback to session data if needed
 // fallback to session
 if (empty($order_data) && isset($_SESSION['last_order'])) {
     $order_data = $_SESSION['last_order'];
@@ -69,7 +74,6 @@ $voucherCode = $order['voucher_code'] ?? '';
             <div class="receipt-items">
                 <?php foreach ($items as $item): 
                   $menuItem = getMenuItemById($conn, $item['menu_id']);
-                    // $menuItem = $menuModel->getItemById($item['menu_id']);
                     if (!$menuItem) continue;
                 ?>
                     <div class="receipt-item">
@@ -103,12 +107,18 @@ $voucherCode = $order['voucher_code'] ?? '';
                 <span>Service Charge (10%)</span>
                 <span>RM <?= number_format($serviceCharge, 2) ?></span>
             </div>
-            <?php if ($voucherAmount > 0): ?>
-            <div class="total-row">
-                <span>Voucher Discount (<?= htmlspecialchars($voucherCode) ?>)</span>
-                <span>- RM <?= number_format($voucherAmount, 2) ?></span>
-            </div>
+                <?php if ($voucherAmount > 0): ?>
+                <?php 
+                    // Clean up voucher code before displaying
+                    $cleanVoucherCode = stripslashes($voucherCode); 
+                    $cleanVoucherCode = str_replace(["'", '"', "(", ")"], '', $cleanVoucherCode);
+                ?>
+                <div class="total-row">
+                    <span>Voucher Discount (<?= htmlspecialchars($cleanVoucherCode) ?>)</span>
+                    <span>- RM <?= number_format($voucherAmount, 2) ?></span>
+                </div>
             <?php endif; ?>
+
             <div class="total-row grand-total">
                 <span>TOTAL</span>
                 <span>RM <?= number_format($order['total'], 2) ?></span>
@@ -116,7 +126,7 @@ $voucherCode = $order['voucher_code'] ?? '';
 
         <div class="receipt-footer">
             <p>Thank you for your order!</p>
-            <a href="/TKCafe/Views/menu.php" class="btn">Back to Menu</a>
+            <a href="/TKCafe/Views/dinein-takeaway.php?table_id=<?= $table_id ?>" class="btn">Back to Main</a>
         </div>
     </div>
 </body>

@@ -2008,7 +2008,7 @@ textarea.input-field {
 }
 
 .category-name {
-  font-size: 14px;
+  font-size: 16px;
   color: #333;
 }
 
@@ -2275,3 +2275,36 @@ input:checked + .slider:before {
         transform: translateY(0);
       }
     }
+
+.hidden-category {
+  display: none;
+}
+
+.toggle-more-wrapper {
+  text-align: right; /* Align to right side */
+  margin-top: 5px;
+}
+
+.toggle-more-link {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.toggle-more-link:hover {
+  opacity: 0.8;
+}
+
+.booking-table td:nth-child(7),
+.booking-table thead th:nth-child(7) {
+  width: 80px;
+  max-width: 80px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.booking-table td:nth-child(7) .status-dropdown {
+  width: 100%;
+  box-sizing: border-box;
+}

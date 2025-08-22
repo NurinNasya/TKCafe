@@ -116,6 +116,7 @@ if (window.cartInitialized) {
     btn.innerHTML = '<span class="spinner"></span> PROCESSING...';
 
     const cutleryChecked = document.getElementById('cutlerySwitch')?.checked ? 1 : 0;
+    const orderId = document.getElementById('current_order_id')?.value; 
 
     fetch('/TKCafe/Controller/orderController.php', {
         method: 'POST',
@@ -124,9 +125,7 @@ if (window.cartInitialized) {
             // 'Content-Type': 'application/json',
         },
         credentials: 'same-origin',
-        body: `cutlery=${cutleryChecked}`
-        // body: 'cutlery=${cutleryChecked}'
-        // body: JSON.stringify({ action: 'place_order' }) 
+        body: `cutlery=${cutleryChecked}&order_id=${orderId}` // ✅ ADD ORDER_ID HERE
     })
     .then(async response => {
         const contentType = response.headers.get("Content-Type") || "";
@@ -158,24 +157,32 @@ if (window.cartInitialized) {
     });
 }
 
-    
-    const handleAddToCart = (button) => {
+const handleAddToCart = (button) => {
     if (button._processing) return;
     button._processing = true;
-    
+
     const container = button.closest('.menu-details-container');
+    const orderId = document.getElementById('current_order_id')?.value;
+
+    if (!orderId) {
+        alert('Order ID missing. Please refresh the page.');
+        button._processing = false;
+        return;
+    }
+
     const formData = new URLSearchParams();
-    
+
     // Required fields
     formData.append('action', 'add');
+    formData.append('order_id', orderId);
     formData.append('menu_id', button.dataset.id);
     formData.append('quantity', container.querySelector('.quantity-input').value || 1);
     formData.append('price', parseFloat(container.querySelector('.menu-price').textContent.replace(/[^\d.]/g, '')) || 0);
-    
+
     // Optional fields
     const remarks = document.getElementById('remarks')?.value;
     if (remarks) formData.append('remarks', remarks);
-    
+
     // Combo customization
     if (container.querySelector('.combo-customization')) {
         const drink = container.querySelector('input[name="drink"]:checked');
@@ -195,15 +202,11 @@ if (window.cartInitialized) {
     .then(response => response.json())
     .then(data => {
         if (!data.success) throw new Error(data.error || 'Failed to add item');
-        alert('Added to cart!');
 
-          const remarksField = document.getElementById('remarks');
-      if (remarksField) {
-        remarksField.value = '';
-      }
-      updateCartBadge();
-        // document.getElementById('remarks').value = '';
-        // updateCartBadge();
+        alert('Added to cart!');
+        const remarksField = document.getElementById('remarks');
+        if (remarksField) remarksField.value = '';
+        updateCartBadge();
     })
     .catch(error => {
         console.error('Error:', error);
@@ -214,57 +217,58 @@ if (window.cartInitialized) {
     });
 };
 
-    const updateCartBadge = () => {
-        fetch('/TKCafe/Controller/cartController.php?action=count')
-            .then(response => response.json())
-            .then(data => {
-                const badge = document.querySelector('.cart-badge');
-                if (badge) {
-                    badge.style.display = data.count > 0 ? 'block' : 'none';
-                    badge.textContent = data.count > 0 ? data.count : '';
-                }
-            })
-            .catch(console.error);
-    };
 
-    function refreshCartDisplay() {
-  fetch('/TKCafe/Controller/cartController.php?action=list')
+    const updateCartBadge = () => {
+    const orderId = document.getElementById('current_order_id')?.value;
+    if (!orderId) return;
+
+    fetch(`/TKCafe/Controller/cartController.php?action=count&order_id=${orderId}`)
+        .then(response => response.json())
+        .then(data => {
+            const badge = document.querySelector('.cart-badge');
+            if (badge) {
+                badge.style.display = data.count > 0 ? 'block' : 'none';
+                badge.textContent = data.count > 0 ? data.count : '';
+            }
+        })
+        .catch(console.error);
+};
+
+function refreshCartDisplay() {
+  const orderId = document.getElementById('current_order_id')?.value;
+  if (!orderId) return;
+
+  fetch(`/TKCafe/Controller/cartController.php?action=list&order_id=${orderId}`)
     .then(response => response.json())
     .then(data => {
-      renderCart(data.items);
-      updateCartBadge(); // Update the badge
+      renderCart(data); // use data directly, not data.items
+      updateCartBadge();
     })
     .catch(err => {
       console.error('Cart load failed:', err);
-      document.getElementById('cart-items').innerHTML = '<p>Error loading cart</p>';
+      const container = document.getElementById('cart-items');
+      if (container) container.innerHTML = '<p>Error loading cart</p>';
     });
 }
 
 function renderCart(items) {
   const container = document.getElementById('cart-items');
+  if (!container) return;
+
   if (!items || items.length === 0) {
     container.innerHTML = '<p>Your cart is empty</p>';
     return;
   }
 
   let html = '';
-  let total = 0;
-  
-items.forEach(item => {
+  items.forEach(item => {
     const subtotal = item.price * item.quantity;
-    total += subtotal;
-    
-    // Parse customizations if they exist
     const customizations = item.customizations ? JSON.parse(item.customizations) : null;
-    
+
     html += `
       <div class="cart-item">
-        <p><strong>${item.name || 'Item #'+item.menu_id}</strong></p>
-        ${customizations ? `
-          <div class="customization-details">
-            <p>Drink: ${customizations.drink}</p>
-          </div>
-        ` : ''}
+        <p><strong>${item.name || 'Item #' + item.menu_id}</strong></p>
+        ${customizations ? `<p>Drink: ${customizations.drink}</p>` : ''}
         <p>Qty: ${item.quantity} × RM ${item.price.toFixed(2)}</p>
         <p>Subtotal: RM ${subtotal.toFixed(2)}</p>
       </div>
@@ -272,9 +276,7 @@ items.forEach(item => {
   });
 
   container.innerHTML = html;
-  document.getElementById('cart-total').textContent = `Total: RM ${total.toFixed(2)}`;
 }
-
 
 function updateQuantity(itemId, newQuantity) {
   fetch('/TKCafe/Controller/cartController.php', {
@@ -322,37 +324,83 @@ function removeItem(itemId) {
 }
 
 // voucher //
-
+// cart.js
 document.addEventListener('DOMContentLoaded', function () {
+  // --- Elements ---
   const voucherForm = document.getElementById('voucherForm');
-  //const codeInput = document.getElementById('voucherCode');
   const openPopupBtn = document.getElementById('openVoucherPopup');
   const voucherPopup = document.getElementById('voucherPopup');
   const closePopupBtn = document.getElementById('closeVoucherPopup');
-
-  if (openPopupBtn && voucherPopup) {
-    openPopupBtn.addEventListener('click', function () {
-      voucherPopup.style.display = 'flex';
-    });
-  }
-
-  if (closePopupBtn) {
-    closePopupBtn.addEventListener('click', function () {
-      voucherPopup.style.display = 'none';
-    });
-  }
-
   const errorMsg = document.getElementById('voucherError');
   const discountRow = document.getElementById('voucherDiscountRow');
   const discountValue = document.getElementById('voucherDiscount');
   const grandTotalText = document.getElementById('grandTotal');
 
+  // --- Popup Handlers ---
+  if (openPopupBtn && voucherPopup) {
+    openPopupBtn.addEventListener('click', () => voucherPopup.style.display = 'flex');
+  }
+
+  if (closePopupBtn) {
+    closePopupBtn.addEventListener('click', () => voucherPopup.style.display = 'none');
+  }
+
+  // --- Apply Voucher via AJAX ---
+  function applyVoucher(voucherCode) {
+    const formData = new FormData();
+    formData.append('voucher_code', voucherCode);
+
+    fetch('/TKCafe/Controller/ajaxVoucherController.php', {
+      method: 'POST',
+      body: formData
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          // Update totals and display
+          if (discountRow) discountRow.style.display = 'flex';
+          if (discountValue) discountValue.textContent = `- RM ${parseFloat(data.discount).toFixed(2)}`;
+          const summaryRows = document.querySelectorAll('.summary-row');
+          if (summaryRows[0]) summaryRows[0].querySelector('span:last-child').textContent = `RM ${parseFloat(data.subtotal).toFixed(2)}`;
+          if (summaryRows[1]) summaryRows[1].querySelector('span:last-child').textContent = `RM ${parseFloat(data.service_charge).toFixed(2)}`;
+          if (grandTotalText) grandTotalText.textContent = `RM ${parseFloat(data.grand_total).toFixed(2)}`;
+
+          // Update display input
+          const voucherDisplay = document.querySelector('.voucher-display');
+          if (voucherDisplay) voucherDisplay.value = data.voucher_code;
+
+          // Clear errors
+          if (errorMsg) {
+            errorMsg.textContent = '';
+            errorMsg.style.display = 'none';
+          }
+        } else {
+          // Handle failure
+          if (discountRow) discountRow.style.display = 'none';
+          if (discountValue) discountValue.textContent = `- RM 0.00`;
+          if (grandTotalText && data.subtotal) grandTotalText.textContent = `RM ${parseFloat(data.subtotal).toFixed(2)}`;
+          if (errorMsg) {
+            errorMsg.textContent = data.error || 'Failed to apply voucher.';
+            errorMsg.style.display = 'block';
+          }
+        }
+      })
+      .catch(err => {
+        console.error('Voucher error:', err);
+        if (errorMsg) {
+          errorMsg.textContent = 'Server error';
+          errorMsg.style.display = 'block';
+        }
+      });
+  }
+
+  // --- Voucher Form Submit ---
+    // --- Voucher Form Submit ---
   if (voucherForm) {
     voucherForm.addEventListener('submit', function (e) {
       e.preventDefault();
       errorMsg.textContent = '';
 
-      
       const selectedRadio = voucherForm.querySelector('input[name="voucher_code"]:checked');
       if (!selectedRadio) {
         alert("Please select a voucher.");
@@ -360,139 +408,19 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       const voucherCode = selectedRadio.value.trim();
-      const formData = new FormData();
-      formData.append('voucher_code', voucherCode);
+      applyVoucher(voucherCode);
 
-      fetch('/TKCafe/Controller/ajaxVoucherController.php', {
-        method: 'POST',
-        body: formData
-      })
-        .then(res => res.json())
-        .then(data => {
-          console.log(data);
-          if (data.success) {
-            // ✅ Close the popup
-            voucherPopup.style.display = 'none';
-
-            // ✅ Show voucher discount row and update discount value
-            discountRow.style.display = 'flex';
-            discountValue.textContent = `- RM ${parseFloat(data.discount).toFixed(2)}`;
-
-            // ✅ Update subtotal and service charge from response
-            const subtotalRow = document.querySelectorAll('.summary-row')[0]; // assuming first row is subtotal
-            const serviceChargeRow = document.querySelectorAll('.summary-row')[1]; // second row is service charge
-            const grandTotalValue = document.getElementById('grandTotal');
-
-            if (subtotalRow) {
-              subtotalRow.querySelector('span:last-child').textContent = `RM ${parseFloat(data.subtotal).toFixed(2)}`;
-            }
-
-            if (serviceChargeRow) {
-              serviceChargeRow.querySelector('span:last-child').textContent = `RM ${parseFloat(data.service_charge).toFixed(2)}`;
-            }
-            if (grandTotalValue) {
-              grandTotalValue.textContent = `RM ${parseFloat(data.grand_total).toFixed(2)}`;
-            }
-
-            // ✅ Update grand total
-            grandTotalText.textContent = `RM ${parseFloat(data.grand_total).toFixed(2)}`;
-
-            // ✅ Show applied voucher code in display input
-            const voucherDisplay = document.querySelector('.voucher-display');
-            if (voucherDisplay) {
-              voucherDisplay.value = data.voucher_code;
-            }
-
-            // ✅ Clear any previous error
-            if (errorMsg) {
-              errorMsg.textContent = '';
-              errorMsg.style.display = 'none';
-            }
-
-            //  // ✅ Auto reload after short delay to reflect applied voucher
-            // setTimeout(() => {
-            //   window.location.reload();
-            // }, 800);
-
-          } else {
-            // ❌ Handle failure
-            if (discountRow) discountRow.style.display = 'none';
-            if (discountValue) discountValue.textContent = `- RM 0.00`;
-            if (grandTotalText) grandTotalText.textContent = `RM ${data.subtotal}`;
-
-            if (errorMsg) {
-              errorMsg.textContent = data.error || 'Failed to apply voucher.';
-              errorMsg.style.display = 'block';
-            }
-          }
-        })
-
-        // .then(data => {
-        //   console.log(data);
-        //   if (data.success) {
-        //     voucherPopup.style.display = 'none';
-        //     discountRow.style.display = 'flex';
-        //     discountValue.textContent = `- RM ${parseFloat(data.discount).toFixed(2)}`;
-        //     grandTotalText.textContent = `RM ${parseFloat(data.grand_total).toFixed(2)}`;
-
-            
-
-        //     // Optional: update input display
-        //     const voucherDisplay = document.querySelector('.voucher-display');
-        //     if (voucherDisplay) {
-        //       voucherDisplay.value = voucherCode;
-        //     }
-        //   } else {
-        //      if (discountRow) discountRow.style.display = 'none';
-        //     if (discountValue) discountValue.textContent = `- RM 0.00`;
-        //     if (grandTotalText) grandTotalText.textContent = `RM ${data.subtotal}`;
-
-        //     // discountRow.style.display = 'none';
-        //     // discountValue.textContent = `- RM 0.00`;
-        //     // grandTotalText.textContent = `RM ${data.subtotal}`;
-        //     // errorMsg.textContent = data.error || 'Failed to apply voucher.';
-        //     if (errorMsg) {
-        //     errorMsg.textContent = data.error || 'Failed to apply voucher.';
-        //     errorMsg.style.display = 'block';
-        //   }
-        //   }
-        // })
-        .catch(err => {
-          console.error('Voucher error:', err);
-            if (errorMsg) {
-          errorMsg.textContent = 'Server error';
-          errorMsg.style.display = 'block';
-        }
-          // errorMsg.textContent = 'Server error';
-        });
+      // Close popup
+      if (voucherPopup) voucherPopup.style.display = 'none';
     });
-
-    //   const formData = new FormData();
-    //   formData.append('voucher_code', codeInput.value.trim());
-
-    //   fetch('/TKCafe/Controller/ajaxVoucherController.php', {
-    //     method: 'POST',
-    //     body: formData
-    //   })
-    //     .then(res => res.json())
-    //     .then(data => {
-    //       console.log(data); // ADD THIS LINE
-    //       if (data.success) {
-    //         discountRow.style.display = 'flex';
-    //         discountValue.textContent = `- RM ${parseFloat(data.discount).toFixed(2)}`;
-    //         grandTotalText.textContent = `RM ${data.grand_total}`;
-    //       } else {
-    //         discountRow.style.display = 'none';
-    //         discountValue.textContent = `- RM 0.00`;
-    //         grandTotalText.textContent = `RM ${data.subtotal}`;
-    //         errorMsg.textContent = data.error || 'Failed to apply voucher.';
-    //       }
-    //     })
-    //     .catch(err => {
-    //       console.error('Voucher error:', err);
-    //       errorMsg.textContent = 'Server error';
-    //     });
-    // });
   }
+
 });
 
+// --- Auto-apply existing voucher on page load ---
+window.addEventListener('load', () => {
+  const voucherDisplay = document.querySelector('.voucher-display');
+  if (voucherDisplay && voucherDisplay.value.trim()) {
+    applyVoucher(voucherDisplay.value.trim());
+  }
+});

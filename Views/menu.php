@@ -41,21 +41,6 @@ $bestSellerItems = getBestSellerItems($conn); // Get bestsellers separately
     <?php
     $allCategories = getAllCategories($conn);
 
-    // $categoryOrder = [
-    //     'best-seller', // This will now only contain non-bestseller items from best-seller category
-    //     'standard',
-    //     'signature',
-    //     'set-standard',
-    //     'set-signature',
-    //     'masakan-ala',
-    //     'masakan-side',
-    //     'lokcing',
-    //     'western',
-    //     'air-balang',
-    //     'soft-drinks',
-    //     'hot-drinks'
-    // ];
-
     if (!empty($menuItems)):
         // foreach ($categoryOrder as $category):
              foreach ($allCategories as $catData):

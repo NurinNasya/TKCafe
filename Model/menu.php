@@ -56,10 +56,22 @@ function updateMenuItem($conn, $id, $name, $description, $price, $category, $ima
 }
 
 function getBestSellerItems($conn) {
-    $sql = "SELECT * FROM menu WHERE best_seller = 1 ORDER BY created_at DESC";
+    $sql = "
+        SELECT m.*
+        FROM menu m
+        JOIN categories c ON m.category = c.slug
+        WHERE m.best_seller = 1
+        ORDER BY c.id ASC, m.created_at ASC
+    ";
     $result = mysqli_query($conn, $sql);
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
+
+// function getBestSellerItems($conn) {
+//     $sql = "SELECT * FROM menu WHERE best_seller = 1 ORDER BY created_at DESC";
+//     $result = mysqli_query($conn, $sql);
+//     return mysqli_fetch_all($result, MYSQLI_ASSOC);
+// }
 
 function getHiddenCategories($conn) {
     $sql = "SELECT category_name FROM hidden_category";

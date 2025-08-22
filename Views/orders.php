@@ -43,8 +43,6 @@ try {
                 foreach ($statuses as $status):
                 ?>
                 <div class="order-grid status-section" data-status="<?= $status ?>">
-                <!-- <div class="order-grid status-section" data-status="<?= $status ?>" style="display: none;"> -->
-                <!-- <div class="order-grid status-section" data-status="<?= $status ?>" style="<?= $status !== 'Pending' ? 'display:none;' : '' ?>"> -->
                     <?php foreach ($orders as $order): ?>
                         <?php if (strcasecmp($order['status'], $status) === 0): ?>
                         <div class="order-card" data-order-id="<?= $order['id'] ?>">

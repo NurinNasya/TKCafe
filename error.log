@@ -163,3 +163,14 @@ Stack trace:
 [14-Jul-2025 05:27:47 Europe/Berlin] 🔥 Executing order UPDATE with: total=28, cutlery=0, voucher=NEW (5)
 [14-Jul-2025 05:38:20 Europe/Berlin] 🔥 Executing order UPDATE with: total=17, cutlery=1, voucher=NEW (5)
 [14-Jul-2025 09:48:12 Europe/Berlin] 🔥 Executing order UPDATE with: total=17.55, cutlery=1, voucher=NEW (5)
+[22-Aug-2025 20:32:21 Europe/Berlin] PHP Deprecated:  mysqli_real_escape_string(): Passing null to parameter #2 ($string) of type string is deprecated in C:\xampp\htdocs\TKCafe\Model\order.php on line 17
+[22-Aug-2025 20:56:00 Europe/Berlin] PHP Deprecated:  mysqli_real_escape_string(): Passing null to parameter #2 ($string) of type string is deprecated in C:\xampp\htdocs\TKCafe\Model\order.php on line 17
+[22-Aug-2025 21:07:01 Europe/Berlin] PHP Deprecated:  mysqli_real_escape_string(): Passing null to parameter #2 ($string) of type string is deprecated in C:\xampp\htdocs\TKCafe\Model\order.php on line 17
+[22-Aug-2025 21:16:23 Europe/Berlin] PHP Deprecated:  mysqli_real_escape_string(): Passing null to parameter #2 ($string) of type string is deprecated in C:\xampp\htdocs\TKCafe\Model\order.php on line 17
+[22-Aug-2025 21:16:39 Europe/Berlin] PHP Deprecated:  mysqli_real_escape_string(): Passing null to parameter #2 ($string) of type string is deprecated in C:\xampp\htdocs\TKCafe\Model\order.php on line 17
+[22-Aug-2025 21:23:32 Europe/Berlin] PHP Deprecated:  mysqli_real_escape_string(): Passing null to parameter #2 ($string) of type string is deprecated in C:\xampp\htdocs\TKCafe\Model\order.php on line 17
+[22-Aug-2025 21:27:06 Europe/Berlin] PHP Deprecated:  mysqli_real_escape_string(): Passing null to parameter #2 ($string) of type string is deprecated in C:\xampp\htdocs\TKCafe\Model\order.php on line 17
+[22-Aug-2025 21:35:09 Europe/Berlin] PHP Deprecated:  mysqli_real_escape_string(): Passing null to parameter #2 ($string) of type string is deprecated in C:\xampp\htdocs\TKCafe\Model\order.php on line 17
+[22-Aug-2025 21:39:46 Europe/Berlin] PHP Deprecated:  mysqli_real_escape_string(): Passing null to parameter #2 ($string) of type string is deprecated in C:\xampp\htdocs\TKCafe\Model\order.php on line 17
+[22-Aug-2025 21:43:00 Europe/Berlin] PHP Deprecated:  mysqli_real_escape_string(): Passing null to parameter #2 ($string) of type string is deprecated in C:\xampp\htdocs\TKCafe\Model\order.php on line 17
+[22-Aug-2025 21:43:34 Europe/Berlin] PHP Deprecated:  mysqli_real_escape_string(): Passing null to parameter #2 ($string) of type string is deprecated in C:\xampp\htdocs\TKCafe\Model\order.php on line 17

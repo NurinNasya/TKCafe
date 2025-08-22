@@ -40,10 +40,10 @@ $chartValues = array_column($salesData, 'total_sales');
     <main class="main-content">
       <header class="top-header">
         <h1>Dashboard Overview</h1>
-        <div class="header-actions">
+        <!-- <div class="header-actions">
           <button class="btn btn-primary">Generate Report</button>
           <div class="user-avatar">AD</div>
-        </div>
+        </div> -->
       </header>
 
       <!-- Stats Cards -->

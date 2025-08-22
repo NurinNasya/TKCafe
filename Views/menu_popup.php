@@ -1,5 +1,7 @@
 
-<?php if (!isset($item)) {
+<?php 
+session_start();
+if (!isset($item)) {
     echo "No item data.";
     exit;
 }
@@ -18,6 +20,10 @@
 
 <div class="menu-details-container">
    <button class="close-popup-btn" onclick="closeMenuPopup()">×</button>
+
+    <!-- Add hidden order_id here -->
+     <input type="hidden" id="current_order_id" value="<?= htmlspecialchars($_GET['order_id'] ?? ($_SESSION['current_order']['id'] ?? '')) ?>">
+
    
   <h1 class="menu-title"><?= htmlspecialchars($item['name']) ?></h1>
 
@@ -84,13 +90,6 @@
     <textarea id="remarks" name="remarks" class="remarks-textarea" placeholder="E.g. No ice, less sugar, less spicy..."></textarea>
   </div>
 <?php endif; ?>
-<!-- <div class="remarks-section">
-  <label for="remarks" class="remarks-label">
-    <span class="remarks-icon">💬</span> Remark
-  </label>
-  <textarea id="remarks" name="remarks" class="remarks-textarea" placeholder="E.g. No ice, less sugar, less spicy..."></textarea>
-</div>
- -->
 
 
   <div class="menu-controls">

@@ -6,10 +6,8 @@ require_once '../db.php';
 
 $conn = getConnection(); // ✅ This is now necessary
 
-// $menuItem = getMenuItemById($conn, $item['menu_id']); // ✅ NEW
-$session_id = session_id(); 
-$items = getItems($conn, $session_id); 
-// $items = $cartModel->getItems(session_id());
+$order_id = $_SESSION['current_order']['id'] ?? null;
+$items = $order_id ? getItems($conn, $order_id) : [];
 $total = 0;
 
   // First, calculate the subtotal before applying voucher
@@ -23,7 +21,7 @@ $voucherAmount = 0;
 $voucherCode = '';
 $error = '';
 
-// ✅ Auto-load existing voucher from session (if previously applied)
+// Auto-load existing voucher from session (if previously applied)
 if (isset($_SESSION['voucher'])) {
     $voucherCode = $_SESSION['voucher']['code'];
     $voucherAmount = $_SESSION['voucher']['amount'];
@@ -38,7 +36,7 @@ if (isset($_POST['apply_voucher'])) {
         if ($total >= $voucherRow['min_spend']) {
             $voucherAmount = $voucherRow['discount_amount'];
 
-            // ✅ FIXED: Save applied voucher to session so it can be used in orderController
+            // Save applied voucher to session so it can be used in orderController
             $_SESSION['voucher'] = [
                 'code' => $voucherCode,
                 'amount' => $voucherAmount
@@ -63,10 +61,10 @@ if (isset($_POST['apply_voucher'])) {
 </head>
 <body>
 
+<input type="hidden" id="current_order_id" value="<?= $_SESSION['current_order']['id'] ?? '' ?>">
 <div class="cart-container">
 
 <div class="cart-header">
-  <!--<a href="javascript:history.back()" class="back-button">&lt;</a>-->
   <a href="/TKCafe/Views/menu.php" class="back-button">&lt;</a>
   <h2 class="cart-title">CART</h2>
 </div>
@@ -144,20 +142,11 @@ if (isset($_POST['apply_voucher'])) {
       <span>Subtotal</span>
       <span id="subtotal">RM <?= number_format($total, 2) ?></span>
     </div>
-      <!-- <div class="summary-row">
-        <span>Subtotal</span>
-        <span>RM <?= number_format($total, 2) ?></span>
-      </div> -->
 
       <div class="summary-row">
         <span>Service Charge (10%)</span>
         <span id="serviceCharge">RM <?= number_format(($total * 0.10), 2) ?></span>
       </div>
-
-      <!-- <div class="summary-row">
-        <span>Service Charge (10%)</span>
-        <span>RM <?= number_format(($total * 0.10), 2) ?></span>
-      </div> -->
 
      <!-- Voucher Form -->
      <form method="POST" class="voucher-form">
@@ -235,10 +224,6 @@ if (isset($_POST['apply_voucher'])) {
         <span id="grandTotal">RM <?= number_format(($total * 1.10) - $voucherAmount, 2) ?></span>
       </div>
 
-      <!-- <div class="summary-row total">
-        <span>Grand Total =</span>
-        <span id="grandTotal">RM <?= number_format(($total * 1.10) - $voucherAmount, 2) ?></span>
-      </div> -->
 
   <button class="checkout-btn">PLACE ORDER</button>
      

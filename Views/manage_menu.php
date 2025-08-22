@@ -37,31 +37,38 @@ $menuItemsToShow = array_slice(array_reverse($menuItems), $startIndex, $itemsPer
     </header>
 
        <!-- 🟣 Hide/Show Category Section -->
-        <div class="toggle-section">
-          <h3>Hide / Show Categories</h3>
-          <p>
-            (click to show or hide categories 
-            [<span class="status-indicator status-on"></span> = ON / 
-            <span class="status-indicator status-off"></span> = OFF])
-          </p>
-          <div class="category-grid">
-          <?php foreach ($allCategories as $cat): ?>
-            <div class="category-toggle">
-              <label class="toggle-label">
-                <span class="category-name"><?= htmlspecialchars($cat['name']) ?></span>
-                <label class="switch">
-                  <input type="checkbox" 
-                        class="category-toggle-checkbox" 
-                        data-category="<?= htmlspecialchars($cat['slug']) ?>"
-                        <?= in_array($cat['slug'], $hiddenCategories) ? 'checked' : '' ?>>
-                  <span class="slider round"></span>
-                </label>
-              </label>
-            </div>
-          <?php endforeach; ?>
-          </div>
-        </div>
+            <div class="toggle-section">
+            <h3>Hide / Show Categories</h3>
+            <p>
+              (click to show or hide categories 
+              [<span class="status-indicator status-on"></span> = ON / 
+              <span class="status-indicator status-off"></span> = OFF])
+            </p>
 
+            <div class="category-grid" id="categoryGrid">
+              <?php foreach ($allCategories as $index => $cat): ?>
+                <div class="category-toggle <?= $index >= 6 ? 'hidden-category' : '' ?>">
+                  <label class="toggle-label">
+                    <span class="category-name"><?= htmlspecialchars($cat['name']) ?></span>
+                    <label class="switch">
+                      <input type="checkbox" 
+                            class="category-toggle-checkbox" 
+                            data-category="<?= htmlspecialchars($cat['slug']) ?>"
+                            <?= in_array($cat['slug'], $hiddenCategories) ? 'checked' : '' ?>>
+                      <span class="slider round"></span>
+                    </label>
+                  </label>
+                </div>
+              <?php endforeach; ?>
+            </div>
+
+            <?php if (count($allCategories) > 6): ?>
+              <div class="toggle-more-wrapper">
+                <span id="toggleCategoryBtn" class="toggle-more-link">Show More</span>
+              </div>
+            <?php endif; ?>
+          </div>
+          
     <!-- Table List with Add Button -->
     <section class="data-section">
       <div class="section-header" style="display: flex; justify-content: space-between; align-items: center;">
@@ -71,7 +78,7 @@ $menuItemsToShow = array_slice(array_reverse($menuItems), $startIndex, $itemsPer
 
       <div class="table-container">
 
-      <div style="margin-bottom: 1rem;">
+      <div style="margin-bottom: 1rem; text-align: right;">
       <input type="text" id="menuSearchInput" placeholder="Search menu by name, category, or description..." style="padding: 8px; width: 100%; max-width: 400px; border-radius: 4px; border: 1px solid #ccc;">
     </div>
         <table>
@@ -256,7 +263,8 @@ $menuItemsToShow = array_slice(array_reverse($menuItems), $startIndex, $itemsPer
       <div class="form-group">
         <label>Remarks as Best Seller:</label>
         <div class="best-seller-toggle">
-          <input type="checkbox" id="editBestSellerToggle" name="best_seller" value="1" onclick="toggleBestSeller(this)">
+          <input type="checkbox" id="editBestSellerToggle" name="best_seller" value="1">
+          <!-- <input type="checkbox" id="editBestSellerToggle" name="best_seller" value="1" onclick="toggleBestSeller(this)"> -->
           <label for="editBestSellerToggle" class="toggle-btn"></label>
           <span class="toggle-label">Best Seller</span>
         </div>

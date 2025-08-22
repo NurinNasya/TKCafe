@@ -9,21 +9,34 @@ $conn = getConnection();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $voucherCode = strtoupper(trim($_POST['voucher_code'] ?? ''));
+    $voucherCode = stripslashes($voucherCode);
+    $voucherCode = str_replace(["'", '"'], '', $voucherCode);
 
     $response = ['success' => false];
+
+       // ✅ GET ORDER_ID FROM SESSION INSTEAD OF SESSION_ID
+    $order_id = $_SESSION['current_order']['id'] ?? null;
+    
+    if (!$order_id) {
+        echo json_encode(['success' => false, 'error' => 'No active order']);
+        exit;
+    }
+
 
     $check = "SELECT * FROM vouchers WHERE code = '$voucherCode' AND valid_until >= CURDATE()";
     $result = mysqli_query($conn, $check);
 
     if ($row = mysqli_fetch_assoc($result)) {
-        // Get subtotal from session or force client to send it
-        require_once '../Model/cart.php';
-        $session_id = session_id();
-        $items = getItems($conn, $session_id);
+         // ✅ USE ORDER_ID INSTEAD OF SESSION_ID
+        $items = getItems($conn, $order_id);  // ✅ FIXED!
         $subtotal = 0;
         foreach ($items as $item) {
             $subtotal += $item['price'] * $item['quantity'];
         }
+
+                $serviceCharge = $subtotal * 0.10; // ✅ Define service charge
+        $grandTotal = $subtotal + $serviceCharge;
+
 
         if ($subtotal >= $row['min_spend']) {
             $discount = $row['discount_amount'];
@@ -37,10 +50,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $response = [
                 'success' => true,
                 'voucher_code' => $voucherCode,
-                'discount' => $discount,
-                'grand_total' => number_format($grandTotal, 2),
-                'subtotal' => number_format($subtotal, 2),
-                'service_charge' => number_format($subtotal * 0.10, 2)
+                'discount' => round($discount, 2),
+                'subtotal' => round($subtotal, 2),
+                'service_charge' => round($serviceCharge, 2),
+                'grand_total' => round($grandTotal, 2)
             ];
         } else {
             $response['error'] = "Minimum spend: RM " . number_format($row['min_spend'], 2);

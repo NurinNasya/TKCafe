@@ -6,7 +6,11 @@ $statusFilter = isset($_GET['status']) ? $_GET['status'] : 'all';
 
 $searchTerm = isset($_GET['search']) ? trim($_GET['search']) : '';
 
-$allBookings = getAllBookings($statusFilter, $searchTerm);
+$filterDate = isset($_GET['filter_date']) ? $_GET['filter_date'] : null;
+
+$allBookings = getAllBookings($statusFilter, $searchTerm, $filterDate);
+
+// $allBookings = getAllBookings($statusFilter, $searchTerm);
 
 /// Setup pagination
 $itemsPerPage = 10;
@@ -70,8 +74,19 @@ $bookings = array_slice($allBookings, $startIndex, $itemsPerPage);
         <a href="manage_booking.php?status=Cancelled" class="<?= $statusFilter === 'Canceled' ? 'active' : '' ?>">Cancelled</a>
       </div>
 
+      <!-- ✅ DATE FILTER FORM -->
+<form method="GET" action="manage_booking.php" style="margin: 20px 0; text-align: right;">
+  <label for="filter_date" style="font-size: 14px;"><strong>Filter by Date:</strong></label>
+  <input type="date" id="filter_date" name="filter_date" class="form-control" value="<?= isset($_GET['filter_date']) ? htmlspecialchars($_GET['filter_date']) : '' ?>">
+  <input type="hidden" name="status" value="<?= $statusFilter ?>">
+  <input type="hidden" name="search" value="<?= htmlspecialchars($searchTerm) ?>">
+  <button type="submit" class="btn btn-primary btn-sm">Filter</button>
+  <a href="manage_booking.php" class="btn btn-secondary btn-sm" style="background-color: grey;">Reset</a>
+  <!-- <a href="manage_booking.php" class="btn btn-sm">Reset</a> -->
+</form>
+
       <!-- ✅ SEARCH FORM -->
-<form method="GET" action="manage_booking.php" style="margin: 20px 0;">
+<form method="GET" action="manage_booking.php" style="margin: 20px 0; text-align: right;">
   <input type="text" name="search" placeholder="Search by customer or phone" value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>" class="search-input" style="padding: 6px; width: 250px;">
   <input type="hidden" name="status" value="<?= $statusFilter ?>">
   <button type="submit" class="btn btn-primary btn-sm">Search</button>
@@ -128,14 +143,14 @@ $bookings = array_slice($allBookings, $startIndex, $itemsPerPage);
               </td>
               <td>
              <button type="button" class="btn btn-sm btn-primary edit-booking-btn"
-  data-id="<?= $booking['id'] ?>" 
-  data-name="<?= htmlspecialchars($booking['customer_name']) ?>" 
-  data-phone="<?= htmlspecialchars($booking['phone_number']) ?>" 
-  data-date="<?= $booking['booking_date'] ?>" 
-  data-time="<?= $booking['booking_time'] ?>" 
-  data-guests="<?= $booking['guests'] ?>" 
-  data-table="<?= $booking['table_number'] ?>">
-  Edit
+              data-id="<?= $booking['id'] ?>" 
+              data-name="<?= htmlspecialchars($booking['customer_name']) ?>" 
+              data-phone="<?= htmlspecialchars($booking['phone_number']) ?>" 
+              data-date="<?= $booking['booking_date'] ?>" 
+              data-time="<?= $booking['booking_time'] ?>" 
+              data-guests="<?= $booking['guests'] ?>" 
+              data-table="<?= $booking['table_number'] ?>">
+              Edit
 </button>
                       </a>
                     </td>
@@ -209,7 +224,10 @@ $bookings = array_slice($allBookings, $startIndex, $itemsPerPage);
         <label for="table">Table Number (Optional)</label>
         <input type="text" id="table" name="table" placeholder="Leave blank for auto-assign">
       </div>
-      <button type="submit" class="submit-btn">Book Now</button>
+      <div style="text-align: right;">
+        <button type="submit" class="submit-btn">Book Now</button>
+    </div>
+      <!-- <button type="submit" class="submit-btn">Book Now</button> -->
     </form>
   </div>
 </div>
